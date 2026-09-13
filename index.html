@@ -935,58 +935,57 @@
       margin-bottom: 50px;
     }
 
-    /* Realistic steel frame - multi-layer 3D */
+    /* Thick chrome frame - 3D layered */
     .metallic-frame {
       position: relative;
-      width: 280px;
-      padding: 0;
+      width: 260px;
+      padding: 28px;
       background: linear-gradient(180deg,
-        #b0b0b0 0%,
-        #d0d0d0 2%,
-        #a0a0a0 5%,
-        #c8c8c8 8%,
-        #909090 15%,
-        #b0b0b0 25%,
-        #808080 40%,
-        #a0a0a0 55%,
-        #787878 70%,
-        #909090 85%,
-        #858585 95%,
+        #e8e8e8 0%,
+        #f5f5f5 1%,
+        #ccc 3%,
+        #ddd 5%,
+        #bbb 8%,
+        #d5d5d5 12%,
+        #a0a0a0 20%,
+        #c0c0c0 30%,
+        #909090 45%,
+        #b0b0b0 55%,
+        #858585 70%,
+        #a0a0a0 80%,
+        #909090 90%,
+        #aaa 95%,
         #999 100%);
-      border-radius: 4px;
+      border-radius: 5px;
       box-shadow:
         0 30px 100px rgba(0,0,0,0.8),
         0 15px 40px rgba(0,0,0,0.6),
         0 5px 15px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.7),
-        inset 0 -1px 0 rgba(0,0,0,0.5),
-        inset 4px 0 0 rgba(255,255,255,0.3),
-        inset -4px 0 0 rgba(0,0,0,0.3),
-        inset 0 4px 0 rgba(255,255,255,0.15),
-        inset 0 -4px 0 rgba(0,0,0,0.2);
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        inset 0 -1px 0 rgba(0,0,0,0.4);
     }
 
-    /* Glossy highlight on outer frame */
+    /* Glossy diagonal highlight on outer frame */
     .metallic-frame::before {
       content: '';
       position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
       background: linear-gradient(135deg,
-        rgba(255,255,255,0.35) 0%,
-        rgba(255,255,255,0.12) 12%,
-        transparent 35%,
-        transparent 65%,
-        rgba(255,255,255,0.05) 85%,
-        rgba(255,255,255,0.1) 100%);
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.15) 10%,
+        transparent 30%,
+        transparent 70%,
+        rgba(255,255,255,0.05) 90%,
+        rgba(255,255,255,0.12) 100%);
       border-radius: 3px;
       pointer-events: none;
       z-index: 2;
     }
 
-    /* Outer frame edge highlight */
+    /* Outer frame edge */
     .metallic-frame::after {
       content: '';
       position: absolute;
@@ -994,36 +993,36 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.25);
       border-bottom-color: rgba(0,0,0,0.3);
-      border-right-color: rgba(0,0,0,0.2);
-      border-radius: 4px;
+      border-right-color: rgba(0,0,0,0.15);
+      border-radius: 5px;
       pointer-events: none;
       z-index: 3;
     }
 
-    /* Inner bevel step - lighter silver */
+    /* Inner bevel step */
     .frame-bevel {
       position: relative;
-      margin: 16px;
+      margin: 0;
       background: linear-gradient(180deg,
-        #999 0%,
-        #b0b0b0 3%,
-        #aaa 8%,
-        #c0c0c0 15%,
-        #b8b8b8 30%,
-        #ccc 50%,
-        #b8b8b8 70%,
-        #aaa 85%,
-        #999 95%,
-        #a0a0a0 100%);
+        #888 0%,
+        #999 3%,
+        #777 8%,
+        #909090 15%,
+        #6a6a6a 30%,
+        #808080 50%,
+        #6a6a6a 70%,
+        #777 85%,
+        #666 95%,
+        #707070 100%);
       border-radius: 2px;
       box-shadow:
-        inset 0 3px 8px rgba(0,0,0,0.4),
-        inset 0 -2px 6px rgba(0,0,0,0.25),
-        inset 3px 0 6px rgba(0,0,0,0.15),
-        inset -3px 0 6px rgba(0,0,0,0.15),
-        0 1px 0 rgba(255,255,255,0.3);
+        inset 0 4px 10px rgba(0,0,0,0.6),
+        inset 0 -3px 8px rgba(0,0,0,0.4),
+        inset 4px 0 10px rgba(0,0,0,0.3),
+        inset -4px 0 10px rgba(0,0,0,0.3),
+        0 1px 0 rgba(255,255,255,0.2);
     }
 
     /* Glossy highlight on inner bevel */
@@ -1033,10 +1032,10 @@
       top: 1px;
       left: 1px;
       right: 1px;
-      height: 45%;
+      height: 40%;
       background: linear-gradient(180deg,
-        rgba(255,255,255,0.25) 0%,
-        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.2) 0%,
+        rgba(255,255,255,0.05) 50%,
         transparent 100%);
       border-radius: 2px 2px 0 0;
       pointer-events: none;
@@ -1045,34 +1044,23 @@
     /* Slot at top where strip emerges */
     .frame-slot {
       position: absolute;
-      top: 20px;
+      top: 32px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 6px;
+      width: 65px;
+      height: 4px;
       background: linear-gradient(180deg,
         #1a1a1a 0%,
-        #2a2a2a 40%,
-        #3a3a3a 100%);
-      border-radius: 3px;
+        #222 50%,
+        #2a2a2a 100%);
+      border-radius: 2px;
       box-shadow:
-        inset 0 2px 4px rgba(0,0,0,0.9),
-        inset 0 -1px 2px rgba(0,0,0,0.3),
-        0 1px 0 rgba(255,255,255,0.15);
+        inset 0 1px 3px rgba(0,0,0,0.9),
+        0 1px 0 rgba(255,255,255,0.12);
       z-index: 5;
     }
 
-    .frame-slot::before {
-      content: '';
-      position: absolute;
-      top: 1px;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* Brushed metal interior - lighter silver/steel */
+    /* Dark brushed metal interior */
     .frame-interior {
       position: relative;
       z-index: 1;
@@ -1081,47 +1069,40 @@
           90deg,
           transparent 0px,
           transparent 1px,
-          rgba(255,255,255,0.04) 1px,
-          rgba(255,255,255,0.04) 2px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent 0px,
-          transparent 2px,
-          rgba(0,0,0,0.015) 2px,
-          rgba(0,0,0,0.015) 3px
+          rgba(255,255,255,0.03) 1px,
+          rgba(255,255,255,0.03) 2px
         ),
         linear-gradient(180deg,
-          #a0a0a0 0%,
-          #b0b0b0 5%,
-          #b8b8b8 12%,
-          #c0c0c0 25%,
-          #c5c5c5 40%,
-          #c8c8c8 55%,
-          #c5c5c5 70%,
-          #c0c0c0 82%,
-          #b8b8b8 90%,
-          #b0b0b0 95%,
-          #a8a8a8 100%);
+          #3a3a3a 0%,
+          #444 5%,
+          #4a4a4a 12%,
+          #505050 25%,
+          #555 40%,
+          #585858 55%,
+          #555 70%,
+          #505050 82%,
+          #4a4a4a 90%,
+          #444 95%,
+          #404040 100%);
       border-radius: 2px;
-      padding: 40px 22px 35px;
-      min-height: 420px;
+      padding: 50px 24px 45px;
+      min-height: 440px;
       overflow: hidden;
       box-shadow:
-        inset 0 5px 20px rgba(0,0,0,0.5),
-        inset 0 -3px 12px rgba(0,0,0,0.3),
-        inset 4px 0 15px rgba(0,0,0,0.25),
-        inset -4px 0 15px rgba(0,0,0,0.25);
+        inset 0 8px 30px rgba(0,0,0,0.8),
+        inset 0 -5px 20px rgba(0,0,0,0.5),
+        inset 6px 0 20px rgba(0,0,0,0.5),
+        inset -6px 0 20px rgba(0,0,0,0.5);
     }
 
-    /* Top darkness - shadow from frame above */
+    /* Top shadow from frame lip */
     .frame-interior::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 30%;
+      height: 25%;
       background: linear-gradient(180deg,
         rgba(0,0,0,0.45) 0%,
         rgba(0,0,0,0.2) 40%,
@@ -1297,16 +1278,13 @@
 
     @media (max-width: 480px) {
       .metallic-frame {
-        width: 220px;
-      }
-
-      .frame-bevel {
-        margin: 14px;
+        width: 210px;
+        padding: 22px;
       }
 
       .frame-interior {
-        padding: 35px 16px 30px;
-        min-height: 360px;
+        padding: 40px 18px 35px;
+        min-height: 370px;
       }
 
       .photo-strip {
