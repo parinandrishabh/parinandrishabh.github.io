@@ -913,179 +913,243 @@
       padding: 60px 20px;
       position: relative;
       overflow: hidden;
-    }
-
-    .photobooth-label {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-align: center;
-      margin-bottom: 15px;
+      background-image:
+        radial-gradient(ellipse at center, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
     }
 
     .photobooth-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 300;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(36px, 6vw, 60px);
       text-align: center;
       color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .photobooth-subheading {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cream-dark);
+      text-align: center;
       margin-bottom: 50px;
     }
 
-    .photobooth-machine {
+    /* Photo strip frame */
+    .photo-strip-frame {
       position: relative;
-      width: 340px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Printer body */
-    .printer-body {
-      width: 340px;
-      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-      border-radius: 12px 12px 0 0;
-      padding: 20px;
-      position: relative;
-      z-index: 2;
+      padding: 16px;
+      background: linear-gradient(145deg, #5a5a5a, #2a2a2a, #3a3a3a, #1a1a1a);
+      border-radius: 6px;
       box-shadow:
-        0 10px 40px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        0 20px 60px rgba(0,0,0,0.6),
+        0 8px 25px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        inset 0 -1px 0 rgba(0,0,0,0.3);
     }
 
-    .printer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .printer-lights {
-      display: flex;
-      gap: 8px;
-    }
-
-    .printer-light {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #333;
-      transition: all 0.3s ease;
-    }
-
-    .printer-light.on {
-      background: #4ade80;
-      box-shadow: 0 0 8px #4ade80;
-    }
-
-    .printer-light.printing {
-      background: var(--gold);
-      box-shadow: 0 0 8px var(--gold);
-      animation: blink 0.5s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .printer-brand {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #555;
-    }
-
-    /* Screen / viewfinder */
-    .printer-screen {
-      width: 100%;
-      height: 180px;
-      background: #111;
+    .photo-strip-frame::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-      border: 2px solid #333;
       pointer-events: none;
     }
 
-    .printer-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.7;
-      filter: grayscale(0.3);
+    /* Inner bevel */
+    .photo-strip-inner {
+      background: linear-gradient(180deg, #1a1a1a, #252525, #1a1a1a);
+      padding: 20px 16px;
+      border-radius: 3px;
+      box-shadow:
+        inset 0 3px 8px rgba(0,0,0,0.6),
+        inset 0 -2px 6px rgba(0,0,0,0.3);
     }
 
-    .printer-screen .viewfinder-overlay {
+    /* The actual photo strip */
+    .photo-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .photo-strip-slot {
+      width: 180px;
+      height: 180px;
+      background: #111;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .photo-strip-slot::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+
+    .photo-strip-slot .slot-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      transition: all 0.4s ease;
+    }
+
+    .photo-strip-slot .slot-placeholder .slot-icon {
+      font-size: 32px;
+      opacity: 0.3;
+      margin-bottom: 6px;
+    }
+
+    .photo-strip-slot .slot-placeholder .slot-number {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Photo reveal animation */
+    .photo-strip-slot.revealed .slot-placeholder {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .photo-strip-slot .photo-reveal {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .viewfinder-overlay::before,
-    .viewfinder-overlay::after {
-      content: '';
-      position: absolute;
-      border: 1px solid rgba(255,255,255,0.15);
+    .photo-strip-slot.revealed .photo-reveal {
+      opacity: 1;
+      transform: scale(1);
     }
 
-    .viewfinder-overlay::before {
-      top: 15%;
-      left: 15%;
-      right: 15%;
-      bottom: 15%;
+    .photo-reveal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
     }
 
-    .viewfinder-overlay::after {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-    }
-
-    /* Flash button */
-    .printer-flash {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #e74c3c, #c0392b);
-      border: 3px solid #444;
-      margin: 15px auto;
-      cursor: pointer;
-      transition: all 0.2s ease;
+    /* Placeholder photos with icons */
+    .photo-placeholder-strip {
+      width: 100%;
+      height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      position: relative;
-      z-index: 10;
+      color: var(--cream);
     }
 
-    .printer-flash:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5);
+    .photo-placeholder-strip .couple-icon {
+      font-size: 40px;
+      margin-bottom: 8px;
+      filter: grayscale(100%);
+      opacity: 0.7;
     }
 
-    .printer-flash:active {
-      transform: scale(0.95);
+    .photo-placeholder-strip .couple-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-style: italic;
+      opacity: 0.6;
     }
 
-    .printer-flash.flash {
-      animation: flashPulse 0.3s ease;
+    /* Frame glow effect */
+    .photo-strip-frame::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
     }
 
-    @keyframes flashPulse {
-      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.8); }
-      50% { box-shadow: 0 0 60px 20px rgba(255,255,255,0.6); }
-      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    /* Bottom text area */
+    .photobooth-bottom {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .photobooth-bottom .save-date-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .photobooth-bottom .date-text {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(14px, 2vw, 18px);
+      letter-spacing: 8px;
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .open-invitation-btn {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: transparent;
+      border: 1px solid var(--cream);
+      padding: 16px 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .open-invitation-btn:hover {
+      background: var(--cream);
+      color: var(--burgundy);
+    }
+
+    /* Click hint */
+    .click-hint {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cream-dark);
+      opacity: 0.5;
+      margin-top: 30px;
+      animation: hintPulse 2s infinite;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.8; }
+    }
+
+    .click-hint.hidden {
+      opacity: 0;
+      animation: none;
     }
 
     /* Flash overlay */
@@ -1099,244 +1163,30 @@
       opacity: 0;
       pointer-events: none;
       z-index: 999;
-      transition: opacity 0.1s ease;
     }
 
     .flash-overlay.flash {
-      animation: flashScreen 0.6s ease;
+      animation: flashScreen 0.5s ease;
     }
 
     @keyframes flashScreen {
       0% { opacity: 0; }
-      10% { opacity: 0.9; }
+      15% { opacity: 0.85; }
       100% { opacity: 0; }
     }
 
-    /* Printer slot */
-    .printer-slot {
-      width: 280px;
-      height: 4px;
-      background: #0a0a0a;
-      margin: 0 auto;
-      border-radius: 0 0 2px 2px;
-      position: relative;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-    }
-
-    .printer-slot::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
-    }
-
-    /* Printed photo - the polaroid that slides out */
-    .printed-photo-wrapper {
-      width: 280px;
-      height: 0;
-      overflow: visible;
-      position: relative;
-      margin: 0 auto;
-    }
-
-    .printed-photo {
-      width: 280px;
-      background: var(--cream);
-      padding: 15px 15px 50px 15px;
-      box-shadow:
-        0 8px 30px rgba(0,0,0,0.4),
-        0 2px 8px rgba(0,0,0,0.2);
-      position: relative;
-      transform: translateY(-100%);
-      opacity: 0;
-      transition: none;
-    }
-
-    .printed-photo.printing {
-      animation: printSlide 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-
-    @keyframes printSlide {
-      0% {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      5% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .printed-photo .photo-image {
-      width: 100%;
-      height: 280px;
-      background: linear-gradient(135deg, #d4a574, #c4956a, #b8845a);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .printed-photo .photo-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .printed-photo .photo-image .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 15px 10px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.6));
-      color: white;
-    }
-
-    .printed-photo .photo-image .photo-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      color: white;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .printed-photo .photo-caption {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      font-style: italic;
-      color: var(--burgundy);
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    .printed-photo .photo-date {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 6px;
-    }
-
-    /* Print instruction */
-    .print-instruction {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--cream-dark);
-      text-align: center;
-      margin-top: 40px;
-      opacity: 0.7;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
-    }
-
-    .print-instruction.hidden {
-      opacity: 0;
-      animation: none;
-    }
-
-    /* Printer stand/base */
-    .printer-base {
-      width: 360px;
-      height: 20px;
-      background: linear-gradient(145deg, #222, #181818);
-      border-radius: 0 0 8px 8px;
-      margin: 0 auto;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    }
-
-    /* Placeholder couple image in printer screen */
-    .couple-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #2a1a1a, #1a0a0a);
-      color: var(--cream-dark);
-    }
-
-    .couple-placeholder .camera-icon {
-      font-size: 48px;
-      margin-bottom: 10px;
-      opacity: 0.5;
-    }
-
-    .couple-placeholder .camera-text {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
-
-    /* For printed photo placeholder */
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--burgundy-light), var(--burgundy));
-      color: var(--cream);
-    }
-
-    .photo-placeholder .heart-icon {
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
-
-    .photo-placeholder .names-overlay {
-      font-family: 'Great Vibes', cursive;
-      font-size: 36px;
-      color: var(--cream);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .photo-placeholder .date-overlay {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: var(--gold);
-      margin-top: 8px;
-    }
-
     @media (max-width: 480px) {
-      .printer-body {
-        width: 300px;
-      }
-
-      .printer-screen {
+      .photo-strip-slot {
+        width: 150px;
         height: 150px;
       }
 
-      .printer-slot {
-        width: 250px;
+      .photo-strip-inner {
+        padding: 15px 12px;
       }
 
-      .printed-photo {
-        width: 250px;
-      }
-
-      .printed-photo .photo-image {
-        height: 240px;
-      }
-
-      .printer-base {
-        width: 320px;
+      .photo-strip-frame {
+        padding: 12px;
       }
     }
   </style>
@@ -1361,6 +1211,9 @@
     </button>
   </nav>
 
+  <!-- Flash Overlay -->
+  <div class="flash-overlay" id="flashOverlay"></div>
+
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="corner-decor top-left"></div>
@@ -1380,67 +1233,73 @@
     </div>
   </section>
 
-  <!-- Flash Overlay -->
-  <div class="flash-overlay" id="flashOverlay"></div>
-
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="photobooth">
-    <p class="photobooth-label fade-in">Photo Booth</p>
-    <h2 class="photobooth-heading fade-in">Click to Capture Our Moment</h2>
+    <h2 class="photobooth-heading fade-in">Julia & Charles</h2>
+    <p class="photobooth-subheading fade-in">We are getting married!</p>
 
-    <div class="photobooth-machine fade-in">
-      <!-- Printer top -->
-      <div class="printer-body">
-        <div class="printer-top">
-          <div class="printer-lights">
-            <div class="printer-light" id="light1"></div>
-            <div class="printer-light" id="light2"></div>
-            <div class="printer-light" id="light3"></div>
-          </div>
-          <span class="printer-brand">Love Cam</span>
-        </div>
-
-        <!-- Viewfinder screen -->
-        <div class="printer-screen">
-          <div class="couple-placeholder">
-            <span class="camera-icon">&#128247;</span>
-            <span class="camera-text">Ready to shoot</span>
-          </div>
-          <div class="viewfinder-overlay"></div>
-        </div>
-
-        <!-- Flash / capture button -->
-        <button class="printer-flash" id="captureBtn" aria-label="Capture photo">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-            <path d="M12 15.2a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4z"/>
-            <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Printer slot -->
-      <div class="printer-slot"></div>
-
-      <!-- Printed photo -->
-      <div class="printed-photo-wrapper">
-        <div class="printed-photo" id="printedPhoto">
-          <div class="photo-image">
-            <div class="photo-placeholder">
-              <span class="heart-icon">&#128141;</span>
-              <span class="names-overlay">A & R</span>
-              <span class="date-overlay">12 . 20 . 2026</span>
+    <div class="photo-strip-frame fade-in">
+      <div class="photo-strip-inner">
+        <div class="photo-strip" id="photoStrip">
+          <div class="photo-strip-slot" data-slot="0">
+            <div class="slot-placeholder">
+              <span class="slot-icon">&#128247;</span>
+              <span class="slot-number">Photo 1</span>
+            </div>
+            <div class="photo-reveal">
+              <div class="photo-placeholder-strip">
+                <span class="couple-icon">&#128107;</span>
+                <span class="couple-text">First Meeting</span>
+              </div>
             </div>
           </div>
-          <p class="photo-caption">Together forever starts here</p>
-          <p class="photo-date">Save the Date</p>
+          <div class="photo-strip-slot" data-slot="1">
+            <div class="slot-placeholder">
+              <span class="slot-icon">&#128247;</span>
+              <span class="slot-number">Photo 2</span>
+            </div>
+            <div class="photo-reveal">
+              <div class="photo-placeholder-strip">
+                <span class="couple-icon">&#128149;</span>
+                <span class="couple-text">The Proposal</span>
+              </div>
+            </div>
+          </div>
+          <div class="photo-strip-slot" data-slot="2">
+            <div class="slot-placeholder">
+              <span class="slot-icon">&#128247;</span>
+              <span class="slot-number">Photo 3</span>
+            </div>
+            <div class="photo-reveal">
+              <div class="photo-placeholder-strip">
+                <span class="couple-icon">&#127752;</span>
+                <span class="couple-text">Our Adventure</span>
+              </div>
+            </div>
+          </div>
+          <div class="photo-strip-slot" data-slot="3">
+            <div class="slot-placeholder">
+              <span class="slot-icon">&#128247;</span>
+              <span class="slot-number">Photo 4</span>
+            </div>
+            <div class="photo-reveal">
+              <div class="photo-placeholder-strip">
+                <span class="couple-icon">&#128141;</span>
+                <span class="couple-text">Forever Starts</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Base -->
-      <div class="printer-base"></div>
     </div>
 
-    <p class="print-instruction" id="printInstruction">Tap the red button to capture</p>
+    <div class="photobooth-bottom fade-in">
+      <p class="save-date-text">Save the Date</p>
+      <p class="date-text">12 . 20 . 2026</p>
+      <a href="#invitation" class="open-invitation-btn">Open Invitation</a>
+    </div>
+
+    <p class="click-hint" id="clickHint">Click each photo to reveal</p>
   </section>
 
   <!-- Invitation Section -->
@@ -1800,60 +1659,37 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Photobooth Capture
-    const captureBtn = document.getElementById('captureBtn');
-    const printedPhoto = document.getElementById('printedPhoto');
-    const flashOverlay = document.getElementById('flashOverlay');
-    const printInstruction = document.getElementById('printInstruction');
-    const light1 = document.getElementById('light1');
-    const light2 = document.getElementById('light2');
-    const light3 = document.getElementById('light3');
-    let isPrinting = false;
+    // Photobooth - Click to reveal photos
+    const photoSlots = document.querySelectorAll('.photo-strip-slot');
+    const clickHint = document.getElementById('clickHint');
+    let revealedCount = 0;
 
-    captureBtn.addEventListener('click', () => {
-      if (isPrinting) return;
-      isPrinting = true;
+    photoSlots.forEach((slot, index) => {
+      slot.addEventListener('click', () => {
+        if (slot.classList.contains('revealed')) return;
 
-      // 1. Flash effect
-      captureBtn.classList.add('flash');
-      flashOverlay.classList.add('flash');
+        // Flash effect on click
+        const flash = document.getElementById('flashOverlay');
+        flash.classList.add('flash');
+        setTimeout(() => flash.classList.remove('flash'), 500);
 
-      // 2. Turn on lights
-      light1.classList.add('on');
+        // Reveal this photo with staggered delay
+        setTimeout(() => {
+          slot.classList.add('revealed');
+          revealedCount++;
 
-      setTimeout(() => {
-        light2.classList.add('on');
-        light1.classList.remove('on');
-        light1.classList.add('printing');
-      }, 300);
+          // Hide hint after first reveal
+          if (revealedCount === 1) {
+            clickHint.classList.add('hidden');
+          }
 
-      setTimeout(() => {
-        light3.classList.add('on');
-        light2.classList.remove('on');
-        light2.classList.add('printing');
-        light1.classList.remove('printing');
-        light1.classList.add('on');
-      }, 600);
-
-      // 3. Hide instruction
-      printInstruction.classList.add('hidden');
-
-      // 4. Reset photo position then print
-      setTimeout(() => {
-        printedPhoto.classList.remove('printing');
-        void printedPhoto.offsetWidth; // force reflow
-        printedPhoto.classList.add('printing');
-      }, 800);
-
-      // 5. Reset after animation completes
-      setTimeout(() => {
-        captureBtn.classList.remove('flash');
-        flashOverlay.classList.remove('flash');
-        light1.classList.remove('on', 'printing');
-        light2.classList.remove('on', 'printing');
-        light3.classList.remove('on', 'printing');
-        isPrinting = false;
-      }, 3500);
+          // All revealed
+          if (revealedCount === photoSlots.length) {
+            clickHint.textContent = 'All photos revealed!';
+            clickHint.classList.remove('hidden');
+          }
+        }, 150);
+      });
     });
 
     // Form submission
