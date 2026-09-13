@@ -80,83 +80,6 @@
       position: relative;
     }
 
-    /* Hero Section */
-    .hero {
-      background: var(--burgundy);
-      color: var(--cream);
-      text-align: center;
-      background-image:
-        radial-gradient(ellipse at top left, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(201, 168, 76, 0.1) 0%, transparent 50%);
-    }
-
-    .hero-badge {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      border: 1px solid var(--gold);
-      padding: 10px 30px;
-      display: inline-block;
-      margin-bottom: 40px;
-      color: var(--gold);
-    }
-
-    .hero-subtitle {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      color: var(--cream-dark);
-    }
-
-    .hero-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(48px, 8vw, 100px);
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: var(--cream);
-    }
-
-    .hero-date {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 16px;
-      letter-spacing: 8px;
-      color: var(--gold);
-      margin-top: 30px;
-    }
-
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-style: italic;
-      margin-top: 20px;
-      color: var(--cream-dark);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
-
-    .scroll-indicator svg {
-      width: 30px;
-      height: 30px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 2;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
-    }
-
     /* Invitation Section */
     .invitation {
       background: var(--burgundy);
@@ -519,106 +442,6 @@
       transform: translateY(-2px);
     }
 
-    /* RSVP Section */
-    .rsvp-section {
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .rsvp-form {
-      max-width: 500px;
-      width: 100%;
-      margin-top: 40px;
-    }
-
-    .form-group {
-      margin-bottom: 25px;
-      text-align: left;
-    }
-
-    .form-label {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-      width: 100%;
-      padding: 14px 18px;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
-      border: 1px solid rgba(104, 8, 8, 0.2);
-      background: var(--white);
-      color: var(--text-dark);
-      outline: none;
-      transition: border-color 0.3s ease;
-    }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      border-color: var(--burgundy);
-    }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 25px;
-      margin-top: 5px;
-    }
-
-    .radio-label {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .radio-label input[type="radio"] {
-      accent-color: var(--burgundy);
-      width: 16px;
-      height: 16px;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      background: var(--burgundy);
-      color: var(--cream);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 10px;
-    }
-
-    .submit-btn:hover {
-      background: var(--burgundy-dark);
-      transform: translateY(-2px);
-    }
-
     /* Footer */
     .footer {
       background: var(--burgundy-dark);
@@ -664,69 +487,6 @@
       letter-spacing: 3px;
       color: var(--gold);
       margin-top: 20px;
-    }
-
-    /* Success Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal {
-      background: var(--cream);
-      padding: 50px 40px;
-      max-width: 450px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-      animation: modalIn 0.3s ease;
-    }
-
-    @keyframes modalIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-muted);
-      background: none;
-      border: none;
-    }
-
-    .modal-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .modal-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 36px;
-      color: var(--burgundy);
-      margin-bottom: 15px;
-    }
-
-    .modal-text {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.8;
     }
 
     /* Responsive */
@@ -1165,14 +925,13 @@
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
-    <a href="#hero" class="nav-logo">R & P</a>
+    <a href="#photobooth" class="nav-logo">R & P</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#photobooth">Photo Booth</a></li>
       <li><a href="#invitation">Invitation</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#venue">Venue</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span>
@@ -1185,24 +944,6 @@
   <div class="flash-overlay" id="flashOverlay"></div>
 
   <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
-
-    <div class="hero-badge">Save the Date</div>
-    <p class="hero-subtitle">We are getting married!</p>
-    <h1 class="hero-names">Rishabh & Parin</h1>
-    <div class="ornament-line"><span>&#10053;</span></div>
-    <p class="hero-tagline">Two hearts, one love, endless celebrations</p>
-    <p class="hero-date">02 . 13 . 2027</p>
-
-    <div class="scroll-indicator">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
-  </section>
-
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="photobooth">
     <p class="photobooth-subheading fade-in">We are getting married!</p>
@@ -1459,94 +1200,6 @@
     </div>
   </section>
 
-  <!-- RSVP Section -->
-  <section class="rsvp-section" id="rsvp">
-    <p class="section-title fade-in" style="color: var(--burgundy);">We Await Your Response</p>
-    <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
-    <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
-      Please respond by January 15, 2027
-    </p>
-
-    <form class="rsvp-form fade-in" id="rsvpForm" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="firstName">First Name</label>
-          <input type="text" id="firstName" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="lastName">Last Name</label>
-          <input type="text" id="lastName" class="form-input" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="email">Email</label>
-        <input type="email" id="email" class="form-input" required>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="phone">Phone</label>
-        <input type="tel" id="phone" class="form-input">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Attending?</label>
-        <div class="radio-group">
-          <label class="radio-label">
-            <input type="radio" name="attending" value="yes" required> Joyfully Accept
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="attending" value="no"> Respectfully Decline
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="guests">Number of Guests</label>
-        <select id="guests" class="form-select">
-          <option value="1">1</option>
-          <option value="2" selected>2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Which events will you attend?</label>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-          <label class="radio-label">
-            <input type="checkbox" name="events" value="mehendi"> Mehendi
-          </label>
-          <label class="radio-label">
-            <input type="checkbox" name="events" value="haldi"> Haldi
-          </label>
-          <label class="radio-label">
-            <input type="checkbox" name="events" value="sangeet"> Sangeet
-          </label>
-          <label class="radio-label">
-            <input type="checkbox" name="events" value="wedding"> Wedding Ceremony
-          </label>
-          <label class="radio-label">
-            <input type="checkbox" name="events" value="reception"> Reception
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="dietary">Dietary Requirements</label>
-        <input type="text" id="dietary" class="form-input" placeholder="e.g., Vegetarian, Vegan, Allergies">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="message">Message for the Couple</label>
-        <textarea id="message" class="form-textarea" placeholder="Share your blessings..."></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">Send Response</button>
-    </form>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <p class="footer-names">Rishabh & Parin</p>
@@ -1558,19 +1211,6 @@
     </p>
     <p class="footer-hashtag">#RishabhAndParin2027</p>
   </footer>
-
-  <!-- Success Modal -->
-  <div class="modal-overlay" id="successModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div class="modal-icon">&#128141;</div>
-      <h3 class="modal-title">Thank You!</h3>
-      <p class="modal-text">
-        Your response has been received. We look forward to celebrating
-        our special day with you!
-      </p>
-    </div>
-  </div>
 
   <script>
     // Countdown Timer
@@ -1683,27 +1323,6 @@
     }, { threshold: 0.3 });
 
     stripObserver.observe(metallicFrame);
-
-    // Form submission
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('successModal').classList.add('active');
-      e.target.reset();
-    }
-
-    function closeModal() {
-      document.getElementById('successModal').classList.remove('active');
-    }
-
-    // Close modal on overlay click
-    document.getElementById('successModal').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeModal();
-    });
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
   </script>
 </body>
 </html>
