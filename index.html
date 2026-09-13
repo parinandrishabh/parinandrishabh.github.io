@@ -301,96 +301,7 @@
       opacity: 0.8;
     }
 
-    /* Timeline Section */
-    .timeline-section {
-      background: var(--cream);
-      padding: 80px 20px;
-    }
-
-    .timeline {
-      max-width: 800px;
-      width: 100%;
-      position: relative;
-      margin-top: 40px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: var(--gold);
-    }
-
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 50px;
-      position: relative;
-    }
-
-    .timeline-item:nth-child(odd) {
-      flex-direction: row;
-    }
-
-    .timeline-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .timeline-content {
-      width: 45%;
-      padding: 25px;
-      background: var(--white);
-      border: 1px solid rgba(201, 168, 76, 0.3);
-      position: relative;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-right: auto;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      margin-left: auto;
-      text-align: left;
-    }
-
-    .timeline-dot {
-      width: 16px;
-      height: 16px;
-      background: var(--burgundy);
-      border: 3px solid var(--gold);
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-
-    .timeline-time {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 8px;
-    }
-
-    .timeline-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      color: var(--burgundy);
-      margin-bottom: 8px;
-    }
-
-    .timeline-desc {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    /* Venue Section */
 
     /* Venue Section */
     .venue-section {
@@ -512,28 +423,6 @@
     @media (max-width: 768px) {
       .form-row {
         grid-template-columns: 1fr;
-      }
-
-      .timeline::before {
-        left: 20px;
-      }
-
-      .timeline-item,
-      .timeline-item:nth-child(even) {
-        flex-direction: row;
-        padding-left: 50px;
-      }
-
-      .timeline-content,
-      .timeline-item:nth-child(odd) .timeline-content,
-      .timeline-item:nth-child(even) .timeline-content {
-        width: 100%;
-        text-align: left;
-        margin: 0;
-      }
-
-      .timeline-dot {
-        left: 20px;
       }
 
       .functions-grid {
@@ -949,7 +838,6 @@
       <li><a href="#photobooth">Photo Booth</a></li>
       <li><a href="#invitation">Invitation</a></li>
       <li><a href="#functions">Functions</a></li>
-      <li><a href="#timeline">Timeline</a></li>
       <li><a href="#venue">Venue</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -1123,86 +1011,6 @@
         <p class="function-time">Morning</p>
         <p class="function-venue">Gulab Niwas, Pushkar</p>
         <p class="function-description">A heartfelt farewell as guests check out after celebrating the beautiful union of Parin and Rishabh.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline Section -->
-  <section class="timeline-section" id="timeline">
-    <p class="section-title fade-in" style="color: var(--burgundy);">At a Glance</p>
-    <h2 class="section-heading fade-in" style="color: var(--burgundy);">Wedding Timeline</h2>
-
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 13 &bull; Morning</p>
-          <h3 class="timeline-title">Welcome & Check-in</h3>
-          <p class="timeline-desc">Arrive and settle in at Gulaab Niwaas</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 13 &bull; Evening</p>
-          <h3 class="timeline-title">Welcome Dinner & Sanjhi</h3>
-          <p class="timeline-desc">Traditional Sanjhi and grand welcome dinner</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 14 &bull; Morning & Afternoon</p>
-          <h3 class="timeline-title">Puja Ceremonies</h3>
-          <p class="timeline-desc">Graha Shanti, Madap Mahurat & Tilak</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 14 &bull; Evening</p>
-          <h3 class="timeline-title">Sangeet & Garba</h3>
-          <p class="timeline-desc">Music, dance and garba night</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 15 &bull; Morning</p>
-          <h3 class="timeline-title">Haldi</h3>
-          <p class="timeline-desc">Turmeric ceremony blessings</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 15 &bull; Evening</p>
-          <h3 class="timeline-title">Wedding</h3>
-          <p class="timeline-desc">Baraat, Varmala & Phere</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 15 &bull; Evening</p>
-          <h3 class="timeline-title">Wedding</h3>
-          <p class="timeline-desc">Baraat, Varmala & Phere</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Feb 16 &bull; Morning</p>
-          <h3 class="timeline-title">Checkout</h3>
-          <p class="timeline-desc">Heartfelt farewells</p>
-        </div>
-        <div class="timeline-dot"></div>
       </div>
     </div>
   </section>
