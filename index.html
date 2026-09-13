@@ -935,82 +935,106 @@
       margin-bottom: 50px;
     }
 
-    /* Metallic frame */
+    /* Realistic steel frame */
     .metallic-frame {
       position: relative;
-      width: 220px;
-      padding: 14px;
-      background: linear-gradient(160deg, 
-        #6a6a6a 0%, 
-        #4a4a4a 15%, 
-        #7a7a7a 25%, 
-        #3a3a3a 40%, 
-        #5a5a5a 55%, 
-        #2a2a2a 70%, 
-        #4a4a4a 85%, 
-        #3a3a3a 100%);
-      border-radius: 4px;
+      width: 230px;
+      padding: 18px;
+      background: linear-gradient(165deg,
+        #7a7a7a 0%,
+        #5a5a5a 8%,
+        #8a8a8a 12%,
+        #4a4a4a 20%,
+        #6a6a6a 28%,
+        #3a3a3a 35%,
+        #5a5a5a 42%,
+        #2a2a2a 50%,
+        #4a4a4a 58%,
+        #3a3a3a 65%,
+        #5a5a5a 72%,
+        #2a2a2a 80%,
+        #4a4a4a 88%,
+        #3a3a3a 95%,
+        #555 100%);
+      border-radius: 3px;
       box-shadow:
-        0 25px 80px rgba(0,0,0,0.7),
-        0 10px 30px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        inset 0 -1px 0 rgba(0,0,0,0.4),
-        inset 1px 0 0 rgba(255,255,255,0.1),
-        inset -1px 0 0 rgba(0,0,0,0.2);
+        0 30px 100px rgba(0,0,0,0.8),
+        0 15px 40px rgba(0,0,0,0.6),
+        0 5px 15px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        inset 0 -1px 0 rgba(0,0,0,0.5),
+        inset 2px 0 0 rgba(255,255,255,0.12),
+        inset -2px 0 0 rgba(0,0,0,0.3),
+        inset 0 2px 0 rgba(255,255,255,0.08),
+        inset 0 -2px 0 rgba(0,0,0,0.2);
     }
 
-    /* Inner bevel of frame */
+    /* Outer edge highlight */
     .metallic-frame::before {
       content: '';
       position: absolute;
-      top: 6px;
-      left: 6px;
-      right: 6px;
-      bottom: 6px;
-      background: linear-gradient(160deg, 
-        #555 0%, 
-        #333 30%, 
-        #444 50%, 
-        #222 70%, 
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: linear-gradient(165deg,
+        #666 0%,
+        #444 20%,
+        #555 40%,
+        #333 60%,
+        #444 80%,
         #333 100%);
       border-radius: 2px;
       box-shadow:
-        inset 0 2px 6px rgba(0,0,0,0.5),
-        inset 0 -1px 3px rgba(0,0,0,0.3);
+        inset 0 3px 8px rgba(0,0,0,0.6),
+        inset 0 -2px 5px rgba(0,0,0,0.3),
+        inset 2px 0 6px rgba(0,0,0,0.3),
+        inset -2px 0 6px rgba(0,0,0,0.3);
     }
 
-    /* Brushed metal interior */
+    /* Brushed metal interior - realistic texture */
     .frame-interior {
       position: relative;
       z-index: 1;
-      background: 
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 1px,
+          rgba(255,255,255,0.015) 1px,
+          rgba(255,255,255,0.015) 2px
+        ),
         repeating-linear-gradient(
           0deg,
-          transparent,
-          transparent 1px,
-          rgba(255,255,255,0.02) 1px,
-          rgba(255,255,255,0.02) 2px
+          transparent 0px,
+          transparent 2px,
+          rgba(0,0,0,0.02) 2px,
+          rgba(0,0,0,0.02) 4px
         ),
-        linear-gradient(180deg, 
-          #8a8a8a 0%, 
-          #999 10%, 
-          #aaa 20%, 
-          #bbb 35%, 
-          #ccc 50%, 
-          #bbb 65%, 
-          #aaa 80%, 
-          #999 90%, 
-          #8a8a8a 100%);
+        linear-gradient(180deg,
+          #9a9a9a 0%,
+          #a8a8a8 5%,
+          #b5b5b5 12%,
+          #c0c0c0 25%,
+          #c8c8c8 40%,
+          #d0d0d0 50%,
+          #c8c8c8 60%,
+          #c0c0c0 75%,
+          #b5b5b5 88%,
+          #a8a8a8 95%,
+          #9a9a9a 100%);
       border-radius: 2px;
-      padding: 25px 20px;
-      min-height: 420px;
+      padding: 30px 20px;
+      min-height: 440px;
       overflow: hidden;
       box-shadow:
-        inset 0 3px 10px rgba(0,0,0,0.4),
-        inset 0 -2px 8px rgba(0,0,0,0.2);
+        inset 0 4px 15px rgba(0,0,0,0.5),
+        inset 0 -3px 10px rgba(0,0,0,0.3),
+        inset 3px 0 10px rgba(0,0,0,0.2),
+        inset -3px 0 10px rgba(0,0,0,0.2);
     }
 
-    /* Photo strip container - clips the strip as it slides */
+    /* Photo strip container - clips the strip */
     .photo-strip-container {
       position: relative;
       width: 100%;
@@ -1022,23 +1046,68 @@
     .photo-strip {
       display: flex;
       flex-direction: column;
-      width: 160px;
+      width: 150px;
       margin: 0 auto;
-      background: var(--cream);
-      padding: 8px;
-      gap: 6px;
-      transform: translateY(-100%);
-      transition: transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      background: #f8f6f0;
+      padding: 6px;
+      gap: 4px;
+      transform: translateY(-110%);
+      box-shadow:
+        0 6px 25px rgba(0,0,0,0.4),
+        0 2px 8px rgba(0,0,0,0.3),
+        2px 0 5px rgba(0,0,0,0.1),
+        -2px 0 5px rgba(0,0,0,0.1);
     }
 
-    .photo-strip.revealed {
-      transform: translateY(0);
+    .photo-strip.printing {
+      animation: printStrip 3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    }
+
+    .photo-strip.resetting {
+      animation: resetStrip 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+    }
+
+    @keyframes printStrip {
+      0% {
+        transform: translateY(-110%);
+      }
+      15% {
+        transform: translateY(-80%);
+      }
+      40% {
+        transform: translateY(-20%);
+      }
+      60% {
+        transform: translateY(5%);
+      }
+      72% {
+        transform: translateY(-2%);
+      }
+      84% {
+        transform: translateY(1%);
+      }
+      92% {
+        transform: translateY(0%);
+      }
+      100% {
+        transform: translateY(0%);
+      }
+    }
+
+    @keyframes resetStrip {
+      0% {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110%);
+        opacity: 1;
+      }
     }
 
     .photo-strip-photo {
       width: 100%;
-      height: 100px;
+      height: 90px;
       background: linear-gradient(135deg, #3a3a3a, #2a2a2a, #4a4a4a);
       position: relative;
       overflow: hidden;
@@ -1051,32 +1120,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      filter: grayscale(100%) contrast(1.1);
+      filter: grayscale(100%) contrast(1.15) brightness(0.95);
       color: #ccc;
     }
 
     .photo-strip-photo .photo-content .photo-emoji {
-      font-size: 32px;
-      margin-bottom: 4px;
+      font-size: 30px;
+      margin-bottom: 3px;
       filter: grayscale(100%);
     }
 
     .photo-strip-photo .photo-content .photo-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
+      font-size: 10px;
       font-style: italic;
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
-    /* Frame glow */
+    /* Frame outer glow */
     .metallic-frame::after {
       content: '';
       position: absolute;
-      top: -30px;
-      left: -30px;
-      right: -30px;
-      bottom: -30px;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%);
+      top: -40px;
+      left: -40px;
+      right: -40px;
+      bottom: -40px;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
@@ -1147,21 +1216,21 @@
 
     @media (max-width: 480px) {
       .metallic-frame {
-        width: 190px;
-        padding: 10px;
+        width: 200px;
+        padding: 14px;
       }
 
       .frame-interior {
-        padding: 20px 15px;
-        min-height: 360px;
+        padding: 25px 16px;
+        min-height: 380px;
       }
 
       .photo-strip {
-        width: 140px;
+        width: 130px;
       }
 
       .photo-strip-photo {
-        height: 85px;
+        height: 75px;
       }
     }
   </style>
@@ -1170,7 +1239,7 @@
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
-    <a href="#hero" class="nav-logo">A & R</a>
+    <a href="#hero" class="nav-logo">R & P</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#photobooth">Photo Booth</a></li>
       <li><a href="#invitation">Invitation</a></li>
@@ -1198,10 +1267,10 @@
 
     <div class="hero-badge">Save the Date</div>
     <p class="hero-subtitle">We are getting married!</p>
-    <h1 class="hero-names">Ananya & Rohan</h1>
+    <h1 class="hero-names">Rishabh & Parin</h1>
     <div class="ornament-line"><span>&#10053;</span></div>
     <p class="hero-tagline">Two hearts, one love, endless celebrations</p>
-    <p class="hero-date">12 . 20 . 2026</p>
+    <p class="hero-date">02 . 13 . 2027</p>
 
     <div class="scroll-indicator">
       <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1211,7 +1280,7 @@
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="photobooth">
     <p class="photobooth-subheading fade-in">We are getting married!</p>
-    <h2 class="photobooth-heading fade-in">Julia & Charles</h2>
+    <h2 class="photobooth-heading fade-in">Rishabh & Parin</h2>
 
     <div class="metallic-frame fade-in" id="metallicFrame">
       <div class="frame-interior">
@@ -1248,7 +1317,7 @@
 
     <div class="photobooth-bottom fade-in">
       <p class="save-date-text">Save the Date</p>
-      <p class="date-text">12 . 20 . 2026</p>
+      <p class="date-text">02 . 13 . 2027</p>
       <a href="#invitation" class="open-invitation-btn">Open Invitation</a>
     </div>
   </section>
@@ -1263,7 +1332,7 @@
     <p class="invitation-intro fade-in">With hearts full of joy</p>
     <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
     <div class="ornament-line fade-in"><span>&#10053;</span></div>
-    <p class="invitation-names fade-in">Ananya & Rohan</p>
+    <p class="invitation-names fade-in">Rishabh & Parin</p>
     <p class="invitation-message fade-in">
       Together with their families, request the pleasure of your company
       as they begin their new journey of love and togetherness.
@@ -1272,7 +1341,7 @@
 
     <div class="parents-section fade-in">
       <p class="parents-text">Children of</p>
-      <p class="parents-names">Mr. & Mrs. Sharma &nbsp;&bull;&nbsp; Mr. & Mrs. Gupta</p>
+      <p class="parents-names">Mr. & Mrs. Saini &nbsp;&bull;&nbsp; Mr. & Mrs. Joshi</p>
     </div>
   </section>
 
@@ -1314,49 +1383,49 @@
       <div class="function-card fade-in">
         <span class="function-icon">&#127800;</span>
         <h3 class="function-name">Mehendi</h3>
-        <p class="function-date">December 17, 2026</p>
+        <p class="function-date">February 13, 2027</p>
         <p class="function-time">3:00 PM - 7:00 PM</p>
-        <p class="function-venue">Gupta Residence</p>
+        <p class="function-venue">Gulab Niwas, Pushkar</p>
         <p class="function-description">An evening of intricate henna artistry, music, and merriment as the bride's hands and feet are adorned with beautiful mehendi designs.</p>
-      </div>
-
-      <!-- Haldi -->
-      <div class="function-card fade-in">
-        <span class="function-icon">&#127803;</span>
-        <h3 class="function-name">Haldi</h3>
-        <p class="function-date">December 18, 2026</p>
-        <p class="function-time">9:00 AM - 12:00 PM</p>
-        <p class="function-venue">Sharma Residence</p>
-        <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
       </div>
 
       <!-- Sangeet -->
       <div class="function-card fade-in">
         <span class="function-icon">&#127926;</span>
         <h3 class="function-name">Sangeet</h3>
-        <p class="function-date">December 18, 2026</p>
-        <p class="function-time">7:00 PM - 11:00 PM</p>
-        <p class="function-venue">The Grand Ballroom</p>
+        <p class="function-date">February 13, 2027</p>
+        <p class="function-time">8:00 PM - 11:00 PM</p>
+        <p class="function-venue">Gulab Niwas, Pushkar</p>
         <p class="function-description">A night of music, dance performances, and celebration as both families come together to rejoice through song and choreography.</p>
+      </div>
+
+      <!-- Haldi -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#127803;</span>
+        <h3 class="function-name">Haldi</h3>
+        <p class="function-date">February 14, 2027</p>
+        <p class="function-time">9:00 AM - 12:00 PM</p>
+        <p class="function-venue">Gulab Niwas, Pushkar</p>
+        <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
       </div>
 
       <!-- Wedding Ceremony -->
       <div class="function-card fade-in">
         <span class="function-icon">&#128141;</span>
         <h3 class="function-name">Wedding</h3>
-        <p class="function-date">December 20, 2026</p>
+        <p class="function-date">February 14, 2027</p>
         <p class="function-time">7:00 PM - 11:00 PM</p>
-        <p class="function-venue">The Palace Gardens</p>
-        <p class="function-description">The sacred wedding ceremony where Ananya and Rohan take their seven vows around the holy fire, united in marriage before family and friends.</p>
+        <p class="function-venue">Gulab Niwas, Pushkar</p>
+        <p class="function-description">The sacred wedding ceremony where Rishabh and Parin take their seven vows around the holy fire, united in marriage before family and friends.</p>
       </div>
 
       <!-- Reception -->
       <div class="function-card fade-in">
         <span class="function-icon">&#127880;</span>
         <h3 class="function-name">Reception</h3>
-        <p class="function-date">December 21, 2026</p>
+        <p class="function-date">February 15, 2027</p>
         <p class="function-time">7:00 PM - 11:00 PM</p>
-        <p class="function-venue">The Palace Gardens</p>
+        <p class="function-venue">Gulab Niwas, Pushkar</p>
         <p class="function-description">An elegant evening dinner reception to celebrate the newlyweds with heartfelt toasts, gourmet cuisine, and dancing the night away.</p>
       </div>
     </div>
@@ -1370,45 +1439,45 @@
     <div class="timeline">
       <div class="timeline-item fade-in">
         <div class="timeline-content">
-          <p class="timeline-time">Dec 17 &bull; 3:00 PM</p>
+          <p class="timeline-time">Feb 13 &bull; 3:00 PM</p>
           <h3 class="timeline-title">Mehendi</h3>
-          <p class="timeline-desc">Henna artistry and celebrations at Gupta Residence</p>
+          <p class="timeline-desc">Henna artistry and celebrations at Gulab Niwas</p>
         </div>
         <div class="timeline-dot"></div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-content">
-          <p class="timeline-time">Dec 18 &bull; 9:00 AM</p>
-          <h3 class="timeline-title">Haldi</h3>
-          <p class="timeline-desc">Turmeric ceremony at Sharma Residence</p>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <p class="timeline-time">Dec 18 &bull; 7:00 PM</p>
+          <p class="timeline-time">Feb 13 &bull; 8:00 PM</p>
           <h3 class="timeline-title">Sangeet</h3>
-          <p class="timeline-desc">Music and dance night at The Grand Ballroom</p>
+          <p class="timeline-desc">Music and dance night at Gulab Niwas</p>
         </div>
         <div class="timeline-dot"></div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-content">
-          <p class="timeline-time">Dec 20 &bull; 7:00 PM</p>
+          <p class="timeline-time">Feb 14 &bull; 9:00 AM</p>
+          <h3 class="timeline-title">Haldi</h3>
+          <p class="timeline-desc">Turmeric ceremony at Gulab Niwas</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Feb 14 &bull; 7:00 PM</p>
           <h3 class="timeline-title">Wedding</h3>
-          <p class="timeline-desc">Sacred ceremony at The Palace Gardens</p>
+          <p class="timeline-desc">Sacred ceremony at Gulab Niwas</p>
         </div>
         <div class="timeline-dot"></div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-content">
-          <p class="timeline-time">Dec 21 &bull; 7:00 PM</p>
+          <p class="timeline-time">Feb 15 &bull; 7:00 PM</p>
           <h3 class="timeline-title">Reception</h3>
-          <p class="timeline-desc">Grand dinner celebration at The Palace Gardens</p>
+          <p class="timeline-desc">Grand dinner celebration at Gulab Niwas</p>
         </div>
         <div class="timeline-dot"></div>
       </div>
@@ -1552,7 +1621,7 @@
   <script>
     // Countdown Timer
     function updateCountdown() {
-      const weddingDate = new Date('2026-12-20T19:00:00').getTime();
+      const weddingDate = new Date('2027-02-13T19:00:00').getTime();
       const now = new Date().getTime();
       const distance = weddingDate - now;
 
@@ -1610,18 +1679,50 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Photobooth - Auto slide strip when frame comes into view
+    // Photobooth - Looping print animation with natural physics
     const photoStrip = document.getElementById('photoStrip');
     const metallicFrame = document.getElementById('metallicFrame');
-    let stripRevealed = false;
+    let animationStarted = false;
+    let loopTimeout = null;
 
+    function startPrintAnimation() {
+      if (!animationStarted) return;
+
+      // Reset strip position instantly
+      photoStrip.classList.remove('printing', 'resetting');
+      photoStrip.style.transform = 'translateY(-110%)';
+
+      // Small delay then print
+      setTimeout(() => {
+        photoStrip.classList.add('printing');
+      }, 200);
+
+      // After print completes, wait then reset and loop
+      loopTimeout = setTimeout(() => {
+        photoStrip.classList.remove('printing');
+        photoStrip.classList.add('resetting');
+
+        // After reset, wait then print again
+        setTimeout(() => {
+          photoStrip.classList.remove('resetting');
+          startPrintAnimation();
+        }, 1200);
+      }, 5000);
+    }
+
+    // Start animation when frame comes into view
     const stripObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !stripRevealed) {
-          stripRevealed = true;
+        if (entry.isIntersecting && !animationStarted) {
+          animationStarted = true;
           setTimeout(() => {
-            photoStrip.classList.add('revealed');
-          }, 500);
+            startPrintAnimation();
+          }, 800);
+        } else if (!entry.isIntersecting && animationStarted) {
+          animationStarted = false;
+          clearTimeout(loopTimeout);
+          photoStrip.classList.remove('printing', 'resetting');
+          photoStrip.style.transform = 'translateY(-110%)';
         }
       });
     }, { threshold: 0.3 });
