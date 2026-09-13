@@ -935,161 +935,153 @@
       margin-bottom: 50px;
     }
 
-    /* Photo strip frame */
-    .photo-strip-frame {
+    /* Metallic frame */
+    .metallic-frame {
       position: relative;
-      padding: 16px;
-      background: linear-gradient(145deg, #5a5a5a, #2a2a2a, #3a3a3a, #1a1a1a);
-      border-radius: 6px;
+      width: 220px;
+      padding: 14px;
+      background: linear-gradient(160deg, 
+        #6a6a6a 0%, 
+        #4a4a4a 15%, 
+        #7a7a7a 25%, 
+        #3a3a3a 40%, 
+        #5a5a5a 55%, 
+        #2a2a2a 70%, 
+        #4a4a4a 85%, 
+        #3a3a3a 100%);
+      border-radius: 4px;
       box-shadow:
-        0 20px 60px rgba(0,0,0,0.6),
-        0 8px 25px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        inset 0 -1px 0 rgba(0,0,0,0.3);
+        0 25px 80px rgba(0,0,0,0.7),
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        inset 0 -1px 0 rgba(0,0,0,0.4),
+        inset 1px 0 0 rgba(255,255,255,0.1),
+        inset -1px 0 0 rgba(0,0,0,0.2);
     }
 
-    .photo-strip-frame::before {
+    /* Inner bevel of frame */
+    .metallic-frame::before {
       content: '';
       position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      pointer-events: none;
-    }
-
-    /* Inner bevel */
-    .photo-strip-inner {
-      background: linear-gradient(180deg, #1a1a1a, #252525, #1a1a1a);
-      padding: 20px 16px;
-      border-radius: 3px;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      background: linear-gradient(160deg, 
+        #555 0%, 
+        #333 30%, 
+        #444 50%, 
+        #222 70%, 
+        #333 100%);
+      border-radius: 2px;
       box-shadow:
-        inset 0 3px 8px rgba(0,0,0,0.6),
-        inset 0 -2px 6px rgba(0,0,0,0.3);
+        inset 0 2px 6px rgba(0,0,0,0.5),
+        inset 0 -1px 3px rgba(0,0,0,0.3);
     }
 
-    /* The actual photo strip */
+    /* Brushed metal interior */
+    .frame-interior {
+      position: relative;
+      z-index: 1;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 1px,
+          rgba(255,255,255,0.02) 1px,
+          rgba(255,255,255,0.02) 2px
+        ),
+        linear-gradient(180deg, 
+          #8a8a8a 0%, 
+          #999 10%, 
+          #aaa 20%, 
+          #bbb 35%, 
+          #ccc 50%, 
+          #bbb 65%, 
+          #aaa 80%, 
+          #999 90%, 
+          #8a8a8a 100%);
+      border-radius: 2px;
+      padding: 25px 20px;
+      min-height: 420px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 3px 10px rgba(0,0,0,0.4),
+        inset 0 -2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Photo strip container - clips the strip as it slides */
+    .photo-strip-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* The single continuous photo strip */
     .photo-strip {
       display: flex;
       flex-direction: column;
+      width: 160px;
+      margin: 0 auto;
+      background: var(--cream);
+      padding: 8px;
       gap: 6px;
+      transform: translateY(-100%);
+      transition: transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
-    .photo-strip-slot {
-      width: 180px;
-      height: 180px;
-      background: #111;
-      overflow: hidden;
+    .photo-strip.revealed {
+      transform: translateY(0);
+    }
+
+    .photo-strip-photo {
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(135deg, #3a3a3a, #2a2a2a, #4a4a4a);
       position: relative;
-      cursor: pointer;
-      transition: all 0.4s ease;
+      overflow: hidden;
     }
 
-    .photo-strip-slot::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 1px solid rgba(255,255,255,0.05);
-      pointer-events: none;
-    }
-
-    .photo-strip-slot .slot-placeholder {
+    .photo-strip-photo .photo-content {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-      transition: all 0.4s ease;
-    }
-
-    .photo-strip-slot .slot-placeholder .slot-icon {
-      font-size: 32px;
-      opacity: 0.3;
-      margin-bottom: 6px;
-    }
-
-    .photo-strip-slot .slot-placeholder .slot-number {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.2);
-    }
-
-    /* Photo reveal animation */
-    .photo-strip-slot.revealed .slot-placeholder {
-      opacity: 0;
-      transform: scale(1.1);
-    }
-
-    .photo-strip-slot .photo-reveal {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .photo-strip-slot.revealed .photo-reveal {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .photo-reveal img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       filter: grayscale(100%) contrast(1.1);
+      color: #ccc;
     }
 
-    /* Placeholder photos with icons */
-    .photo-placeholder-strip {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--cream);
-    }
-
-    .photo-placeholder-strip .couple-icon {
-      font-size: 40px;
-      margin-bottom: 8px;
+    .photo-strip-photo .photo-content .photo-emoji {
+      font-size: 32px;
+      margin-bottom: 4px;
       filter: grayscale(100%);
-      opacity: 0.7;
     }
 
-    .photo-placeholder-strip .couple-text {
+    .photo-strip-photo .photo-content .photo-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
+      font-size: 11px;
       font-style: italic;
       opacity: 0.6;
     }
 
-    /* Frame glow effect */
-    .photo-strip-frame::after {
+    /* Frame glow */
+    .metallic-frame::after {
       content: '';
       position: absolute;
-      top: -20px;
-      left: -20px;
-      right: -20px;
-      bottom: -20px;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* Bottom text area */
+    /* Bottom text */
     .photobooth-bottom {
       text-align: center;
       margin-top: 50px;
@@ -1130,28 +1122,6 @@
       color: var(--burgundy);
     }
 
-    /* Click hint */
-    .click-hint {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--cream-dark);
-      opacity: 0.5;
-      margin-top: 30px;
-      animation: hintPulse 2s infinite;
-    }
-
-    @keyframes hintPulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 0.8; }
-    }
-
-    .click-hint.hidden {
-      opacity: 0;
-      animation: none;
-    }
-
     /* Flash overlay */
     .flash-overlay {
       position: fixed;
@@ -1176,17 +1146,22 @@
     }
 
     @media (max-width: 480px) {
-      .photo-strip-slot {
-        width: 150px;
-        height: 150px;
+      .metallic-frame {
+        width: 190px;
+        padding: 10px;
       }
 
-      .photo-strip-inner {
-        padding: 15px 12px;
+      .frame-interior {
+        padding: 20px 15px;
+        min-height: 360px;
       }
 
-      .photo-strip-frame {
-        padding: 12px;
+      .photo-strip {
+        width: 140px;
+      }
+
+      .photo-strip-photo {
+        height: 85px;
       }
     }
   </style>
@@ -1235,57 +1210,35 @@
 
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="photobooth">
-    <h2 class="photobooth-heading fade-in">Julia & Charles</h2>
     <p class="photobooth-subheading fade-in">We are getting married!</p>
+    <h2 class="photobooth-heading fade-in">Julia & Charles</h2>
 
-    <div class="photo-strip-frame fade-in">
-      <div class="photo-strip-inner">
-        <div class="photo-strip" id="photoStrip">
-          <div class="photo-strip-slot" data-slot="0">
-            <div class="slot-placeholder">
-              <span class="slot-icon">&#128247;</span>
-              <span class="slot-number">Photo 1</span>
-            </div>
-            <div class="photo-reveal">
-              <div class="photo-placeholder-strip">
-                <span class="couple-icon">&#128107;</span>
-                <span class="couple-text">First Meeting</span>
+    <div class="metallic-frame fade-in" id="metallicFrame">
+      <div class="frame-interior">
+        <div class="photo-strip-container">
+          <div class="photo-strip" id="photoStrip">
+            <div class="photo-strip-photo">
+              <div class="photo-content">
+                <span class="photo-emoji">&#128522;</span>
+                <span class="photo-label">First Look</span>
               </div>
             </div>
-          </div>
-          <div class="photo-strip-slot" data-slot="1">
-            <div class="slot-placeholder">
-              <span class="slot-icon">&#128247;</span>
-              <span class="slot-number">Photo 2</span>
-            </div>
-            <div class="photo-reveal">
-              <div class="photo-placeholder-strip">
-                <span class="couple-icon">&#128149;</span>
-                <span class="couple-text">The Proposal</span>
+            <div class="photo-strip-photo">
+              <div class="photo-content">
+                <span class="photo-emoji">&#128149;</span>
+                <span class="photo-label">The Kiss</span>
               </div>
             </div>
-          </div>
-          <div class="photo-strip-slot" data-slot="2">
-            <div class="slot-placeholder">
-              <span class="slot-icon">&#128247;</span>
-              <span class="slot-number">Photo 3</span>
-            </div>
-            <div class="photo-reveal">
-              <div class="photo-placeholder-strip">
-                <span class="couple-icon">&#127752;</span>
-                <span class="couple-text">Our Adventure</span>
+            <div class="photo-strip-photo">
+              <div class="photo-content">
+                <span class="photo-emoji">&#128107;</span>
+                <span class="photo-label">Together</span>
               </div>
             </div>
-          </div>
-          <div class="photo-strip-slot" data-slot="3">
-            <div class="slot-placeholder">
-              <span class="slot-icon">&#128247;</span>
-              <span class="slot-number">Photo 4</span>
-            </div>
-            <div class="photo-reveal">
-              <div class="photo-placeholder-strip">
-                <span class="couple-icon">&#128141;</span>
-                <span class="couple-text">Forever Starts</span>
+            <div class="photo-strip-photo">
+              <div class="photo-content">
+                <span class="photo-emoji">&#128141;</span>
+                <span class="photo-label">Forever</span>
               </div>
             </div>
           </div>
@@ -1298,8 +1251,6 @@
       <p class="date-text">12 . 20 . 2026</p>
       <a href="#invitation" class="open-invitation-btn">Open Invitation</a>
     </div>
-
-    <p class="click-hint" id="clickHint">Click each photo to reveal</p>
   </section>
 
   <!-- Invitation Section -->
@@ -1659,38 +1610,23 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Photobooth - Click to reveal photos
-    const photoSlots = document.querySelectorAll('.photo-strip-slot');
-    const clickHint = document.getElementById('clickHint');
-    let revealedCount = 0;
+    // Photobooth - Auto slide strip when frame comes into view
+    const photoStrip = document.getElementById('photoStrip');
+    const metallicFrame = document.getElementById('metallicFrame');
+    let stripRevealed = false;
 
-    photoSlots.forEach((slot, index) => {
-      slot.addEventListener('click', () => {
-        if (slot.classList.contains('revealed')) return;
-
-        // Flash effect on click
-        const flash = document.getElementById('flashOverlay');
-        flash.classList.add('flash');
-        setTimeout(() => flash.classList.remove('flash'), 500);
-
-        // Reveal this photo with staggered delay
-        setTimeout(() => {
-          slot.classList.add('revealed');
-          revealedCount++;
-
-          // Hide hint after first reveal
-          if (revealedCount === 1) {
-            clickHint.classList.add('hidden');
-          }
-
-          // All revealed
-          if (revealedCount === photoSlots.length) {
-            clickHint.textContent = 'All photos revealed!';
-            clickHint.classList.remove('hidden');
-          }
-        }, 150);
+    const stripObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !stripRevealed) {
+          stripRevealed = true;
+          setTimeout(() => {
+            photoStrip.classList.add('revealed');
+          }, 500);
+        }
       });
-    });
+    }, { threshold: 0.3 });
+
+    stripObserver.observe(metallicFrame);
 
     // Form submission
     function handleSubmit(e) {
