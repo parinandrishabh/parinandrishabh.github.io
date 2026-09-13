@@ -1065,64 +1065,65 @@
           90deg,
           transparent 0px,
           transparent 1px,
-          rgba(255,255,255,0.02) 1px,
-          rgba(255,255,255,0.02) 2px
+          rgba(255,255,255,0.025) 1px,
+          rgba(255,255,255,0.025) 2px
         ),
         repeating-linear-gradient(
           0deg,
           transparent 0px,
           transparent 1px,
-          rgba(0,0,0,0.015) 1px,
-          rgba(0,0,0,0.015) 2px
+          rgba(0,0,0,0.03) 1px,
+          rgba(0,0,0,0.03) 2px
         ),
         linear-gradient(180deg,
-          #888 0%,
-          #999 5%,
-          #aaa 10%,
-          #b5b5b5 20%,
-          #c0c0c0 35%,
-          #c8c8c8 50%,
-          #c0c0c0 65%,
-          #b5b5b5 80%,
-          #aaa 90%,
-          #999 95%,
-          #888 100%);
+          #4a4a4a 0%,
+          #555 5%,
+          #5a5a5a 12%,
+          #606060 25%,
+          #666 40%,
+          #6a6a6a 55%,
+          #666 70%,
+          #606060 82%,
+          #5a5a5a 90%,
+          #555 95%,
+          #505050 100%);
       border-radius: 2px;
       padding: 40px 20px 35px;
       min-height: 420px;
       overflow: hidden;
       box-shadow:
-        inset 0 5px 20px rgba(0,0,0,0.6),
-        inset 0 -3px 12px rgba(0,0,0,0.3),
-        inset 4px 0 12px rgba(0,0,0,0.25),
-        inset -4px 0 12px rgba(0,0,0,0.25);
+        inset 0 5px 20px rgba(0,0,0,0.7),
+        inset 0 -3px 12px rgba(0,0,0,0.4),
+        inset 4px 0 15px rgba(0,0,0,0.35),
+        inset -4px 0 15px rgba(0,0,0,0.35);
     }
 
-    /* Glossy sheen on interior */
+    /* Top darkness - shadow from frame above */
     .frame-interior::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 50%;
+      height: 35%;
       background: linear-gradient(180deg,
-        rgba(255,255,255,0.12) 0%,
-        rgba(255,255,255,0.04) 60%,
+        rgba(0,0,0,0.45) 0%,
+        rgba(0,0,0,0.2) 40%,
         transparent 100%);
       pointer-events: none;
     }
 
-    /* Bottom reflection on interior */
+    /* Bottom highlight - light catching the base */
     .frame-interior::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 30%;
+      height: 25%;
       background: linear-gradient(0deg,
-        rgba(255,255,255,0.06) 0%,
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.03) 50%,
         transparent 100%);
       pointer-events: none;
     }
