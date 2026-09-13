@@ -687,7 +687,7 @@
     }
 
     .photo-strip.printing {
-      animation: printStrip 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      animation: printStrip 6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     }
 
     .photo-strip.resetting {
@@ -695,21 +695,33 @@
     }
 
     @keyframes printStrip {
-      0%    { transform: translateY(-115%); }
-      8%    { transform: translateY(-95%); }
-      12%   { transform: translateY(-95%); }
-      22%   { transform: translateY(-65%); }
-      26%   { transform: translateY(-65%); }
-      36%   { transform: translateY(-38%); }
-      40%   { transform: translateY(-38%); }
-      50%   { transform: translateY(-15%); }
-      53%   { transform: translateY(-15%); }
-      62%   { transform: translateY(-4%); }
-      66%   { transform: translateY(-4%); }
-      75%   { transform: translateY(1%); }
-      80%   { transform: translateY(1%); }
-      88%   { transform: translateY(-0.5%); }
-      94%   { transform: translateY(0%); }
+      /* Photo 1 emerging */
+      0%    { transform: translateY(-110%); }
+      5%    { transform: translateY(-85%); }
+      6%    { transform: translateY(-84%); }
+      /* Pause - flash fires, photo 1 captured */
+      12%   { transform: translateY(-84%); }
+      /* Photo 2 pushing out */
+      14%   { transform: translateY(-60%); }
+      15%   { transform: translateY(-59%); }
+      /* Pause - flash fires, photo 2 captured */
+      25%   { transform: translateY(-59%); }
+      /* Photo 3 pushing out */
+      27%   { transform: translateY(-34%); }
+      28%   { transform: translateY(-33%); }
+      /* Pause - flash fires, photo 3 captured */
+      40%   { transform: translateY(-33%); }
+      /* Photo 4 pushing out */
+      42%   { transform: translateY(-8%); }
+      43%   { transform: translateY(-7%); }
+      /* Pause - flash fires, photo 4 captured */
+      55%   { transform: translateY(-7%); }
+      /* Final push out */
+      60%   { transform: translateY(2%); }
+      /* Settle with slight bounce */
+      65%   { transform: translateY(-0.5%); }
+      70%   { transform: translateY(1%); }
+      75%   { transform: translateY(0%); }
       100%  { transform: translateY(0%); }
     }
 
@@ -718,7 +730,7 @@
         transform: translateY(0%);
       }
       100% {
-        transform: translateY(-115%);
+        transform: translateY(-110%);
       }
     }
 
@@ -1135,7 +1147,17 @@
       photoStrip.style.animation = 'none';
       photoStrip.offsetHeight;
       photoStrip.style.animation = '';
-      photoStrip.style.transform = 'translateY(-115%)';
+      photoStrip.style.transform = 'translateY(-110%)';
+
+      // Flash at each photo capture point
+      const flashTimes = [600, 1500, 2600, 3400];
+      flashTimes.forEach(time => {
+        setTimeout(() => {
+          flashOverlay.classList.remove('flash');
+          void flashOverlay.offsetWidth;
+          flashOverlay.classList.add('flash');
+        }, time);
+      });
 
       // Print
       setTimeout(() => {
@@ -1165,7 +1187,7 @@
           animationStarted = false;
           clearTimeout(loopTimeout);
           photoStrip.classList.remove('printing', 'resetting');
-          photoStrip.style.transform = 'translateY(-115%)';
+          photoStrip.style.transform = 'translateY(-110%)';
         }
       });
     }, { threshold: 0.3 });
