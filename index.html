@@ -939,57 +939,121 @@
     .metallic-frame {
       position: relative;
       width: 230px;
-      padding: 18px;
-      background: linear-gradient(165deg,
-        #7a7a7a 0%,
-        #5a5a5a 8%,
-        #8a8a8a 12%,
-        #4a4a4a 20%,
-        #6a6a6a 28%,
-        #3a3a3a 35%,
-        #5a5a5a 42%,
-        #2a2a2a 50%,
-        #4a4a4a 58%,
-        #3a3a3a 65%,
-        #5a5a5a 72%,
-        #2a2a2a 80%,
-        #4a4a4a 88%,
-        #3a3a3a 95%,
+      padding: 0;
+      background: linear-gradient(180deg,
+        #888 0%,
+        #aaa 3%,
+        #666 8%,
+        #999 12%,
+        #555 20%,
+        #777 30%,
+        #444 45%,
+        #666 55%,
+        #333 70%,
+        #555 85%,
+        #444 95%,
         #555 100%);
       border-radius: 3px;
       box-shadow:
         0 30px 100px rgba(0,0,0,0.8),
         0 15px 40px rgba(0,0,0,0.6),
         0 5px 15px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.25),
-        inset 0 -1px 0 rgba(0,0,0,0.5),
-        inset 2px 0 0 rgba(255,255,255,0.12),
-        inset -2px 0 0 rgba(0,0,0,0.3),
-        inset 0 2px 0 rgba(255,255,255,0.08),
-        inset 0 -2px 0 rgba(0,0,0,0.2);
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        inset 0 -1px 0 rgba(0,0,0,0.6),
+        inset 3px 0 0 rgba(255,255,255,0.2),
+        inset -3px 0 0 rgba(0,0,0,0.4),
+        inset 0 3px 0 rgba(255,255,255,0.1),
+        inset 0 -3px 0 rgba(0,0,0,0.3);
     }
 
-    /* Outer edge highlight */
+    /* Glossy highlight on outer frame - top left */
     .metallic-frame::before {
       content: '';
       position: absolute;
-      top: 3px;
-      left: 3px;
-      right: 3px;
-      bottom: 3px;
-      background: linear-gradient(165deg,
-        #666 0%,
-        #444 20%,
-        #555 40%,
-        #333 60%,
-        #444 80%,
-        #333 100%);
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background: linear-gradient(135deg,
+        rgba(255,255,255,0.25) 0%,
+        rgba(255,255,255,0.08) 15%,
+        transparent 40%,
+        transparent 60%,
+        rgba(255,255,255,0.03) 80%,
+        rgba(255,255,255,0.08) 100%);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Inner bevel step */
+    .frame-bevel {
+      position: relative;
+      margin: 8px;
+      background: linear-gradient(180deg,
+        #555 0%,
+        #666 5%,
+        #777 10%,
+        #888 20%,
+        #999 35%,
+        #aaa 50%,
+        #999 65%,
+        #888 80%,
+        #777 90%,
+        #666 95%,
+        #555 100%);
       border-radius: 2px;
       box-shadow:
-        inset 0 3px 8px rgba(0,0,0,0.6),
-        inset 0 -2px 5px rgba(0,0,0,0.3),
-        inset 2px 0 6px rgba(0,0,0,0.3),
-        inset -2px 0 6px rgba(0,0,0,0.3);
+        inset 0 3px 8px rgba(0,0,0,0.5),
+        inset 0 -2px 6px rgba(0,0,0,0.3),
+        inset 3px 0 6px rgba(0,0,0,0.2),
+        inset -3px 0 6px rgba(0,0,0,0.2);
+    }
+
+    /* Glossy highlight on inner bevel */
+    .frame-bevel::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      right: 1px;
+      height: 40%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.15) 0%,
+        rgba(255,255,255,0.05) 50%,
+        transparent 100%);
+      border-radius: 2px 2px 0 0;
+      pointer-events: none;
+    }
+
+    /* Slot at top where strip emerges */
+    .frame-slot {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: linear-gradient(180deg,
+        #222 0%,
+        #333 40%,
+        #444 100%);
+      border-radius: 3px;
+      box-shadow:
+        inset 0 2px 4px rgba(0,0,0,0.8),
+        inset 0 -1px 2px rgba(0,0,0,0.3),
+        0 1px 0 rgba(255,255,255,0.1);
+      z-index: 5;
+    }
+
+    .frame-slot::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
     }
 
     /* Brushed metal interior - realistic texture */
@@ -1001,37 +1065,66 @@
           90deg,
           transparent 0px,
           transparent 1px,
-          rgba(255,255,255,0.015) 1px,
-          rgba(255,255,255,0.015) 2px
+          rgba(255,255,255,0.02) 1px,
+          rgba(255,255,255,0.02) 2px
         ),
         repeating-linear-gradient(
           0deg,
           transparent 0px,
-          transparent 2px,
-          rgba(0,0,0,0.02) 2px,
-          rgba(0,0,0,0.02) 4px
+          transparent 1px,
+          rgba(0,0,0,0.015) 1px,
+          rgba(0,0,0,0.015) 2px
         ),
         linear-gradient(180deg,
-          #9a9a9a 0%,
-          #a8a8a8 5%,
-          #b5b5b5 12%,
-          #c0c0c0 25%,
-          #c8c8c8 40%,
-          #d0d0d0 50%,
-          #c8c8c8 60%,
-          #c0c0c0 75%,
-          #b5b5b5 88%,
-          #a8a8a8 95%,
-          #9a9a9a 100%);
+          #888 0%,
+          #999 5%,
+          #aaa 10%,
+          #b5b5b5 20%,
+          #c0c0c0 35%,
+          #c8c8c8 50%,
+          #c0c0c0 65%,
+          #b5b5b5 80%,
+          #aaa 90%,
+          #999 95%,
+          #888 100%);
       border-radius: 2px;
-      padding: 30px 20px;
+      padding: 35px 20px 30px;
       min-height: 440px;
       overflow: hidden;
       box-shadow:
-        inset 0 4px 15px rgba(0,0,0,0.5),
-        inset 0 -3px 10px rgba(0,0,0,0.3),
-        inset 3px 0 10px rgba(0,0,0,0.2),
-        inset -3px 0 10px rgba(0,0,0,0.2);
+        inset 0 5px 20px rgba(0,0,0,0.6),
+        inset 0 -3px 12px rgba(0,0,0,0.3),
+        inset 4px 0 12px rgba(0,0,0,0.25),
+        inset -4px 0 12px rgba(0,0,0,0.25);
+    }
+
+    /* Glossy sheen on interior */
+    .frame-interior::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(255,255,255,0.04) 60%,
+        transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Bottom reflection on interior */
+    .frame-interior::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(0deg,
+        rgba(255,255,255,0.06) 0%,
+        transparent 100%);
+      pointer-events: none;
     }
 
     /* Photo strip container - clips the strip */
@@ -1217,11 +1310,14 @@
     @media (max-width: 480px) {
       .metallic-frame {
         width: 200px;
-        padding: 14px;
+      }
+
+      .frame-bevel {
+        margin: 6px;
       }
 
       .frame-interior {
-        padding: 25px 16px;
+        padding: 30px 16px 25px;
         min-height: 380px;
       }
 
@@ -1231,6 +1327,11 @@
 
       .photo-strip-photo {
         height: 75px;
+      }
+
+      .frame-slot {
+        width: 60px;
+        top: 8px;
       }
     }
   </style>
@@ -1283,31 +1384,34 @@
     <h2 class="photobooth-heading fade-in">Rishabh & Parin</h2>
 
     <div class="metallic-frame fade-in" id="metallicFrame">
-      <div class="frame-interior">
-        <div class="photo-strip-container">
-          <div class="photo-strip" id="photoStrip">
-            <div class="photo-strip-photo">
-              <div class="photo-content">
-                <span class="photo-emoji">&#128522;</span>
-                <span class="photo-label">First Look</span>
+      <div class="frame-slot"></div>
+      <div class="frame-bevel">
+        <div class="frame-interior">
+          <div class="photo-strip-container">
+            <div class="photo-strip" id="photoStrip">
+              <div class="photo-strip-photo">
+                <div class="photo-content">
+                  <span class="photo-emoji">&#128522;</span>
+                  <span class="photo-label">First Look</span>
+                </div>
               </div>
-            </div>
-            <div class="photo-strip-photo">
-              <div class="photo-content">
-                <span class="photo-emoji">&#128149;</span>
-                <span class="photo-label">The Kiss</span>
+              <div class="photo-strip-photo">
+                <div class="photo-content">
+                  <span class="photo-emoji">&#128149;</span>
+                  <span class="photo-label">The Kiss</span>
+                </div>
               </div>
-            </div>
-            <div class="photo-strip-photo">
-              <div class="photo-content">
-                <span class="photo-emoji">&#128107;</span>
-                <span class="photo-label">Together</span>
+              <div class="photo-strip-photo">
+                <div class="photo-content">
+                  <span class="photo-emoji">&#128107;</span>
+                  <span class="photo-label">Together</span>
+                </div>
               </div>
-            </div>
-            <div class="photo-strip-photo">
-              <div class="photo-content">
-                <span class="photo-emoji">&#128141;</span>
-                <span class="photo-label">Forever</span>
+              <div class="photo-strip-photo">
+                <div class="photo-content">
+                  <span class="photo-emoji">&#128141;</span>
+                  <span class="photo-label">Forever</span>
+                </div>
               </div>
             </div>
           </div>
