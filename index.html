@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date - Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Josefin+Sans:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --burgundy: #680808;
+      --burgundy-dark: #4a0606;
+      --burgundy-light: #8b1a1a;
+      --cream: #fff6e2;
+      --cream-dark: #f5e6c8;
+      --gold: #c9a84c;
+      --gold-light: #d4b96a;
+      --gold-dark: #a8883a;
+      --white: #ffffff;
+      --text-dark: #1c1c1c;
+      --text-muted: #4a4a4a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Decorative Elements */
+    .ornament {
+      text-align: center;
+      margin: 20px 0;
+      color: var(--gold);
+      font-size: 24px;
+      letter-spacing: 8px;
+    }
+
+    .ornament-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .ornament-line::before,
+    .ornament-line::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .ornament-line span {
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    /* Section Base */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--burgundy);
+      color: var(--cream);
+      text-align: center;
+      background-image:
+        radial-gradient(ellipse at top left, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(201, 168, 76, 0.1) 0%, transparent 50%);
+    }
+
+    .hero-badge {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      border: 1px solid var(--gold);
+      padding: 10px 30px;
+      display: inline-block;
+      margin-bottom: 40px;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: var(--cream-dark);
+    }
+
+    .hero-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(48px, 8vw, 100px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--cream);
+    }
+
+    .hero-date {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 16px;
+      letter-spacing: 8px;
+      color: var(--gold);
+      margin-top: 30px;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      margin-top: 20px;
+      color: var(--cream-dark);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Invitation Section */
+    .invitation {
+      background: var(--burgundy);
+      color: var(--cream);
+      text-align: center;
+      background-image:
+        radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+    }
+
+    .invitation-intro {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+
+    .invitation-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    .invitation-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(36px, 6vw, 72px);
+      color: var(--cream);
+      margin: 20px 0;
+    }
+
+    .invitation-message {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: var(--cream-dark);
+    }
+
+    .parents-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .parents-text {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cream-dark);
+      margin-bottom: 10px;
+    }
+
+    .parents-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--cream);
+    }
+
+    /* Countdown Section */
+    .countdown-section {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 40px;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      color: var(--burgundy);
+      line-height: 1;
+    }
+
+    .countdown-unit {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Functions Section */
+    .functions-section {
+      background: var(--burgundy);
+      color: var(--cream);
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 300;
+      text-align: center;
+      color: var(--cream);
+      margin-bottom: 60px;
+    }
+
+    .functions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .function-card {
+      background: rgba(255, 246, 226, 0.05);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .function-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .function-card:hover::before {
+      left: 100%;
+    }
+
+    .function-card:hover {
+      border-color: var(--gold);
+      background: rgba(255, 246, 226, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .function-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .function-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      color: var(--cream);
+      margin-bottom: 15px;
+    }
+
+    .function-date {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .function-time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--cream-dark);
+      margin-bottom: 12px;
+    }
+
+    .function-venue {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--cream-dark);
+      line-height: 1.6;
+    }
+
+    .function-description {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      color: var(--cream-dark);
+      margin-top: 12px;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+      background: var(--cream);
+      padding: 80px 20px;
+    }
+
+    .timeline {
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--gold);
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-content {
+      width: 45%;
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: auto;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: auto;
+      text-align: left;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--burgundy);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .timeline-time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: var(--burgundy);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Venue Section */
+    .venue-section {
+      background: var(--burgundy);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .venue-card {
+      background: rgba(255, 246, 226, 0.05);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 50px 40px;
+      max-width: 600px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 15px;
+    }
+
+    .venue-address {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      color: var(--cream-dark);
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .venue-map-btn {
+      display: inline-block;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: var(--gold);
+      padding: 14px 35px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .venue-map-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* RSVP Section */
+    .rsvp-section {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .rsvp-form {
+      max-width: 500px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .form-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      border: 1px solid rgba(104, 8, 8, 0.2);
+      background: var(--white);
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--burgundy);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 25px;
+      margin-top: 5px;
+    }
+
+    .radio-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"] {
+      accent-color: var(--burgundy);
+      width: 16px;
+      height: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: var(--burgundy);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--burgundy-dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .footer-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .footer-date {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 25px;
+    }
+
+    .footer-message {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--cream-dark);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 30px auto;
+    }
+
+    .footer-hashtag {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-top: 20px;
+    }
+
+    /* Success Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--cream);
+      padding: 50px 40px;
+      max-width: 450px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+    }
+
+    .modal-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: var(--burgundy);
+      margin-bottom: 15px;
+    }
+
+    .modal-text {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        flex-direction: row;
+        padding-left: 50px;
+      }
+
+      .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+      }
+
+      .timeline-dot {
+        left: 20px;
+      }
+
+      .functions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown {
+        gap: 20px;
+      }
+
+      .radio-group {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(104, 8, 8, 0.95);
+      padding: 10px 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 24px;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--cream);
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(104, 8, 8, 0.98);
+        flex-direction: column;
+        padding: 20px 30px;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Decorative corner elements */
+    .corner-decor {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: 0.4;
+    }
+
+    .corner-decor.top-left {
+      top: 30px;
+      left: 30px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .corner-decor.top-right {
+      top: 30px;
+      right: 30px;
+      border-width: 1px 1px 0 0;
+    }
+
+    .corner-decor.bottom-left {
+      bottom: 30px;
+      left: 30px;
+      border-width: 0 0 1px 1px;
+    }
+
+    .corner-decor.bottom-right {
+      bottom: 30px;
+      right: 30px;
+      border-width: 0 1px 1px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">A & R</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#invitation">Invitation</a></li>
+      <li><a href="#functions">Functions</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#venue">Venue</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <div class="hero-badge">Save the Date</div>
+    <p class="hero-subtitle">We are getting married!</p>
+    <h1 class="hero-names">Ananya & Rohan</h1>
+    <div class="ornament-line"><span>&#10053;</span></div>
+    <p class="hero-tagline">Two hearts, one love, endless celebrations</p>
+    <p class="hero-date">12 . 20 . 2026</p>
+
+    <div class="scroll-indicator">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Invitation Section -->
+  <section class="invitation" id="invitation">
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <p class="invitation-intro fade-in">With hearts full of joy</p>
+    <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
+    <div class="ornament-line fade-in"><span>&#10053;</span></div>
+    <p class="invitation-names fade-in">Ananya & Rohan</p>
+    <p class="invitation-message fade-in">
+      Together with their families, request the pleasure of your company
+      as they begin their new journey of love and togetherness.
+      Join us as we celebrate a union of two souls and two families.
+    </p>
+
+    <div class="parents-section fade-in">
+      <p class="parents-text">Children of</p>
+      <p class="parents-names">Mr. & Mrs. Sharma &nbsp;&bull;&nbsp; Mr. & Mrs. Gupta</p>
+    </div>
+  </section>
+
+  <!-- Countdown Section -->
+  <section class="countdown-section" id="countdown">
+    <p class="countdown-label fade-in">Counting down to our special day</p>
+    <div class="countdown fade-in" id="countdownTimer">
+      <div class="countdown-item">
+        <span class="countdown-value" id="days">000</span>
+        <span class="countdown-unit">Days</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="hours">00</span>
+        <span class="countdown-unit">Hours</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="minutes">00</span>
+        <span class="countdown-unit">Minutes</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="seconds">00</span>
+        <span class="countdown-unit">Seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Functions Section -->
+  <section class="functions-section" id="functions">
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <p class="section-title fade-in">Celebration Schedule</p>
+    <h2 class="section-heading fade-in">Wedding Festivities</h2>
+
+    <div class="functions-grid">
+      <!-- Mehendi -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#127800;</span>
+        <h3 class="function-name">Mehendi</h3>
+        <p class="function-date">December 17, 2026</p>
+        <p class="function-time">3:00 PM - 7:00 PM</p>
+        <p class="function-venue">Gupta Residence</p>
+        <p class="function-description">An evening of intricate henna artistry, music, and merriment as the bride's hands and feet are adorned with beautiful mehendi designs.</p>
+      </div>
+
+      <!-- Haldi -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#127803;</span>
+        <h3 class="function-name">Haldi</h3>
+        <p class="function-date">December 18, 2026</p>
+        <p class="function-time">9:00 AM - 12:00 PM</p>
+        <p class="function-venue">Sharma Residence</p>
+        <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
+      </div>
+
+      <!-- Sangeet -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#127926;</span>
+        <h3 class="function-name">Sangeet</h3>
+        <p class="function-date">December 18, 2026</p>
+        <p class="function-time">7:00 PM - 11:00 PM</p>
+        <p class="function-venue">The Grand Ballroom</p>
+        <p class="function-description">A night of music, dance performances, and celebration as both families come together to rejoice through song and choreography.</p>
+      </div>
+
+      <!-- Wedding Ceremony -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#128141;</span>
+        <h3 class="function-name">Wedding</h3>
+        <p class="function-date">December 20, 2026</p>
+        <p class="function-time">7:00 PM - 11:00 PM</p>
+        <p class="function-venue">The Palace Gardens</p>
+        <p class="function-description">The sacred wedding ceremony where Ananya and Rohan take their seven vows around the holy fire, united in marriage before family and friends.</p>
+      </div>
+
+      <!-- Reception -->
+      <div class="function-card fade-in">
+        <span class="function-icon">&#127880;</span>
+        <h3 class="function-name">Reception</h3>
+        <p class="function-date">December 21, 2026</p>
+        <p class="function-time">7:00 PM - 11:00 PM</p>
+        <p class="function-venue">The Palace Gardens</p>
+        <p class="function-description">An elegant evening dinner reception to celebrate the newlyweds with heartfelt toasts, gourmet cuisine, and dancing the night away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section" id="timeline">
+    <p class="section-title fade-in" style="color: var(--burgundy);">At a Glance</p>
+    <h2 class="section-heading fade-in" style="color: var(--burgundy);">Wedding Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Dec 17 &bull; 3:00 PM</p>
+          <h3 class="timeline-title">Mehendi</h3>
+          <p class="timeline-desc">Henna artistry and celebrations at Gupta Residence</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Dec 18 &bull; 9:00 AM</p>
+          <h3 class="timeline-title">Haldi</h3>
+          <p class="timeline-desc">Turmeric ceremony at Sharma Residence</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Dec 18 &bull; 7:00 PM</p>
+          <h3 class="timeline-title">Sangeet</h3>
+          <p class="timeline-desc">Music and dance night at The Grand Ballroom</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Dec 20 &bull; 7:00 PM</p>
+          <h3 class="timeline-title">Wedding</h3>
+          <p class="timeline-desc">Sacred ceremony at The Palace Gardens</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <p class="timeline-time">Dec 21 &bull; 7:00 PM</p>
+          <h3 class="timeline-title">Reception</h3>
+          <p class="timeline-desc">Grand dinner celebration at The Palace Gardens</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Section -->
+  <section class="venue-section" id="venue">
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <p class="section-title fade-in">Find Your Way</p>
+    <h2 class="section-heading fade-in">Wedding Venue</h2>
+
+    <div class="venue-card fade-in">
+      <h3 class="venue-name">The Palace Gardens</h3>
+      <p class="venue-address">
+        45 Royal Avenue, Jubilee Hills<br>
+        Hyderabad, Telangana 500033<br>
+        India
+      </p>
+      <a href="https://maps.google.com" target="_blank" class="venue-map-btn">View on Map</a>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section class="rsvp-section" id="rsvp">
+    <p class="section-title fade-in" style="color: var(--burgundy);">We Await Your Response</p>
+    <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
+    <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
+      Please respond by November 30, 2026
+    </p>
+
+    <form class="rsvp-form fade-in" id="rsvpForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="firstName">First Name</label>
+          <input type="text" id="firstName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lastName">Last Name</label>
+          <input type="text" id="lastName" class="form-input" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" id="email" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone</label>
+        <input type="tel" id="phone" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Attending?</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="yes" required> Joyfully Accept
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="no"> Respectfully Decline
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="guests">Number of Guests</label>
+        <select id="guests" class="form-select">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Which events will you attend?</label>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
+          <label class="radio-label">
+            <input type="checkbox" name="events" value="mehendi"> Mehendi
+          </label>
+          <label class="radio-label">
+            <input type="checkbox" name="events" value="haldi"> Haldi
+          </label>
+          <label class="radio-label">
+            <input type="checkbox" name="events" value="sangeet"> Sangeet
+          </label>
+          <label class="radio-label">
+            <input type="checkbox" name="events" value="wedding"> Wedding Ceremony
+          </label>
+          <label class="radio-label">
+            <input type="checkbox" name="events" value="reception"> Reception
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="dietary">Dietary Requirements</label>
+        <input type="text" id="dietary" class="form-input" placeholder="e.g., Vegetarian, Vegan, Allergies">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Message for the Couple</label>
+        <textarea id="message" class="form-textarea" placeholder="Share your blessings..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Response</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-names">Ananya & Rohan</p>
+    <p class="footer-date">12 . 20 . 2026</p>
+    <div class="footer-divider"></div>
+    <p class="footer-message">
+      We can't wait to celebrate this beautiful journey of love with you.
+      Your presence will be the greatest gift.
+    </p>
+    <p class="footer-hashtag">#AnanyaAndRohan2026</p>
+  </footer>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-icon">&#128141;</div>
+      <h3 class="modal-title">Thank You!</h3>
+      <p class="modal-text">
+        Your response has been received. We look forward to celebrating
+        our special day with you!
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer
+    function updateCountdown() {
+      const weddingDate = new Date('2026-12-20T19:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(3, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submission
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('successModal').classList.add('active');
+      e.target.reset();
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.remove('active');
+    }
+
+    // Close modal on overlay click
+    document.getElementById('successModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
