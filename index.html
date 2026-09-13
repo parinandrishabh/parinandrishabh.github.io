@@ -803,29 +803,6 @@
       color: var(--burgundy);
     }
 
-    /* Flash overlay */
-    .flash-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    .flash-overlay.flash {
-      animation: flashScreen 0.5s ease;
-    }
-
-    @keyframes flashScreen {
-      0% { opacity: 0; }
-      15% { opacity: 0.85; }
-      100% { opacity: 0; }
-    }
-
     @media (max-width: 480px) {
       .metallic-frame {
         width: 260px;
@@ -859,10 +836,6 @@
     </button>
   </nav>
 
-  <!-- Flash Overlay -->
-  <div class="flash-overlay" id="flashOverlay"></div>
-
-  <!-- Hero Section -->
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="photobooth">
     <p class="photobooth-subheading fade-in">We are getting married!</p>
@@ -1148,16 +1121,6 @@
       photoStrip.offsetHeight;
       photoStrip.style.animation = '';
       photoStrip.style.transform = 'translateY(-110%)';
-
-      // Flash at each photo capture point
-      const flashTimes = [600, 1500, 2600, 3400];
-      flashTimes.forEach(time => {
-        setTimeout(() => {
-          flashOverlay.classList.remove('flash');
-          void flashOverlay.offsetWidth;
-          flashOverlay.classList.add('flash');
-        }, time);
-      });
 
       // Print
       setTimeout(() => {
