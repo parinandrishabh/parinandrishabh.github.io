@@ -372,6 +372,129 @@
       filter: sepia(15%) saturate(80%);
     }
 
+    /* RSVP Section */
+    .rsvp-section {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .rsvp-form {
+      max-width: 500px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .form-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      border: 1px solid rgba(104, 8, 8, 0.2);
+      background: var(--white);
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 25px;
+      margin-top: 5px;
+    }
+
+    .radio-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"] {
+      accent-color: var(--burgundy);
+      width: 16px;
+      height: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: var(--burgundy);
+      color: var(--cream);
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: wait;
+      transform: none;
+    }
+
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+
+    .form-status {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      color: var(--burgundy);
+      margin-top: 12px;
+      min-height: 18px;
+    }
+
     /* Footer */
     .footer {
       background: var(--burgundy-dark);
@@ -417,6 +540,71 @@
       letter-spacing: 3px;
       color: var(--gold);
       margin-top: 20px;
+    }
+
+    /* Success Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--cream);
+      padding: 50px 40px;
+      max-width: 450px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: modalIn 0.3s ease;
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 40px rgba(104, 8, 8, 0.25);
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+    }
+
+    .modal-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: var(--burgundy);
+      margin-bottom: 15px;
+    }
+
+    .modal-text {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
     }
 
     /* Responsive */
@@ -828,6 +1016,7 @@
       <li><a href="#invitation">Invitation</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#venue">Venue</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span>
@@ -1033,6 +1222,80 @@
     </div>
   </section>
 
+  <!-- RSVP Section -->
+  <section class="rsvp-section" id="rsvp">
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <p class="section-title fade-in" style="color: var(--burgundy);">We Await Your Response</p>
+    <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
+    <div class="ornament-line fade-in"><span>&#10053;</span></div>
+    <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
+      Please respond by January 15, 2027
+    </p>
+
+    <form class="rsvp-form fade-in" id="rsvpForm" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="access_key" value="1ee6869f-1eb0-4529-bdb5-41ba5468e630">
+      <input type="hidden" name="subject" value="New Wedding RSVP - Parin & Rishabh">
+      <input type="hidden" name="from_name" value="Parin & Rishabh Wedding Site">
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" class="form-input" required maxlength="50" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="form-input" required maxlength="50" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-input" required maxlength="100" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" class="form-input" maxlength="20" autocomplete="tel">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Attending?</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="yes" required> Joyfully Accept
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="no"> Respectfully Decline
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="guests">Number of Guests</label>
+        <select id="guests" name="guests" class="form-select">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Message for the Couple</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Share your blessings..." maxlength="1000"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="rsvpSubmitBtn">Send Response</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <p class="footer-names">Parin & Rishabh</p>
@@ -1044,6 +1307,19 @@
     </p>
     <p class="footer-hashtag">#RishabhAndParin2027</p>
   </footer>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-icon">&#128141;</div>
+      <h3 class="modal-title">Thank You!</h3>
+      <p class="modal-text">
+        Your response has been received. We look forward to celebrating
+        our special day with you!
+      </p>
+    </div>
+  </div>
 
   <script>
     // Countdown Timer
@@ -1156,6 +1432,65 @@
     }, { threshold: 0.3 });
 
     stripObserver.observe(metallicFrame);
+
+    // Form submission via Web3Forms
+    const formLoadTime = Date.now();
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const statusEl = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('rsvpSubmitBtn');
+      statusEl.textContent = '';
+
+      // Honeypot: silently accept bots without sending
+      if (form.botcheck && form.botcheck.checked) {
+        document.getElementById('successModal').classList.add('active');
+        form.reset();
+        return;
+      }
+
+      // Time trap: reject instant bot submits
+      if (Date.now() - formLoadTime < 3000) {
+        statusEl.textContent = 'Please wait a moment and try again.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(formData))
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message || 'Submission failed');
+        document.getElementById('successModal').classList.add('active');
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'Something went wrong. Please try again or email parinandrishabh@gmail.com directly.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Response';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.remove('active');
+    }
+
+    // Close modal on overlay click
+    document.getElementById('successModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 </body>
 </html>
