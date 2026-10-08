@@ -600,6 +600,116 @@
       filter: sepia(15%) saturate(80%);
     }
 
+    /* Invitation Film Section */
+    .video-section {
+      background: transparent;
+      text-align: center;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 820px;
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      outline: 1px solid rgba(201, 168, 76, 0.18);
+      outline-offset: 5px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 60px rgba(117, 18, 18, 0.2);
+    }
+
+    .video-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .video-sound-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.7);
+      background: rgba(77, 11, 11, 0.75);
+      color: var(--gold-light);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .video-sound-btn:hover {
+      background: rgba(77, 11, 11, 0.95);
+      border-color: var(--gold-light);
+    }
+
+    .video-fullscreen-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 68px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.7);
+      background: rgba(77, 11, 11, 0.75);
+      color: var(--gold-light);
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .video-fullscreen-btn:hover {
+      background: rgba(77, 11, 11, 0.95);
+      border-color: var(--gold-light);
+    }
+
+    .video-frame:fullscreen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: none;
+      border-radius: 0;
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+
+    .video-frame:fullscreen video {
+      width: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    @media (max-width: 480px) {
+      .video-sound-btn,
+      .video-fullscreen-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 12px;
+      }
+
+      .video-sound-btn {
+        right: 12px;
+      }
+
+      .video-fullscreen-btn {
+        right: 60px;
+      }
+    }
+
     /* RSVP Section */
     .rsvp-section {
       background: transparent;
@@ -1369,6 +1479,16 @@
     </div>
   </section>
 
+  <!-- Invitation Film Section -->
+  <section class="video-section" id="film">
+    <h2 class="section-heading fade-in" style="color: var(--burgundy); margin-bottom: 40px;">Our Story</h2>
+    <div class="video-frame fade-in">
+      <video id="inviteVideo" src="videos/invite.mp4" muted loop playsinline preload="metadata"></video>
+      <button class="video-fullscreen-btn" id="videoFullscreenBtn" aria-label="Play fullscreen" title="Fullscreen">&#9974;</button>
+      <button class="video-sound-btn" id="videoSoundBtn" aria-label="Unmute video" title="Play with sound">&#128263;</button>
+    </div>
+  </section>
+
   <!-- Countdown Section -->
   <section class="countdown-section" id="countdown">
     <p class="countdown-label fade-in">Counting down to our special day</p>
@@ -1779,6 +1899,58 @@
     }, { threshold: 0.3 });
 
     stripObserver.observe(metallicFrame);
+
+    // Invitation film: plays while in view, pauses when scrolled away
+    const inviteVideo = document.getElementById('inviteVideo');
+    if (inviteVideo) {
+      const filmObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            inviteVideo.play().catch(() => {});
+          } else {
+            inviteVideo.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      filmObserver.observe(inviteVideo);
+
+      // Tap the video itself to play/pause (also covers Low Power Mode where autoplay is blocked)
+      inviteVideo.addEventListener('click', () => {
+        if (inviteVideo.paused) {
+          inviteVideo.play().catch(() => {});
+        } else {
+          inviteVideo.pause();
+        }
+      });
+
+      // Sound toggle: user gesture allows unmuting
+      const soundBtn = document.getElementById('videoSoundBtn');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          inviteVideo.muted = !inviteVideo.muted;
+          soundBtn.textContent = inviteVideo.muted ? '\u{1F507}' : '\u{1F50A}';
+          soundBtn.setAttribute('aria-label', inviteVideo.muted ? 'Unmute video' : 'Mute video');
+          if (!inviteVideo.muted) inviteVideo.play().catch(() => {});
+        });
+      }
+
+      // Fullscreen toggle
+      const fullscreenBtn = document.getElementById('videoFullscreenBtn');
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => {
+          if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+          } else if (inviteVideo.parentElement.requestFullscreen) {
+            inviteVideo.parentElement.requestFullscreen().catch(() => {});
+          } else if (inviteVideo.webkitEnterFullscreen) {
+            inviteVideo.webkitEnterFullscreen();
+          }
+        });
+        document.addEventListener('fullscreenchange', () => {
+          fullscreenBtn.textContent = document.fullscreenElement ? '\u2716' : '\u26F6';
+        });
+      }
+    }
 
     // Form submission via Web3Forms
     const formLoadTime = Date.now();
