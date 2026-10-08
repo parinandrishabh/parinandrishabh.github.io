@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#751212">
   <title>Parin &amp; Rishabh — Shubh Vivah | 13–15 Feb 2027, Pushkar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +79,7 @@
     /* Section Base */
     section {
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -249,13 +251,127 @@
       margin-bottom: 60px;
     }
 
-    .functions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 52px;
-      max-width: 1200px;
+    /* Festivity timeline */
+    .timeline {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
       width: 100%;
-      padding: 0 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 43px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(180deg,
+        rgba(201, 168, 76, 0.05) 0%,
+        rgba(201, 168, 76, 0.5) 6%,
+        rgba(201, 168, 76, 0.5) 94%,
+        rgba(201, 168, 76, 0.05) 100%);
+    }
+
+    .timeline-day {
+      position: relative;
+      padding-left: 110px;
+      margin-bottom: 64px;
+    }
+
+    .timeline-day:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      width: 70px;
+      height: 80px;
+      border-radius: 35px 35px 8px 8px / 48px 48px 8px 8px;
+      border: 1px solid rgba(201, 168, 76, 0.65);
+      outline: 1px solid rgba(201, 168, 76, 0.22);
+      outline-offset: 3px;
+      background: var(--burgundy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding-top: 14px;
+    }
+
+    .timeline-marker::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--marigold);
+    }
+
+    .timeline-marker-num {
+      font-family: 'Rozha One', serif;
+      font-size: 24px;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .timeline-marker-month {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--marigold);
+    }
+
+    .timeline-day-label {
+      font-family: 'Rozha One', serif;
+      font-size: 24px;
+      color: var(--cream);
+      margin: 20px 0 26px;
+    }
+
+    .timeline-events {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    @media (max-width: 600px) {
+      .timeline-day {
+        padding-left: 78px;
+      }
+
+      .timeline::before {
+        left: 27px;
+      }
+
+      .timeline-marker {
+        left: 0;
+        width: 54px;
+        height: 62px;
+        border-radius: 27px 27px 6px 6px / 34px 34px 6px 6px;
+        padding-top: 10px;
+      }
+
+      .timeline-marker-num {
+        font-size: 19px;
+      }
+
+      .timeline-marker-month {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      .timeline-day-label {
+        font-size: 20px;
+        margin: 14px 0 20px;
+      }
     }
 
     .function-card {
@@ -263,8 +379,8 @@
       border: 1px solid rgba(201, 168, 76, 0.5);
       outline: 1px solid rgba(201, 168, 76, 0.18);
       outline-offset: 5px;
-      border-radius: 140px 140px 8px 8px;
-      padding: 54px 28px 38px;
+      border-radius: 16px;
+      padding: 36px 32px 32px;
       text-align: center;
       transition: all 0.4s ease;
       position: relative;
@@ -312,10 +428,6 @@
       line-height: 1.1;
     }
 
-    .function-card.haldi-card .function-date {
-      color: var(--haldi);
-    }
-
     .function-card[data-wardrobe] {
       cursor: pointer;
     }
@@ -345,15 +457,6 @@
       margin-bottom: 15px;
     }
 
-    .function-date {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--marigold);
-      margin-bottom: 8px;
-    }
-
     .function-time {
       font-family: 'Josefin Sans', sans-serif;
       font-size: 13px;
@@ -375,6 +478,7 @@
       font-size: 15px;
       color: var(--cream-dark);
       margin-top: 12px;
+      margin-bottom: 26px;
       line-height: 1.7;
       opacity: 0.9;
     }
@@ -398,10 +502,26 @@
       outline: 1px solid rgba(201, 168, 76, 0.18);
       outline-offset: 5px;
       border-radius: 160px 160px 8px 8px;
-      padding: 64px 40px 46px;
+      padding: 104px 40px 46px;
       max-width: 600px;
       width: 100%;
       margin-top: 30px;
+      position: relative;
+    }
+
+    /* Chhatri dome pavilion crowning the venue card */
+    .venue-card::before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92px;
+      height: 66px;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='72' viewBox='0 0 100 72'><path d='M24 42 Q50 8 76 42' fill='none' stroke='%23c9a84c' stroke-width='1.5' opacity='0.6'/><line x1='50' y1='25' x2='50' y2='14' stroke='%23c9a84c' stroke-width='1' opacity='0.6'/><circle cx='50' cy='11' r='2' fill='%23c9a84c' opacity='0.6'/><line x1='16' y1='42' x2='84' y2='42' stroke='%23c9a84c' stroke-width='1.5' opacity='0.6'/><line x1='22' y1='48' x2='78' y2='48' stroke='%23c9a84c' stroke-width='1' opacity='0.6'/><line x1='30' y1='48' x2='30' y2='66' stroke='%23c9a84c' stroke-width='1' opacity='0.6'/><line x1='70' y1='48' x2='70' y2='66' stroke='%23c9a84c' stroke-width='1' opacity='0.6'/><line x1='24' y1='66' x2='76' y2='66' stroke='%23c9a84c' stroke-width='1' opacity='0.6'/></svg>");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
     }
 
     .venue-name {
@@ -498,7 +618,7 @@
       width: 100%;
       padding: 14px 18px;
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       border: 1px solid rgba(117, 18, 18, 0.2);
       background: #fdf7e8;
       color: var(--text-dark);
@@ -664,6 +784,7 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      overscroll-behavior: contain;
     }
 
     .modal-overlay.active {
@@ -696,6 +817,8 @@
       color: var(--text-muted);
       background: none;
       border: none;
+      padding: 6px 10px;
+      margin: -6px -10px;
     }
 
     .modal-icon {
@@ -720,7 +843,8 @@
     /* Wardrobe Modal */
     .wardrobe-modal {
       max-width: min(760px, 96vw);
-      max-height: 94vh;
+      max-height: 92vh;
+      max-height: 92dvh;
       overflow: auto;
       padding: 18px;
     }
@@ -745,7 +869,8 @@
       display: block;
       margin: 0 auto;
       max-width: 100%;
-      max-height: 90vh;
+      max-height: 88vh;
+      max-height: 88dvh;
       border: 1px solid var(--gold);
       box-shadow: 0 6px 24px rgba(117, 18, 18, 0.15);
       cursor: zoom-in;
@@ -764,10 +889,6 @@
         grid-template-columns: 1fr;
       }
 
-      .functions-grid {
-        grid-template-columns: 1fr;
-      }
-
       .countdown {
         gap: 20px;
       }
@@ -775,6 +896,11 @@
       .radio-group {
         flex-direction: column;
         gap: 12px;
+      }
+
+      .navbar {
+        padding: 12px 20px;
+        padding-top: calc(12px + env(safe-area-inset-top, 0px));
       }
     }
 
@@ -842,6 +968,8 @@
       background: none;
       border: none;
       cursor: pointer;
+      padding: 10px;
+      margin: -10px;
     }
 
     .nav-toggle span {
@@ -875,40 +1003,6 @@
       }
     }
 
-    /* Decorative corner elements */
-    .corner-decor {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      border-color: var(--gold);
-      border-style: solid;
-      opacity: 0.4;
-    }
-
-    .corner-decor.top-left {
-      top: 30px;
-      left: 30px;
-      border-width: 1px 0 0 1px;
-    }
-
-    .corner-decor.top-right {
-      top: 30px;
-      right: 30px;
-      border-width: 1px 1px 0 0;
-    }
-
-    .corner-decor.bottom-left {
-      bottom: 30px;
-      left: 30px;
-      border-width: 0 0 1px 1px;
-    }
-
-    .corner-decor.bottom-right {
-      bottom: 30px;
-      right: 30px;
-      border-width: 0 1px 1px 0;
-    }
-
     /* Photobooth Section */
     .photobooth-section {
       background-color: var(--burgundy);
@@ -917,6 +1011,7 @@
         repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.03) 0 1px, transparent 1px 20px),
         repeating-linear-gradient(-45deg, rgba(201, 168, 76, 0.03) 0 1px, transparent 1px 20px);
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1157,6 +1252,19 @@
       .photo-strip-photo {
         height: 80px;
       }
+
+      .countdown {
+        gap: 14px;
+      }
+
+      .countdown-value {
+        font-size: clamp(40px, 11vw, 48px);
+      }
+
+      .timeline-day {
+        padding-left: 70px;
+        margin-bottom: 48px;
+      }
     }
   </style>
 </head>
@@ -1216,10 +1324,6 @@
 
   <!-- Invitation Section -->
   <section class="invitation" id="invitation">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
 
     <p class="ganesh-mantra fade-in" lang="sa">॥ श्री गणेशाय नमः ॥</p>
     <p class="invitation-intro fade-in">With the blessings of Lord Ganesha</p>
@@ -1267,105 +1371,138 @@
 
   <!-- Functions Section -->
   <section class="functions-section" id="functions">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
 
     <p class="section-title fade-in">Celebration Schedule</p>
     <h2 class="section-heading fade-in">Wedding Festivities</h2>
 
-    <div class="functions-grid">
-      <!-- Welcome & Check-in -->
-      <div class="function-card fade-in">
-        <span class="function-icon">&#128205;</span>
-        <h3 class="function-name">Arrival & Check-in</h3>
-        <p class="function-date">February 13, 2027</p>
-        <p class="function-time">Morning</p>
-        <p class="function-venue">Reception Area</p>
-        <p class="function-description">Arrive and check in at the reception area. Settle in and prepare for the celebrations ahead.</p>
+    <div class="timeline">
+      <!-- Saturday, February 13 -->
+      <div class="timeline-day fade-in">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">13</span>
+          <span class="timeline-marker-month">Feb</span>
+        </div>
+        <p class="timeline-day-label">Saturday</p>
+        <div class="timeline-events">
+
+          <!-- Arrival & Check-in -->
+          <div class="function-card">
+            <span class="function-icon">&#128205;</span>
+            <h3 class="function-name">Arrival & Check-in</h3>
+            <p class="function-time">Morning</p>
+            <p class="function-venue">Reception Area</p>
+            <p class="function-description">Arrive and check in at the reception area. Settle in and prepare for the celebrations ahead.</p>
+          </div>
+
+          <!-- Welcome Dinner & Sanjhi -->
+          <div class="function-card" data-wardrobe="welcome-dinner" tabindex="0" role="button" aria-label="View attire suggestion for Welcome Dinner and Sanjhi">
+            <span class="function-icon rani-glyph">&#10049;</span>
+            <h3 class="function-name">Welcome Dinner & Sanjhi</h3>
+            <p class="function-time">Evening</p>
+            <p class="function-venue">Poolside</p>
+            <p class="function-description">An evening of traditional Sanjhi celebrations followed by a grand welcome dinner to kick off the wedding festivities.</p>
+            <p class="function-attire-hint">View Attire</p>
+          </div>
+
+        </div>
       </div>
 
-      <!-- Welcome Dinner & Sanjhi -->
-      <div class="function-card fade-in" data-wardrobe="welcome-dinner" tabindex="0" role="button" aria-label="View attire suggestion for Welcome Dinner and Sanjhi">
-        <span class="function-icon rani-glyph">&#10049;</span>
-        <h3 class="function-name">Welcome Dinner & Sanjhi</h3>
-        <p class="function-date">February 13, 2027</p>
-        <p class="function-time">Evening</p>
-        <p class="function-venue">Poolside</p>
-        <p class="function-description">An evening of traditional Sanjhi celebrations followed by a grand welcome dinner to kick off the wedding festivities.</p>
-        <p class="function-attire-hint">View Attire</p>
+      <!-- Sunday, February 14 -->
+      <div class="timeline-day fade-in">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">14</span>
+          <span class="timeline-marker-month">Feb</span>
+        </div>
+        <p class="timeline-day-label">Sunday</p>
+        <div class="timeline-events">
+
+          <!-- Puja -->
+          <div class="function-card" data-wardrobe="puja" tabindex="0" role="button" aria-label="View attire suggestion for Puja Ceremonies">
+            <span class="function-icon gold-glyph">&#2384;</span>
+            <h3 class="function-name">Puja Ceremonies</h3>
+            <p class="function-time">Morning & Afternoon</p>
+            <p class="function-venue">Courtyard Lawn</p>
+            <p class="function-description">Sacred rituals including Graha Shanti, Madap Mahurat, and Tilak ceremonies to invoke blessings for the couple.</p>
+            <p class="function-attire-hint">View Attire</p>
+          </div>
+
+          <!-- Sangeet & Garba -->
+          <div class="function-card" data-wardrobe="garba" tabindex="0" role="button" aria-label="View attire suggestion for Sangeet and Garba">
+            <span class="function-icon">&#128131;</span>
+            <h3 class="function-name">Sangeet & Garba</h3>
+            <p class="function-time">Evening</p>
+            <p class="function-venue">Main Lawn</p>
+            <p class="function-description">A night of music, dance performances, and garba as both families come together to rejoice through rhythm and celebration.</p>
+            <p class="function-attire-hint">View Attire</p>
+          </div>
+
+        </div>
       </div>
 
-      <!-- Puja -->
-      <div class="function-card fade-in" data-wardrobe="puja" tabindex="0" role="button" aria-label="View attire suggestion for Puja Ceremonies">
-        <span class="function-icon gold-glyph">&#2384;</span>
-        <h3 class="function-name">Puja Ceremonies</h3>
-        <p class="function-date">February 14, 2027</p>
-        <p class="function-time">Morning & Afternoon</p>
-        <p class="function-venue">Courtyard Lawn</p>
-        <p class="function-description">Sacred rituals including Graha Shanti, Madap Mahurat, and Tilak ceremonies to invoke blessings for the couple.</p>
-        <p class="function-attire-hint">View Attire</p>
+      <!-- Monday, February 15 -->
+      <div class="timeline-day fade-in">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">15</span>
+          <span class="timeline-marker-month">Feb</span>
+        </div>
+        <p class="timeline-day-label">Monday</p>
+        <div class="timeline-events">
+
+          <!-- Haldi -->
+          <div class="function-card" data-wardrobe="haldi" tabindex="0" role="button" aria-label="View attire suggestion for Haldi">
+            <span class="function-icon">&#127804;</span>
+            <h3 class="function-name">Haldi</h3>
+            <p class="function-time">Morning</p>
+            <p class="function-venue">Sun Terrace</p>
+            <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
+            <p class="function-attire-hint">View Attire</p>
+          </div>
+
+          <!-- Wedding -->
+          <div class="function-card" data-wardrobe="wedding" tabindex="0" role="button" aria-label="View attire suggestion for the Wedding">
+            <span class="function-icon">&#129684;</span>
+            <h3 class="function-name">Wedding</h3>
+            <p class="function-time">Evening</p>
+            <p class="function-venue">Main Lawn & Poolside</p>
+            <p class="function-description">The grand Baraat procession, Varmala ceremony, and sacred Phere around the holy fire as Parin and Rishabh unite in marriage.</p>
+            <p class="function-attire-hint">View Attire</p>
+          </div>
+
+        </div>
       </div>
 
-      <!-- Sangeet & Garba -->
-      <div class="function-card fade-in" data-wardrobe="garba" tabindex="0" role="button" aria-label="View attire suggestion for Sangeet and Garba">
-        <span class="function-icon">&#128131;</span>
-        <h3 class="function-name">Sangeet & Garba</h3>
-        <p class="function-date">February 14, 2027</p>
-        <p class="function-time">Evening</p>
-        <p class="function-venue">Main Lawn</p>
-        <p class="function-description">A night of music, dance performances, and garba as both families come together to rejoice through rhythm and celebration.</p>
-        <p class="function-attire-hint">View Attire</p>
-      </div>
+      <!-- Tuesday, February 16 -->
+      <div class="timeline-day fade-in">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">16</span>
+          <span class="timeline-marker-month">Feb</span>
+        </div>
+        <p class="timeline-day-label">Tuesday</p>
+        <div class="timeline-events">
 
-      <!-- Haldi -->
-      <div class="function-card haldi-card fade-in" data-wardrobe="haldi" tabindex="0" role="button" aria-label="View attire suggestion for Haldi">
-        <span class="function-icon">&#127804;</span>
-        <h3 class="function-name">Haldi</h3>
-        <p class="function-date">February 15, 2027</p>
-        <p class="function-time">Morning</p>
-        <p class="function-venue">Sun Terrace</p>
-        <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
-        <p class="function-attire-hint">View Attire</p>
-      </div>
+          <!-- Checkout -->
+          <div class="function-card">
+            <span class="function-icon">&#128682;</span>
+            <h3 class="function-name">Checkout</h3>
+            <p class="function-time">Morning</p>
+            <p class="function-venue">Gulab Niwas, Pushkar</p>
+            <p class="function-description">A heartfelt farewell as guests check out after celebrating the beautiful union of Parin and Rishabh.</p>
+          </div>
 
-      <!-- Wedding -->
-      <div class="function-card fade-in" data-wardrobe="wedding" tabindex="0" role="button" aria-label="View attire suggestion for the Wedding">
-        <span class="function-icon">&#129684;</span>
-        <h3 class="function-name">Wedding</h3>
-        <p class="function-date">February 15, 2027</p>
-        <p class="function-time">Evening</p>
-        <p class="function-venue">Main Lawn & Poolside</p>
-        <p class="function-description">The grand Baraat procession, Varmala ceremony, and sacred Phere around the holy fire as Parin and Rishabh unite in marriage.</p>
-        <p class="function-attire-hint">View Attire</p>
-      </div>
-
-      <!-- Checkout -->
-      <div class="function-card fade-in">
-        <span class="function-icon">&#128682;</span>
-        <h3 class="function-name">Checkout</h3>
-        <p class="function-date">February 16, 2027</p>
-        <p class="function-time">Morning</p>
-        <p class="function-venue">Gulab Niwas, Pushkar</p>
-        <p class="function-description">A heartfelt farewell as guests check out after celebrating the beautiful union of Parin and Rishabh.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Venue Section -->
   <section class="venue-section" id="venue">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
 
     <p class="section-title fade-in">Find Your Way</p>
     <h2 class="section-heading fade-in">Wedding Venue</h2>
 
     <div class="venue-card fade-in">
       <h3 class="venue-name">Gulaab Niwaas</h3>
-      <p class="venue-tagline">A royal heritage retreat in the sacred town of Pushkar</p>
+      <p class="venue-tagline">A royal Rajasthani retreat in the sacred town of Pushkar</p>
       <p class="venue-address">
         Parikrama Marg, Pushkar<br>
         Rajasthan 305022<br>
@@ -1389,10 +1526,6 @@
 
   <!-- RSVP Section -->
   <section class="rsvp-section" id="rsvp">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
 
     <p class="section-title fade-in" style="color: var(--burgundy);">We Await Your Response</p>
     <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
