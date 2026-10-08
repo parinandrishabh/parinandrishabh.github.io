@@ -15,15 +15,18 @@
     }
 
     :root {
-      --burgundy: #680808;
-      --burgundy-dark: #4a0606;
-      --burgundy-light: #8b1a1a;
+      --burgundy: #751212;
+      --burgundy-dark: #4d0b0b;
+      --burgundy-light: #8f2828;
       --cream: #fff6e2;
       --cream-dark: #f5e6c8;
       --gold: #c9a84c;
       --gold-light: #d4b96a;
       --gold-dark: #a8883a;
       --marigold: #e8a33d;
+      --marigold-deep: #d97b29;
+      --rani: #c2277a;
+      --haldi: #e9b32a;
       --white: #ffffff;
       --text-dark: #1c1c1c;
       --text-muted: #4a4a4a;
@@ -36,7 +39,7 @@
     body {
       font-family: 'Josefin Sans', sans-serif;
       background-color: #f3e5c8;
-      background-image: radial-gradient(rgba(104, 8, 8, 0.06) 1px, transparent 1.6px);
+      background-image: radial-gradient(rgba(117, 18, 18, 0.06) 1px, transparent 1.6px);
       background-size: 24px 24px;
       color: var(--text-dark);
       overflow-x: hidden;
@@ -296,6 +299,16 @@
       line-height: 1.1;
     }
 
+    .function-icon.rani-glyph {
+      color: var(--rani);
+      font-size: 44px;
+      line-height: 1.1;
+    }
+
+    .function-card.haldi-card .function-date {
+      color: var(--haldi);
+    }
+
     .function-name {
       font-family: 'Shrikhand', 'Rozha One', serif;
       font-size: 26px;
@@ -412,7 +425,7 @@
       margin-left: auto;
       margin-right: auto;
       border: 1px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(104, 8, 8, 0.15);
+      box-shadow: 0 4px 20px rgba(117, 18, 18, 0.15);
       line-height: 0;
     }
 
@@ -458,7 +471,7 @@
       padding: 14px 18px;
       font-family: 'Josefin Sans', sans-serif;
       font-size: 14px;
-      border: 1px solid rgba(104, 8, 8, 0.2);
+      border: 1px solid rgba(117, 18, 18, 0.2);
       background: #fdf7e8;
       color: var(--text-dark);
       outline: none;
@@ -500,7 +513,7 @@
     }
 
     .radio-label input[type="radio"] {
-      accent-color: var(--burgundy);
+      accent-color: var(--rani);
       width: 16px;
       height: 16px;
     }
@@ -549,6 +562,7 @@
 
     /* Footer */
     .footer {
+      position: relative;
       background-color: var(--burgundy-dark);
       background-image:
         repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.025) 0 1px, transparent 1px 20px),
@@ -637,7 +651,7 @@
       position: relative;
       animation: modalIn 0.3s ease;
       border: 1px solid var(--gold);
-      box-shadow: 0 10px 40px rgba(104, 8, 8, 0.25);
+      box-shadow: 0 10px 40px rgba(117, 18, 18, 0.25);
     }
 
     @keyframes modalIn {
@@ -722,7 +736,7 @@
     }
 
     .navbar.scrolled {
-      background: rgba(104, 8, 8, 0.95);
+      background: rgba(117, 18, 18, 0.95);
       padding: 10px 30px;
       backdrop-filter: blur(10px);
     }
@@ -777,7 +791,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(104, 8, 8, 0.98);
+        background: rgba(117, 18, 18, 0.98);
         flex-direction: column;
         padding: 20px 30px;
         gap: 20px;
@@ -935,7 +949,8 @@
       flex-direction: column;
       width: 130px;
       margin: 0 auto;
-      background: #f0ede6;
+      background: #f7ecd4;
+      border: 1px solid rgba(201, 168, 76, 0.45);
       padding: 5px;
       gap: 3px;
       transform: translateY(-115%);
@@ -1003,7 +1018,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%) contrast(1.1);
+      filter: sepia(35%) saturate(1.25) contrast(1.05);
       display: block;
     }
 
@@ -1140,7 +1155,7 @@
     <p class="ganesh-mantra fade-in" lang="sa">॥ श्री गणेशाय नमः ॥</p>
     <p class="invitation-intro fade-in">With the blessings of Lord Ganesha</p>
     <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
-    <div class="ornament-line fade-in"><span>&#10053;</span></div>
+    <div class="ornament-line fade-in"><span>&#10086;</span></div>
     <p class="shubh-label fade-in" lang="hi">शुभ विवाह &bull; Shubh Vivah</p>
     <p class="invitation-names fade-in">Parin & Rishabh</p>
     <p class="invitation-message fade-in">
@@ -1204,7 +1219,7 @@
 
       <!-- Welcome Dinner & Sanjhi -->
       <div class="function-card fade-in">
-        <span class="function-icon gold-glyph">&#10049;</span>
+        <span class="function-icon rani-glyph">&#10049;</span>
         <h3 class="function-name">Welcome Dinner & Sanjhi</h3>
         <p class="function-date">February 13, 2027</p>
         <p class="function-time">Evening</p>
@@ -1233,7 +1248,7 @@
       </div>
 
       <!-- Haldi -->
-      <div class="function-card fade-in">
+      <div class="function-card haldi-card fade-in">
         <span class="function-icon">&#127804;</span>
         <h3 class="function-name">Haldi</h3>
         <p class="function-date">February 15, 2027</p>
@@ -1307,7 +1322,7 @@
 
     <p class="section-title fade-in" style="color: var(--burgundy);">We Await Your Response</p>
     <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
-    <div class="ornament-line fade-in"><span>&#10053;</span></div>
+    <div class="ornament-line fade-in"><span>&#10086;</span></div>
     <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
       Please respond by January 15, 2027
     </p>
@@ -1389,7 +1404,7 @@
   <div class="modal-overlay" id="successModal">
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div class="modal-icon">&#128141;</div>
+      <div class="modal-icon">&#129684;</div>
       <h3 class="modal-title">Thank You!</h3>
       <p class="modal-text">
         Your response has been received. We look forward to celebrating
