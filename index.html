@@ -35,6 +35,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -43,7 +44,6 @@
       background-image: radial-gradient(rgba(117, 18, 18, 0.06) 1px, transparent 1.6px);
       background-size: 24px 24px;
       color: var(--text-dark);
-      overflow-x: hidden;
     }
 
     /* Decorative Elements */
@@ -103,7 +103,7 @@
       font-family: 'Rozha One', serif;
       font-size: clamp(24px, 3.5vw, 34px);
       color: var(--gold);
-      margin-bottom: 14px;
+      margin-bottom: 18px;
       text-shadow: 0 2px 12px rgba(201, 168, 76, 0.35);
     }
 
@@ -112,7 +112,7 @@
       font-size: clamp(16px, 2.2vw, 20px);
       color: var(--marigold);
       letter-spacing: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .shubh-label .gujarati {
@@ -120,21 +120,12 @@
       font-size: 0.9em;
     }
 
-    .invitation-intro {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      color: var(--marigold);
-    }
-
     .invitation-heading {
       font-family: 'Rozha One', serif;
       font-size: clamp(26px, 3.8vw, 44px);
       font-weight: 400;
       line-height: 1.5;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .invitation-names {
@@ -168,6 +159,14 @@
       text-transform: uppercase;
       color: var(--cream-dark);
       margin-bottom: 10px;
+    }
+
+    .parents-and {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--gold-light);
+      margin: 14px 0;
     }
 
     .parents-names {
@@ -275,7 +274,8 @@
 
     .timeline-day {
       position: relative;
-      padding-left: 110px;
+      display: flex;
+      gap: 32px;
       margin-bottom: 64px;
     }
 
@@ -283,10 +283,20 @@
       margin-bottom: 0;
     }
 
+    .timeline-rail {
+      flex: 0 0 78px;
+      align-self: stretch;
+    }
+
+    .timeline-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     .timeline-marker {
-      position: absolute;
-      left: 8px;
-      top: 6px;
+      position: sticky;
+      top: 92px;
+      margin-left: 8px;
       width: 70px;
       height: 80px;
       border-radius: 35px 35px 8px 8px / 48px 48px 8px 8px;
@@ -344,15 +354,20 @@
 
     @media (max-width: 600px) {
       .timeline-day {
-        padding-left: 78px;
+        gap: 16px;
       }
 
       .timeline::before {
         left: 27px;
       }
 
+      .timeline-rail {
+        flex-basis: 54px;
+      }
+
       .timeline-marker {
-        left: 0;
+        margin-left: 0;
+        top: 84px;
         width: 54px;
         height: 62px;
         border-radius: 27px 27px 6px 6px / 34px 34px 6px 6px;
@@ -885,6 +900,18 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .invitation {
+        padding: 80px 24px;
+      }
+
+      .invitation-message {
+        font-size: 17px;
+      }
+
+      .parents-section {
+        margin-top: 36px;
+      }
+
       .form-row {
         grid-template-columns: 1fr;
       }
@@ -1262,7 +1289,6 @@
       }
 
       .timeline-day {
-        padding-left: 70px;
         margin-bottom: 48px;
       }
     }
@@ -1326,21 +1352,18 @@
   <section class="invitation" id="invitation">
 
     <p class="ganesh-mantra fade-in" lang="sa">॥ श्री गणेशाय नमः ॥</p>
-    <p class="invitation-intro fade-in">With the blessings of Lord Ganesha</p>
     <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
-    <div class="ornament-line fade-in"><span>&#10086;</span></div>
     <p class="shubh-label fade-in"><span lang="hi">शुभ विवाह</span> &bull; Shubh Vivah &bull; <span class="gujarati" lang="gu">શુભ વિવાહ</span></p>
     <p class="invitation-names fade-in">Parin & Rishabh</p>
     <p class="invitation-message fade-in">
       Together with their families, request the pleasure of your company
       as they begin their new journey of love and togetherness.
-      Join us as we celebrate a union of two souls and two families.
     </p>
 
     <div class="parents-section fade-in">
       <p class="parents-text">Son of</p>
       <p class="parents-names">Mr Rajnish Kumar Saini &amp; Mrs Madhu Saini</p>
-      <div class="ornament-line"><span>&amp;</span></div>
+      <p class="parents-and">and</p>
       <p class="parents-text">Daughter of</p>
       <p class="parents-names">Mr Devang Kiritbhai Joshi &amp; Mrs Malti Devang Joshi</p>
     </div>
@@ -1378,12 +1401,15 @@
     <div class="timeline">
       <!-- Saturday, February 13 -->
       <div class="timeline-day fade-in">
-        <div class="timeline-marker">
-          <span class="timeline-marker-num">13</span>
-          <span class="timeline-marker-month">Feb</span>
+        <div class="timeline-rail">
+          <div class="timeline-marker">
+            <span class="timeline-marker-num">13</span>
+            <span class="timeline-marker-month">Feb</span>
+          </div>
         </div>
-        <p class="timeline-day-label">Saturday</p>
-        <div class="timeline-events">
+        <div class="timeline-content">
+          <p class="timeline-day-label">Saturday</p>
+          <div class="timeline-events">
 
           <!-- Arrival & Check-in -->
           <div class="function-card">
@@ -1405,16 +1431,20 @@
           </div>
 
         </div>
+        </div>
       </div>
 
       <!-- Sunday, February 14 -->
       <div class="timeline-day fade-in">
-        <div class="timeline-marker">
-          <span class="timeline-marker-num">14</span>
-          <span class="timeline-marker-month">Feb</span>
+        <div class="timeline-rail">
+          <div class="timeline-marker">
+            <span class="timeline-marker-num">14</span>
+            <span class="timeline-marker-month">Feb</span>
+          </div>
         </div>
-        <p class="timeline-day-label">Sunday</p>
-        <div class="timeline-events">
+        <div class="timeline-content">
+          <p class="timeline-day-label">Sunday</p>
+          <div class="timeline-events">
 
           <!-- Puja -->
           <div class="function-card" data-wardrobe="puja" tabindex="0" role="button" aria-label="View attire suggestion for Puja Ceremonies">
@@ -1437,16 +1467,20 @@
           </div>
 
         </div>
+        </div>
       </div>
 
       <!-- Monday, February 15 -->
       <div class="timeline-day fade-in">
-        <div class="timeline-marker">
-          <span class="timeline-marker-num">15</span>
-          <span class="timeline-marker-month">Feb</span>
+        <div class="timeline-rail">
+          <div class="timeline-marker">
+            <span class="timeline-marker-num">15</span>
+            <span class="timeline-marker-month">Feb</span>
+          </div>
         </div>
-        <p class="timeline-day-label">Monday</p>
-        <div class="timeline-events">
+        <div class="timeline-content">
+          <p class="timeline-day-label">Monday</p>
+          <div class="timeline-events">
 
           <!-- Haldi -->
           <div class="function-card" data-wardrobe="haldi" tabindex="0" role="button" aria-label="View attire suggestion for Haldi">
@@ -1469,16 +1503,20 @@
           </div>
 
         </div>
+        </div>
       </div>
 
       <!-- Tuesday, February 16 -->
       <div class="timeline-day fade-in">
-        <div class="timeline-marker">
-          <span class="timeline-marker-num">16</span>
-          <span class="timeline-marker-month">Feb</span>
+        <div class="timeline-rail">
+          <div class="timeline-marker">
+            <span class="timeline-marker-num">16</span>
+            <span class="timeline-marker-month">Feb</span>
+          </div>
         </div>
-        <p class="timeline-day-label">Tuesday</p>
-        <div class="timeline-events">
+        <div class="timeline-content">
+          <p class="timeline-day-label">Tuesday</p>
+          <div class="timeline-events">
 
           <!-- Checkout -->
           <div class="function-card">
@@ -1489,6 +1527,7 @@
             <p class="function-description">A heartfelt farewell as guests check out after celebrating the beautiful union of Parin and Rishabh.</p>
           </div>
 
+        </div>
         </div>
       </div>
     </div>
