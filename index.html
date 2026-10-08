@@ -113,18 +113,23 @@
       margin-bottom: 6px;
     }
 
+    .shubh-label .gujarati {
+      font-family: 'Shrikhand', serif;
+      font-size: 0.9em;
+    }
+
     .invitation-intro {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 5px;
       text-transform: uppercase;
       margin-bottom: 20px;
-      color: var(--gold);
+      color: var(--marigold);
     }
 
     .invitation-heading {
       font-family: 'Rozha One', serif;
-      font-size: clamp(24px, 3.4vw, 40px);
+      font-size: clamp(26px, 3.8vw, 44px);
       font-weight: 400;
       line-height: 1.5;
       margin-bottom: 15px;
@@ -141,7 +146,7 @@
 
     .invitation-message {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 19px;
       font-style: italic;
       max-width: 600px;
       margin: 0 auto;
@@ -156,7 +161,7 @@
 
     .parents-text {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--cream-dark);
@@ -165,7 +170,7 @@
 
     .parents-names {
       font-family: 'Rozha One', serif;
-      font-size: 19px;
+      font-size: 20px;
       color: var(--cream);
     }
 
@@ -177,7 +182,7 @@
 
     .countdown-label {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--burgundy);
@@ -207,7 +212,7 @@
 
     .countdown-unit {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -227,7 +232,7 @@
 
     .section-title {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--marigold);
@@ -237,7 +242,7 @@
 
     .section-heading {
       font-family: 'Rozha One', serif;
-      font-size: clamp(24px, 3.2vw, 38px);
+      font-size: clamp(26px, 3.6vw, 42px);
       font-weight: 400;
       text-align: center;
       color: var(--cream);
@@ -247,7 +252,7 @@
     .functions-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 52px;
       max-width: 1200px;
       width: 100%;
       padding: 0 20px;
@@ -264,6 +269,8 @@
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .function-card::before {
@@ -309,9 +316,30 @@
       color: var(--haldi);
     }
 
+    .function-card[data-wardrobe] {
+      cursor: pointer;
+    }
+
+    .function-attire-hint {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--marigold);
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(201, 168, 76, 0.25);
+      transition: color 0.3s ease;
+    }
+
+    .function-card[data-wardrobe]:hover .function-attire-hint,
+    .function-card[data-wardrobe]:focus-visible .function-attire-hint {
+      color: var(--gold-light);
+    }
+
     .function-name {
       font-family: 'Shrikhand', 'Rozha One', serif;
-      font-size: 26px;
+      font-size: 27px;
       line-height: 1.4;
       color: var(--gold-light);
       margin-bottom: 15px;
@@ -319,7 +347,7 @@
 
     .function-date {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--marigold);
@@ -328,7 +356,7 @@
 
     .function-time {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 2px;
       color: var(--cream-dark);
       margin-bottom: 12px;
@@ -336,7 +364,7 @@
 
     .function-venue {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
+      font-size: 17px;
       font-style: italic;
       color: var(--cream-dark);
       line-height: 1.6;
@@ -344,11 +372,11 @@
 
     .function-description {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--cream-dark);
       margin-top: 12px;
-      line-height: 1.6;
-      opacity: 0.8;
+      line-height: 1.7;
+      opacity: 0.9;
     }
 
     /* Venue Section */
@@ -378,7 +406,7 @@
 
     .venue-name {
       font-family: 'Rozha One', serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 400;
       color: var(--cream);
       margin-bottom: 10px;
@@ -387,14 +415,14 @@
     .venue-tagline {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 16px;
+      font-size: 17px;
       color: var(--gold-light);
       margin-bottom: 20px;
     }
 
     .venue-address {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--cream-dark);
       line-height: 1.8;
       margin-bottom: 25px;
@@ -456,7 +484,7 @@
 
     .form-label {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -470,7 +498,7 @@
       width: 100%;
       padding: 14px 18px;
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       border: 1px solid rgba(117, 18, 18, 0.2);
       background: #fdf7e8;
       color: var(--text-dark);
@@ -504,7 +532,7 @@
 
     .radio-label {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-dark);
       display: flex;
       align-items: center;
@@ -522,7 +550,7 @@
       width: 100%;
       padding: 16px;
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 4px;
       text-transform: uppercase;
       background: var(--burgundy);
@@ -554,7 +582,7 @@
 
     .form-status {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--burgundy);
       margin-top: 12px;
       min-height: 18px;
@@ -581,19 +609,19 @@
 
     .footer-blessing {
       font-family: 'Rozha One', serif;
-      font-size: 20px;
+      font-size: 21px;
       color: var(--marigold);
       margin-bottom: 10px;
     }
 
     .footer-blessing .gujarati {
       font-family: 'Shrikhand', serif;
-      font-size: 18px;
+      font-size: 19px;
     }
 
     .footer-date {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 5px;
       color: var(--gold);
       margin-bottom: 25px;
@@ -601,7 +629,7 @@
 
     .footer-message {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 19px;
       font-style: italic;
       color: var(--cream-dark);
       max-width: 500px;
@@ -618,7 +646,7 @@
 
     .footer-hashtag {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       letter-spacing: 3px;
       color: var(--gold);
       margin-top: 20px;
@@ -684,9 +712,50 @@
 
     .modal-text {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
       line-height: 1.8;
+    }
+
+    /* Wardrobe Modal */
+    .wardrobe-modal {
+      max-width: min(760px, 96vw);
+      max-height: 94vh;
+      overflow: auto;
+      padding: 18px;
+    }
+
+    .wardrobe-modal .modal-close {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      float: right;
+    }
+
+    .wardrobe-subtitle {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .wardrobe-img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 90vh;
+      border: 1px solid var(--gold);
+      box-shadow: 0 6px 24px rgba(117, 18, 18, 0.15);
+      cursor: zoom-in;
+    }
+
+    .wardrobe-img.zoomed {
+      max-width: none;
+      max-height: none;
+      width: 903px;
+      cursor: zoom-out;
     }
 
     /* Responsive */
@@ -756,7 +825,7 @@
 
     .nav-links a {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--cream);
@@ -867,7 +936,7 @@
 
     .photobooth-subheading {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--cream-dark);
@@ -1050,7 +1119,7 @@
 
     .photobooth-bottom .date-text {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: clamp(14px, 2vw, 18px);
+      font-size: clamp(15px, 2.2vw, 19px);
       letter-spacing: 8px;
       color: var(--gold);
       margin-bottom: 30px;
@@ -1058,7 +1127,7 @@
 
     .open-invitation-btn {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--cream);
@@ -1095,9 +1164,9 @@
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
-    <a href="#photobooth" class="nav-logo">P & R</a>
+    <a href="#save-the-date" class="nav-logo">P & R</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#photobooth">Photo Booth</a></li>
+      <li><a href="#save-the-date">Save the Date</a></li>
       <li><a href="#invitation">Invitation</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#venue">Venue</a></li>
@@ -1111,7 +1180,7 @@
   </nav>
 
   <!-- Photobooth Section -->
-  <section class="photobooth-section" id="photobooth">
+  <section class="photobooth-section" id="save-the-date">
     <p class="photobooth-subheading fade-in">We are getting married!</p>
     <h2 class="photobooth-heading fade-in">Parin & Rishabh</h2>
 
@@ -1156,7 +1225,7 @@
     <p class="invitation-intro fade-in">With the blessings of Lord Ganesha</p>
     <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
     <div class="ornament-line fade-in"><span>&#10086;</span></div>
-    <p class="shubh-label fade-in" lang="hi">शुभ विवाह &bull; Shubh Vivah</p>
+    <p class="shubh-label fade-in"><span lang="hi">शुभ विवाह</span> &bull; Shubh Vivah &bull; <span class="gujarati" lang="gu">શુભ વિવાહ</span></p>
     <p class="invitation-names fade-in">Parin & Rishabh</p>
     <p class="invitation-message fade-in">
       Together with their families, request the pleasure of your company
@@ -1218,53 +1287,58 @@
       </div>
 
       <!-- Welcome Dinner & Sanjhi -->
-      <div class="function-card fade-in">
+      <div class="function-card fade-in" data-wardrobe="welcome-dinner" tabindex="0" role="button" aria-label="View attire suggestion for Welcome Dinner and Sanjhi">
         <span class="function-icon rani-glyph">&#10049;</span>
         <h3 class="function-name">Welcome Dinner & Sanjhi</h3>
         <p class="function-date">February 13, 2027</p>
         <p class="function-time">Evening</p>
         <p class="function-venue">Poolside</p>
         <p class="function-description">An evening of traditional Sanjhi celebrations followed by a grand welcome dinner to kick off the wedding festivities.</p>
+        <p class="function-attire-hint">View Attire</p>
       </div>
 
       <!-- Puja -->
-      <div class="function-card fade-in">
+      <div class="function-card fade-in" data-wardrobe="puja" tabindex="0" role="button" aria-label="View attire suggestion for Puja Ceremonies">
         <span class="function-icon gold-glyph">&#2384;</span>
         <h3 class="function-name">Puja Ceremonies</h3>
         <p class="function-date">February 14, 2027</p>
         <p class="function-time">Morning & Afternoon</p>
         <p class="function-venue">Courtyard Lawn</p>
         <p class="function-description">Sacred rituals including Graha Shanti, Madap Mahurat, and Tilak ceremonies to invoke blessings for the couple.</p>
+        <p class="function-attire-hint">View Attire</p>
       </div>
 
       <!-- Sangeet & Garba -->
-      <div class="function-card fade-in">
+      <div class="function-card fade-in" data-wardrobe="garba" tabindex="0" role="button" aria-label="View attire suggestion for Sangeet and Garba">
         <span class="function-icon">&#128131;</span>
         <h3 class="function-name">Sangeet & Garba</h3>
         <p class="function-date">February 14, 2027</p>
         <p class="function-time">Evening</p>
         <p class="function-venue">Main Lawn</p>
         <p class="function-description">A night of music, dance performances, and garba as both families come together to rejoice through rhythm and celebration.</p>
+        <p class="function-attire-hint">View Attire</p>
       </div>
 
       <!-- Haldi -->
-      <div class="function-card haldi-card fade-in">
+      <div class="function-card haldi-card fade-in" data-wardrobe="haldi" tabindex="0" role="button" aria-label="View attire suggestion for Haldi">
         <span class="function-icon">&#127804;</span>
         <h3 class="function-name">Haldi</h3>
         <p class="function-date">February 15, 2027</p>
         <p class="function-time">Morning</p>
         <p class="function-venue">Sun Terrace</p>
         <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
+        <p class="function-attire-hint">View Attire</p>
       </div>
 
       <!-- Wedding -->
-      <div class="function-card fade-in">
+      <div class="function-card fade-in" data-wardrobe="wedding" tabindex="0" role="button" aria-label="View attire suggestion for the Wedding">
         <span class="function-icon">&#129684;</span>
         <h3 class="function-name">Wedding</h3>
         <p class="function-date">February 15, 2027</p>
         <p class="function-time">Evening</p>
         <p class="function-venue">Main Lawn & Poolside</p>
         <p class="function-description">The grand Baraat procession, Varmala ceremony, and sacred Phere around the holy fire as Parin and Rishabh unite in marriage.</p>
+        <p class="function-attire-hint">View Attire</p>
       </div>
 
       <!-- Checkout -->
@@ -1399,6 +1473,15 @@
     </p>
     <p class="footer-hashtag">#RishabhAndParin2027</p>
   </footer>
+
+  <!-- Wardrobe Modal -->
+  <div class="modal-overlay" id="wardrobeModal" role="dialog" aria-modal="true" aria-label="Attire suggestion">
+    <div class="modal wardrobe-modal">
+      <button class="modal-close" onclick="closeWardrobe()" aria-label="Close">&times;</button>
+      <p class="wardrobe-subtitle">Attire Inspiration</p>
+      <img class="wardrobe-img" id="wardrobeImg" src="" alt="" title="Click to enlarge">
+    </div>
+  </div>
 
   <!-- Success Modal -->
   <div class="modal-overlay" id="successModal">
@@ -1581,7 +1664,45 @@
 
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') {
+        closeModal();
+        closeWardrobe();
+      }
+    });
+
+    // Wardrobe modals for festivity cards
+    const wardrobeModal = document.getElementById('wardrobeModal');
+    const wardrobeImg = document.getElementById('wardrobeImg');
+
+    function openWardrobe(card) {
+      const eventName = card.querySelector('.function-name').textContent;
+      wardrobeImg.src = 'images/wardrobe/' + card.dataset.wardrobe + '.jpeg';
+      wardrobeImg.alt = eventName + ' attire suggestion';
+      wardrobeModal.classList.add('active');
+    }
+
+    function closeWardrobe() {
+      wardrobeModal.classList.remove('active');
+      wardrobeImg.classList.remove('zoomed');
+      wardrobeModal.querySelector('.wardrobe-modal').scrollTop = 0;
+    }
+
+    wardrobeImg.addEventListener('click', () => {
+      wardrobeImg.classList.toggle('zoomed');
+    });
+
+    document.querySelectorAll('.function-card[data-wardrobe]').forEach(card => {
+      card.addEventListener('click', () => openWardrobe(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openWardrobe(card);
+        }
+      });
+    });
+
+    wardrobeModal.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeWardrobe();
     });
   </script>
 </body>
