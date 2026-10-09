@@ -607,7 +607,7 @@
       background-color: #3d0808;
       background-image:
         radial-gradient(ellipse at 50% 12%, rgba(201, 168, 76, 0.12) 0%, transparent 55%),
-        linear-gradient(180deg, #5c0d0d 0%, #3d0808 55%, #4d0b0b 100%);
+        linear-gradient(180deg, #5c0d0d 0%, #3d0808 55%, #3d0808 100%);
       text-align: center;
     }
 
@@ -654,6 +654,18 @@
       animation-duration: 5.8s;
     }
 
+    .video-section::before,
+    .video-section::after {
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+    }
+
+    .gallery-section::before,
+    .gallery-section::after {
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
+    }
+
     @keyframes twinkle {
       0%, 100% { opacity: 0.25; }
       50% { opacity: 1; }
@@ -668,14 +680,20 @@
         animation: none;
         opacity: 0.5;
       }
+
+      .constellation-sparkle,
+      .constellation-reveal {
+        display: none;
+      }
     }
 
     .constellation {
       position: absolute;
-      z-index: -1;
+      z-index: 1;
       pointer-events: none;
       opacity: 0.55;
       animation: constellationGlow 7s ease-in-out infinite;
+      will-change: transform;
     }
 
     .constellation.aries {
@@ -693,6 +711,70 @@
     @keyframes constellationGlow {
       0%, 100% { opacity: 0.4; }
       50% { opacity: 0.7; }
+    }
+
+    .constellation-sparkle {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      width: 120px;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      animation: sparklePulse 2.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(232, 163, 61, 0.45));
+    }
+
+    .constellation-sparkle path {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+    }
+
+    .constellation-sparkle circle {
+      opacity: 0;
+    }
+
+    /* What the heart whispers when touched: where and when it began */
+    .constellation-reveal {
+      position: absolute;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      white-space: nowrap;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--gold-light);
+    }
+
+    .constellation-reveal a {
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(201, 168, 76, 0.55);
+      padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .constellation-reveal a:hover {
+      color: var(--marigold);
+      border-bottom-color: var(--marigold);
+    }
+
+    @media (max-width: 480px) {
+      .constellation-reveal {
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+    }
+
+    @keyframes sparklePulse {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
     }
 
     @media (max-width: 768px) {
@@ -734,6 +816,7 @@
       position: absolute;
       bottom: 16px;
       right: 16px;
+      z-index: 2;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -759,6 +842,7 @@
       position: absolute;
       bottom: 16px;
       right: 68px;
+      z-index: 2;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -819,7 +903,7 @@
       position: relative;
       z-index: 0;
       background-color: #3d0808;
-      background-image: linear-gradient(180deg, #4d0b0b 0%, #3d0808 45%, #4d0b0b 100%);
+      background-image: linear-gradient(180deg, #3d0808 0%, #3d0808 45%, #4d0b0b 100%);
       text-align: center;
     }
 
@@ -1721,7 +1805,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#save-the-date">Save the Date</a></li>
       <li><a href="#invitation">Invitation</a></li>
-      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#film">Our Story</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#venue">Venue</a></li>
       <li><a href="#rsvp">RSVP</a></li>
@@ -1825,6 +1909,37 @@
         <circle cx="74" cy="72" r="6" fill="rgba(232, 163, 61, 0.18)" />
         <circle cx="74" cy="72" r="2.8" fill="#e8a33d" />
       </svg>
+    </div>
+
+    <div class="constellation-sparkle" id="constellationSparkle" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+        <g stroke="rgba(212, 185, 106, 0.4)" stroke-width="1" fill="none" stroke-linejoin="round">
+          <path pathLength="100" d="M60 36 L76 19 L95 17 L107 33 L105 52 L88 71 L69 86 L60 96 L51 86 L32 71 L15 52 L13 33 L25 17 L44 19 Z" />
+        </g>
+        <g fill="#d4b96a">
+          <circle cx="60" cy="36" r="2" opacity="0.9" />
+          <circle cx="95" cy="17" r="1.8" opacity="0.85" />
+          <circle cx="107" cy="33" r="2" opacity="0.9" />
+          <circle cx="105" cy="52" r="1.7" opacity="0.8" />
+          <circle cx="88" cy="71" r="2" opacity="0.9" />
+          <circle cx="69" cy="86" r="1.8" opacity="0.85" />
+          <circle cx="60" cy="96" r="2.2" opacity="0.95" />
+          <circle cx="51" cy="86" r="1.8" opacity="0.85" />
+          <circle cx="32" cy="71" r="2" opacity="0.9" />
+          <circle cx="15" cy="52" r="1.7" opacity="0.8" />
+          <circle cx="13" cy="33" r="2" opacity="0.9" />
+          <circle cx="25" cy="17" r="1.8" opacity="0.85" />
+        </g>
+        <circle cx="76" cy="19" r="6" fill="rgba(232, 163, 61, 0.18)" />
+        <circle cx="76" cy="19" r="2.8" fill="#e8a33d" />
+        <circle cx="44" cy="19" r="6" fill="rgba(232, 163, 61, 0.18)" />
+        <circle cx="44" cy="19" r="2.8" fill="#e8a33d" />
+      </svg>
+    </div>
+
+    <div class="constellation-reveal" id="constellationReveal">
+      <a href="https://maps.google.com/?q=43.6657583,-79.4011278" target="_blank" rel="noopener">loc:43.6657583,-79.4011278</a>
+      <span>222725022021</span>
     </div>
 
     <div class="video-frame fade-in">
@@ -2378,6 +2493,125 @@
           fullscreenBtn.textContent = document.fullscreenElement ? '\u2716' : '\u26F6';
         });
       }
+    }
+
+    // Constellations: their journey is paced by the film itself - far
+    // apart when it begins, drawn together beneath it as it plays,
+    // slowly entangling into a heart as it ends
+    const filmSection = document.getElementById('film');
+    const ariesEl = document.querySelector('.constellation.aries');
+    const taurusEl = document.querySelector('.constellation.taurus');
+    const sparkleEl = document.getElementById('constellationSparkle');
+
+    if (filmSection && ariesEl && taurusEl && sparkleEl && inviteVideo &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const videoFrameEl = filmSection.querySelector('.video-frame');
+      const heartPath = sparkleEl.querySelector('path');
+      const heartStars = Array.from(sparkleEl.querySelectorAll('circle'));
+      const heartSvg = sparkleEl.querySelector('svg');
+      const revealEl = document.getElementById('constellationReveal');
+
+      // Touching the formed heart reveals where and when the story began,
+      // then the sky settles back into the heart
+      let revealShown = false;
+      let revealTimer = null;
+
+      const hideReveal = () => {
+        clearTimeout(revealTimer);
+        revealShown = false;
+        heartSvg.style.opacity = '1';
+        revealEl.style.opacity = '0';
+        revealEl.style.pointerEvents = 'none';
+        sparkleEl.style.pointerEvents = 'auto';
+      };
+
+      sparkleEl.addEventListener('click', () => {
+        if (revealShown) return;
+        revealShown = true;
+        heartSvg.style.opacity = '0';
+        revealEl.style.opacity = '1';
+        revealEl.style.pointerEvents = 'auto';
+        sparkleEl.style.pointerEvents = 'none';
+        clearTimeout(revealTimer);
+        revealTimer = setTimeout(hideReveal, 5000);
+      });
+      revealEl.addEventListener('click', hideReveal);
+
+      // Measure the journey once (and again on resize): they meet low in
+      // the sky beneath the film, centred over the section
+      let geo = null;
+      const layoutConstellations = () => {
+        const videoBottom = videoFrameEl.offsetTop + videoFrameEl.offsetHeight;
+        const meetY = Math.max(videoBottom + 60, filmSection.offsetHeight - 130);
+        const meetX = filmSection.offsetWidth / 2;
+        sparkleEl.style.left = meetX + 'px';
+        sparkleEl.style.top = meetY + 'px';
+        revealEl.style.left = meetX + 'px';
+        revealEl.style.top = meetY + 'px';
+        const starts = new Map();
+        [ariesEl, taurusEl].forEach(el => {
+          starts.set(el, {
+            x: el.offsetLeft + el.offsetWidth / 2,
+            y: el.offsetTop + el.offsetHeight / 2
+          });
+        });
+        geo = { meetX, meetY, starts };
+      };
+
+      const renderConstellations = () => {
+        if (!geo) layoutConstellations();
+        const duration = inviteVideo.duration;
+        const progress = (duration > 0 && !isNaN(duration))
+          ? Math.min(1, Math.max(0, inviteVideo.currentTime / duration))
+          : 0;
+
+        // Smoothstep easing keeps the drift gentle at both ends
+        const ease = progress * progress * (3 - 2 * progress);
+
+        // Final stretch of the film: the pair slowly entangles into the
+        // heart - its outline draws itself in, its stars ignite one by
+        // one, and the two constellations dim as they merge into it
+        const draw = Math.min(1, Math.max(0, (progress - 0.78) / 0.2));
+
+        const drift = (el, side) => {
+          const start = geo.starts.get(el);
+          const dx = (geo.meetX + side * (64 - 28 * draw) - start.x) * ease;
+          const dy = (geo.meetY - start.y) * ease;
+          el.style.transform = 'translate(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px)';
+          el.querySelector('svg').style.opacity = (1 - draw).toFixed(2);
+        };
+        drift(ariesEl, -1);
+        drift(taurusEl, 1);
+
+        heartPath.style.strokeDashoffset = Math.round(100 * (1 - draw));
+        heartStars.forEach((star, i) => {
+          const ignite = 0.78 + (i / heartStars.length) * 0.17;
+          star.style.opacity = Math.min(1, Math.max(0, (progress - ignite) / 0.05)).toFixed(2);
+        });
+
+        // The heart is only touchable once it has fully formed; if the
+        // film loops back, any open reveal settles back into the sky
+        if (draw < 0.5 && revealShown) hideReveal();
+        sparkleEl.style.pointerEvents = (draw >= 0.95 && !revealShown) ? 'auto' : 'none';
+      };
+
+      // A rAF loop while the film plays keeps the drift silky; single
+      // renders cover pauses and window resizes
+      const constellationLoop = () => {
+        renderConstellations();
+        if (!inviteVideo.paused && !inviteVideo.ended) {
+          requestAnimationFrame(constellationLoop);
+        }
+      };
+
+      inviteVideo.addEventListener('play', constellationLoop);
+      inviteVideo.addEventListener('pause', renderConstellations);
+      inviteVideo.addEventListener('loadedmetadata', renderConstellations);
+      window.addEventListener('resize', () => {
+        layoutConstellations();
+        renderConstellations();
+      });
+      renderConstellations();
     }
 
     // Form submission via Web3Forms
