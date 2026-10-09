@@ -612,7 +612,9 @@
     }
 
     .video-section::before,
-    .video-section::after {
+    .video-section::after,
+    .gallery-section::before,
+    .gallery-section::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -634,7 +636,8 @@
       animation: twinkle 4.5s ease-in-out infinite;
     }
 
-    .video-section::after {
+    .video-section::after,
+    .gallery-section::after {
       background-image:
         radial-gradient(circle at 12% 38%, rgba(255, 246, 226, 0.4) 1px, transparent 2px),
         radial-gradient(circle at 22% 82%, rgba(232, 163, 61, 0.55) 1.4px, transparent 2.4px),
@@ -659,6 +662,8 @@
     @media (prefers-reduced-motion: reduce) {
       .video-section::before,
       .video-section::after,
+      .gallery-section::before,
+      .gallery-section::after,
       .constellation {
         animation: none;
         opacity: 0.5;
@@ -806,6 +811,211 @@
 
       .video-fullscreen-btn {
         right: 60px;
+      }
+    }
+
+    /* Gallery Section — continues the night sky from Our Story */
+    .gallery-section {
+      position: relative;
+      z-index: 0;
+      background-color: #3d0808;
+      background-image: linear-gradient(180deg, #4d0b0b 0%, #3d0808 45%, #4d0b0b 100%);
+      text-align: center;
+    }
+
+    .gallery-strip-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .gallery-strip {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 34px 8vw 44px;
+      width: 100%;
+      cursor: grab;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+    }
+
+    .gallery-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-strip.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    .gallery-card {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      border: 1px solid rgba(201, 168, 76, 0.6);
+      outline: 1px solid rgba(201, 168, 76, 0.18);
+      outline-offset: 5px;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      height: min(64vw, 400px);
+      aspect-ratio: 3 / 4;
+      width: auto;
+      background: linear-gradient(155deg, #f9efd3 0%, #ecdeb8 100%);
+      padding: 8px;
+      display: block;
+      position: relative;
+      box-shadow: 0 22px 44px -22px rgba(46, 8, 8, 0.55);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-card.landscape {
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-card::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 11px;
+      box-shadow: inset 0 0 0 1px rgba(117, 18, 18, 0.25);
+      pointer-events: none;
+    }
+
+    .gallery-card:hover {
+      border-color: rgba(201, 168, 76, 0.95);
+      box-shadow: 0 30px 58px -24px rgba(46, 8, 8, 0.62);
+    }
+
+    .gallery-card:focus-visible {
+      border-color: var(--gold-light);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 11px;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.7);
+      background: rgba(117, 18, 18, 0.85);
+      color: var(--gold-light);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .gallery-arrow.prev { left: 14px; }
+    .gallery-arrow.next { right: 14px; }
+
+    @media (max-width: 700px) {
+      .gallery-arrow {
+        display: none;
+      }
+
+      .gallery-strip {
+        padding: 26px 6vw 36px;
+      }
+
+      .gallery-card {
+        height: min(86vw, 420px);
+      }
+
+      .gallery-card.landscape {
+        height: auto;
+        width: min(86vw, 480px);
+      }
+    }
+
+    /* Gallery Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      background: rgba(26, 5, 5, 0.94);
+      align-items: center;
+      justify-content: center;
+      overscroll-behavior: contain;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 86vh;
+      max-height: 86dvh;
+      border: 1px solid var(--gold);
+      outline: 1px solid rgba(201, 168, 76, 0.25);
+      outline-offset: 6px;
+      border-radius: 16px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 20px;
+      font-size: 28px;
+      color: var(--cream);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 10px;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.7);
+      background: rgba(77, 11, 11, 0.75);
+      color: var(--gold-light);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-nav.prev { left: 18px; }
+    .lightbox-nav.next { right: 18px; }
+
+    @media (max-width: 600px) {
+      .lightbox-nav {
+        width: 42px;
+        height: 42px;
+        font-size: 19px;
       }
     }
 
@@ -1511,6 +1721,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#save-the-date">Save the Date</a></li>
       <li><a href="#invitation">Invitation</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#venue">Venue</a></li>
       <li><a href="#rsvp">RSVP</a></li>
@@ -1620,6 +1831,35 @@
       <video id="inviteVideo" src="videos/invite.mp4" loop playsinline preload="metadata"></video>
       <button class="video-fullscreen-btn" id="videoFullscreenBtn" aria-label="Play fullscreen" title="Fullscreen">&#9974;</button>
       <button class="video-sound-btn" id="videoSoundBtn" aria-label="Mute video" title="Mute">&#128266;</button>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <p class="section-title fade-in" style="color: var(--gold-light);">Photo Gallery</p>
+    <h2 class="section-heading fade-in" style="color: var(--cream);">Moments We Cherish</h2>
+    <div class="gallery-strip-wrap fade-in">
+      <div class="gallery-strip" id="galleryStrip">
+        <button class="gallery-card" data-full="images/gallery/proposal-7.jpg"><img src="images/gallery/proposal-7.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-13.jpg"><img src="images/gallery/proposal-13.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card landscape" data-full="images/gallery/proposal-37.jpg"><img src="images/gallery/proposal-37.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-46.jpg"><img src="images/gallery/proposal-46.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-115.jpg"><img src="images/gallery/proposal-115.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-116.jpg"><img src="images/gallery/proposal-116.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-117.jpg"><img src="images/gallery/proposal-117.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-118.jpg"><img src="images/gallery/proposal-118.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-121.jpg"><img src="images/gallery/proposal-121.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-5.jpg"><img src="images/gallery/couple-5.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-19.jpg"><img src="images/gallery/couple-19.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-26.jpg"><img src="images/gallery/couple-26.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-53.jpg"><img src="images/gallery/couple-53.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-69.jpg"><img src="images/gallery/couple-69.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-110.jpg"><img src="images/gallery/couple-110.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card landscape" data-full="images/gallery/couple-391.jpg"><img src="images/gallery/couple-391.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-438.jpg"><img src="images/gallery/couple-438.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+      </div>
+      <button class="gallery-arrow prev" id="galleryArrowPrev" aria-label="Scroll photos left">&#8249;</button>
+      <button class="gallery-arrow next" id="galleryArrowNext" aria-label="Scroll photos right">&#8250;</button>
     </div>
   </section>
 
@@ -1899,6 +2139,14 @@
     </p>
     <p class="footer-hashtag">#RishabhAndParin2027</p>
   </footer>
+
+  <!-- Gallery Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
+  </div>
 
   <!-- Wardrobe Modal -->
   <div class="modal-overlay" id="wardrobeModal" role="dialog" aria-modal="true" aria-label="Attire suggestion">
@@ -2228,6 +2476,104 @@
     wardrobeModal.addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeWardrobe();
     });
+
+    // Gallery filmstrip + lightbox
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
+    const galleryStrip = document.getElementById('galleryStrip');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentGalleryIdx = 0;
+
+    function showGalleryPhoto(idx) {
+      currentGalleryIdx = (idx + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentGalleryIdx];
+      lightboxImg.src = item.dataset.full;
+      lightboxImg.alt = item.querySelector('img').alt;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    // Drag-to-scroll on desktop (touch devices use native swiping)
+    let stripDragging = false;
+    let stripDragMoved = false;
+    let stripStartX = 0;
+    let stripStartScroll = 0;
+
+    galleryStrip.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      stripDragging = true;
+      stripDragMoved = false;
+      stripStartX = e.pageX - galleryStrip.offsetLeft;
+      stripStartScroll = galleryStrip.scrollLeft;
+      galleryStrip.classList.add('dragging');
+      galleryStrip.setPointerCapture(e.pointerId);
+    });
+
+    galleryStrip.addEventListener('pointermove', (e) => {
+      if (!stripDragging) return;
+      const x = e.pageX - galleryStrip.offsetLeft;
+      if (Math.abs(x - stripStartX) > 8) stripDragMoved = true;
+      galleryStrip.scrollLeft = stripStartScroll - (x - stripStartX);
+    });
+
+    const endStripDrag = () => {
+      if (!stripDragging) return;
+      stripDragging = false;
+      galleryStrip.classList.remove('dragging');
+    };
+    galleryStrip.addEventListener('pointerup', endStripDrag);
+    galleryStrip.addEventListener('pointercancel', endStripDrag);
+
+    // Arrow buttons step one card at a time
+    const galleryStep = () => {
+      const card = galleryStrip.querySelector('.gallery-card');
+      return card ? card.offsetWidth + 26 : 320;
+    };
+    document.getElementById('galleryArrowPrev').addEventListener('click', () => {
+      galleryStrip.scrollBy({ left: -galleryStep(), behavior: 'smooth' });
+    });
+    document.getElementById('galleryArrowNext').addEventListener('click', () => {
+      galleryStrip.scrollBy({ left: galleryStep(), behavior: 'smooth' });
+    });
+
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        if (stripDragMoved) {
+          stripDragMoved = false;
+          return;
+        }
+        showGalleryPhoto(i);
+        lightbox.classList.add('active');
+      });
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => showGalleryPhoto(currentGalleryIdx - 1));
+    document.getElementById('lightboxNext').addEventListener('click', () => showGalleryPhoto(currentGalleryIdx + 1));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showGalleryPhoto(currentGalleryIdx - 1);
+      if (e.key === 'ArrowRight') showGalleryPhoto(currentGalleryIdx + 1);
+    });
+
+    // Swipe through gallery photos on touch devices
+    let lightboxTouchX = null;
+    lightbox.addEventListener('touchstart', (e) => {
+      lightboxTouchX = e.touches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      if (lightboxTouchX === null) return;
+      const dx = e.changedTouches[0].clientX - lightboxTouchX;
+      if (Math.abs(dx) > 50) showGalleryPhoto(currentGalleryIdx + (dx < 0 ? 1 : -1));
+      lightboxTouchX = null;
+    }, { passive: true });
   </script>
 </body>
 </html>
