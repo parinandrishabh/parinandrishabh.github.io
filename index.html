@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#751212">
-  <title>Parin &amp; Rishabh — Shubh Vivah | 13–15 Feb 2027, Pushkar</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <title>Parin &amp; Rishabh · Shubh Vivah · 13&ndash;15 Feb 2027, Pushkar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600&family=Rozha+One&family=Shrikhand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Josefin+Sans:wght@300;400;500;600&family=Rozha+One&family=Shrikhand&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -112,20 +113,12 @@
       font-size: clamp(16px, 2.2vw, 20px);
       color: var(--marigold);
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin: 34px 0 10px;
     }
 
     .shubh-label .gujarati {
       font-family: 'Shrikhand', serif;
       font-size: 0.9em;
-    }
-
-    .invitation-heading {
-      font-family: 'Rozha One', serif;
-      font-size: clamp(26px, 3.8vw, 44px);
-      font-weight: 400;
-      line-height: 1.5;
-      margin-bottom: 20px;
     }
 
     .invitation-names {
@@ -139,40 +132,33 @@
 
     .invitation-message {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
+      font-size: 22px;
       font-style: italic;
       max-width: 600px;
       margin: 0 auto;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--cream-dark);
     }
 
-    .parents-section {
-      margin-top: 40px;
-      text-align: center;
+    .families {
+      margin-top: 18px;
     }
 
-    .parents-text {
+    .families-lead {
       font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
-      letter-spacing: 3px;
+      font-size: 12px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--cream-dark);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .parents-and {
+    .family-names {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 17px;
-      color: var(--gold-light);
-      margin: 14px 0;
-    }
-
-    .parents-names {
-      font-family: 'Rozha One', serif;
       font-size: 20px;
-      color: var(--cream);
+      font-style: italic;
+      color: var(--gold-light);
+      line-height: 1.7;
     }
 
     /* Countdown Section */
@@ -229,6 +215,16 @@
         repeating-linear-gradient(-45deg, rgba(201, 168, 76, 0.03) 0 1px, transparent 1px 20px);
       color: var(--cream);
       padding: 80px 20px;
+    }
+
+    .functions-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-style: italic;
+      color: var(--gold-light);
+      max-width: 560px;
+      margin: -34px auto 54px;
+      line-height: 1.7;
     }
 
     .section-title {
@@ -1226,6 +1222,124 @@
       min-height: 18px;
     }
 
+    .calendar-links {
+      margin-top: 34px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .calendar-links a {
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(117, 18, 18, 0.55);
+      padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .calendar-links a:hover {
+      color: var(--marigold-deep);
+      border-bottom-color: var(--marigold-deep);
+    }
+
+    .calendar-sep {
+      color: var(--gold);
+      margin: 0 12px;
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .faq-item {
+      background: rgba(117, 18, 18, 0.04);
+      border: 1px solid rgba(117, 18, 18, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .faq-item[open] {
+      border-color: rgba(117, 18, 18, 0.45);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 22px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 20px;
+      line-height: 1;
+      color: var(--gold);
+      flex: 0 0 auto;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 22px 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .faq-answer p {
+      margin: 0 0 10px;
+    }
+
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-sub {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-style: normal;
+      color: var(--burgundy);
+      margin: 14px 0 6px;
+    }
+
+    .faq-sub:first-child {
+      margin-top: 0;
+    }
+
+    .faq-answer strong {
+      color: var(--burgundy);
+      font-weight: 600;
+    }
+
     /* Footer */
     .footer {
       position: relative;
@@ -1408,11 +1522,7 @@
       }
 
       .invitation-message {
-        font-size: 17px;
-      }
-
-      .parents-section {
-        margin-top: 36px;
+        font-size: 19px;
       }
 
       .form-row {
@@ -1467,10 +1577,24 @@
     }
 
     .nav-logo {
-      font-family: 'Shrikhand', 'Rozha One', serif;
-      font-size: 22px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      line-height: 1;
       color: var(--gold-light);
       text-decoration: none;
+      text-shadow: 0 1px 8px rgba(201, 168, 76, 0.25);
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      color: var(--marigold);
+      text-shadow: 0 1px 12px rgba(232, 163, 61, 0.4);
+    }
+
+    .nav-logo .amp {
+      font-size: 0.72em;
+      color: var(--gold);
+      margin: 0 1px;
     }
 
     .nav-links {
@@ -1750,26 +1874,6 @@
       margin-bottom: 30px;
     }
 
-    .open-invitation-btn {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 13px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--cream);
-      background: transparent;
-      border: 1px solid var(--cream);
-      padding: 16px 40px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .open-invitation-btn:hover {
-      background: var(--cream);
-      color: var(--burgundy);
-    }
-
     @media (max-width: 480px) {
       .metallic-frame {
         width: 260px;
@@ -1801,7 +1905,7 @@
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
-    <a href="#save-the-date" class="nav-logo">P & R</a>
+    <a href="#save-the-date" class="nav-logo">P<span class="amp">&amp;</span>R</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#save-the-date">Save the Date</a></li>
       <li><a href="#invitation">Invitation</a></li>
@@ -1848,7 +1952,6 @@
     <div class="photobooth-bottom fade-in">
       <p class="save-date-text">Save the Date</p>
       <p class="date-text">13 - 15 Feb 2027</p>
-      <a href="#invitation" class="open-invitation-btn">Open Invitation</a>
     </div>
   </section>
 
@@ -1856,20 +1959,17 @@
   <section class="invitation" id="invitation">
 
     <p class="ganesh-mantra fade-in" lang="sa">॥ श्री गणेशाय नमः ॥</p>
-    <h2 class="invitation-heading fade-in">We cordially invite you<br>to celebrate our wedding</h2>
-    <p class="shubh-label fade-in"><span lang="hi">शुभ विवाह</span> &bull; Shubh Vivah &bull; <span class="gujarati" lang="gu">શુભ વિવાહ</span></p>
-    <p class="invitation-names fade-in">Parin & Rishabh</p>
     <p class="invitation-message fade-in">
-      Together with their families, request the pleasure of your company
-      as they begin their new journey of love and togetherness.
+      With joyous hearts, we invite you to join us for the most memorable day of our lives
+      as we begin a new chapter of togetherness.
     </p>
+    <p class="shubh-label fade-in"><span lang="hi">शुभ विवाह</span> &bull; Shubh Vivah &bull; <span class="gujarati" lang="gu">શુભ વિવાહ</span></p>
+    <h2 class="invitation-names fade-in">Parin &amp; Rishabh</h2>
 
-    <div class="parents-section fade-in">
-      <p class="parents-text">Son of</p>
-      <p class="parents-names">Mr Rajnish Kumar Saini &amp; Mrs Madhu Saini</p>
-      <p class="parents-and">and</p>
-      <p class="parents-text">Daughter of</p>
-      <p class="parents-names">Mr Devang Kiritbhai Joshi &amp; Mrs Malti Devang Joshi</p>
+    <div class="families fade-in">
+      <p class="families-lead">along with our families</p>
+      <p class="family-names">Mrs. Malti &amp; Mr. Devang Joshi</p>
+      <p class="family-names">Mrs. Madhu &amp; Mr. Rajnish Saini</p>
     </div>
   </section>
 
@@ -2006,6 +2106,9 @@
 
     <p class="section-title fade-in">Celebration Schedule</p>
     <h2 class="section-heading fade-in">Wedding Festivities</h2>
+    <p class="functions-intro fade-in">
+      The honour of your presence is requested at the marriage ceremony events
+    </p>
 
     <div class="timeline">
       <!-- Saturday, February 13 -->
@@ -2026,7 +2129,7 @@
             <h3 class="function-name">Arrival & Check-in</h3>
             <p class="function-time">Morning</p>
             <p class="function-venue">Reception Area</p>
-            <p class="function-description">Arrive and check in at the reception area. Settle in and prepare for the celebrations ahead.</p>
+            <p class="function-description">Pushkar at its gentlest. Settle in and let the weekend unfold.</p>
           </div>
 
           <!-- Welcome Dinner & Sanjhi -->
@@ -2035,7 +2138,7 @@
             <h3 class="function-name">Welcome Dinner & Sanjhi</h3>
             <p class="function-time">Evening</p>
             <p class="function-venue">Poolside</p>
-            <p class="function-description">An evening of traditional Sanjhi celebrations followed by a grand welcome dinner to kick off the wedding festivities.</p>
+            <p class="function-description">An intimate poolside evening of folk art, lamplight, and our first celebration together.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2061,7 +2164,7 @@
             <h3 class="function-name">Puja Ceremonies</h3>
             <p class="function-time">Morning & Afternoon</p>
             <p class="function-venue">Courtyard Lawn</p>
-            <p class="function-description">Sacred rituals including Graha Shanti, Madap Mahurat, and Tilak ceremonies to invoke blessings for the couple.</p>
+            <p class="function-description">Graha Shanti, Mandap Mahurat, and Tilak, seeking blessings for the days ahead.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2071,7 +2174,7 @@
             <h3 class="function-name">Sangeet & Garba</h3>
             <p class="function-time">Evening</p>
             <p class="function-venue">Main Lawn</p>
-            <p class="function-description">A night of music, dance performances, and garba as both families come together to rejoice through rhythm and celebration.</p>
+            <p class="function-description">Dhol beats, family performances, and dancing under the stars.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2097,7 +2200,7 @@
             <h3 class="function-name">Haldi</h3>
             <p class="function-time">Morning</p>
             <p class="function-venue">Sun Terrace</p>
-            <p class="function-description">A joyous turmeric ceremony where family and friends apply haldi paste to bless the couple with prosperity and ward off evil spirits.</p>
+            <p class="function-description">A golden morning of turmeric, sunshine, and laughter on the terrace.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2107,7 +2210,7 @@
             <h3 class="function-name">Wedding</h3>
             <p class="function-time">Evening</p>
             <p class="function-venue">Main Lawn & Poolside</p>
-            <p class="function-description">The grand Baraat procession, Varmala ceremony, and sacred Phere around the holy fire as Parin and Rishabh unite in marriage.</p>
+            <p class="function-description">Baraat at dusk, varmala under the mandap, and phere around the holy fire.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2132,8 +2235,8 @@
             <span class="function-icon">&#128682;</span>
             <h3 class="function-name">Checkout</h3>
             <p class="function-time">Morning</p>
-            <p class="function-venue">Gulab Niwas, Pushkar</p>
-            <p class="function-description">A heartfelt farewell as guests check out after celebrating the beautiful union of Parin and Rishabh.</p>
+            <p class="function-venue">Gulaab Niwaas, Pushkar</p>
+            <p class="function-description">One last Pushkar sunrise before we say our goodbyes.</p>
           </div>
 
         </div>
@@ -2179,7 +2282,7 @@
     <h2 class="section-heading fade-in" style="color: var(--burgundy);">RSVP</h2>
     <div class="ornament-line fade-in"><span>&#10086;</span></div>
     <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
-      Please respond by January 15, 2027
+      Please respond by November 15, 2026
     </p>
 
     <form class="rsvp-form fade-in" id="rsvpForm" onsubmit="handleSubmit(event)">
@@ -2239,7 +2342,51 @@
 
       <button type="submit" class="submit-btn" id="rsvpSubmitBtn">Send Response</button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-    </form>
+     </form>
+
+     <p class="calendar-links fade-in">
+       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Parin+%26+Rishabh+Wedding&dates=20270213/20270216&details=Three+days+of+celebrations+at+Gulaab+Niwaas%2C+Pushkar.+RSVP+by+15+November+2026.&location=Gulaab+Niwaas%2C+Pushkar%2C+Rajasthan" target="_blank" rel="noopener">Google Calendar</a>
+       <span class="calendar-sep">&bull;</span>
+       <a href="parin-rishabh-wedding.ics" download>Apple &amp; Outlook</a>
+     </p>
+   </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <p class="section-title fade-in" style="color: var(--burgundy);">Good to Know</p>
+    <h2 class="section-heading fade-in" style="color: var(--burgundy);">Questions</h2>
+
+    <div class="faq-list fade-in">
+      <details class="faq-item">
+        <summary>When do I need to respond by?</summary>
+        <p class="faq-answer">Kindly RSVP by <strong>15 November 2026</strong> so we can plan every detail of your stay.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What should I wear?</summary>
+        <p class="faq-answer">Each celebration has its own mood. Tap <em>View Attire</em> on the festivity cards above for inspiration for every event.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I get to Pushkar?</summary>
+        <div class="faq-answer">
+          <p class="faq-sub">By Air</p>
+          <p>Kishangarh Airport (KQH) is the closest, about an hour away by road. Jaipur International Airport (JAI) has wider connections and is a three-hour drive.</p>
+          <p class="faq-sub">By Train</p>
+          <p>Ajmer Junction is the nearest major station, with connections from Delhi, Lucknow and Rajkot, and just half an hour from Pushkar by taxi.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where do the celebrations take place?</summary>
+        <p class="faq-answer">Every event is hosted at Gulaab Niwaas, Pushkar. See the Venue section above for the map and directions.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What about gifts?</summary>
+        <p class="faq-answer">Your presence at our celebrations is the greatest gift of all.</p>
+      </details>
+    </div>
   </section>
 
   <!-- Footer -->

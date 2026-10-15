@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Parin and Rishabh//Wedding Invite//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:parin-rishabh-wedding-20270213@parinandrishabh.github.io
+DTSTAMP:20261014T120000Z
+DTSTART;VALUE=DATE:20270213
+DTEND;VALUE=DATE:20270216
+SUMMARY:Parin & Rishabh Wedding
+DESCRIPTION:Three days of celebrations at Gulaab Niwaas\, Pushkar. RSVP by 15 November 2026.
+LOCATION:Gulaab Niwaas\, Pushkar\, Rajasthan
+END:VEVENT
+END:VCALENDAR
