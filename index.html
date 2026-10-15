@@ -1228,14 +1228,19 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
 
     .calendar-links a {
       color: var(--burgundy);
       text-decoration: none;
       border-bottom: 1px dotted rgba(117, 18, 18, 0.55);
-      padding-bottom: 2px;
+      padding: 10px 4px 5px;
       transition: color 0.3s ease, border-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .calendar-links a:hover {
@@ -1246,6 +1251,18 @@
     .calendar-sep {
       color: var(--gold);
       margin: 0 12px;
+    }
+
+    @media (max-width: 480px) {
+      .calendar-links {
+        flex-direction: column;
+        gap: 4px;
+        letter-spacing: 2px;
+      }
+
+      .calendar-sep {
+        display: none;
+      }
     }
 
     /* FAQ Section */
@@ -1525,6 +1542,11 @@
         font-size: 19px;
       }
 
+      .functions-intro {
+        font-size: 18px;
+        margin: -22px auto 40px;
+      }
+
       .form-row {
         grid-template-columns: 1fr;
       }
@@ -1676,11 +1698,19 @@
     }
 
     .photobooth-heading {
-      font-family: 'Shrikhand', 'Rozha One', serif;
-      font-size: clamp(30px, 5vw, 50px);
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(46px, 7vw, 76px);
+      line-height: 1.2;
       text-align: center;
       color: var(--cream);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .photobooth-heading .amp {
+      font-size: 0.78em;
+      color: var(--gold);
+      margin: 0 2px;
     }
 
     .photobooth-subheading {
@@ -1765,7 +1795,7 @@
     .photo-strip {
       display: flex;
       flex-direction: column;
-      width: 130px;
+      width: 106px;
       margin: 0 auto;
       background: #f7ecd4;
       border: 1px solid rgba(201, 168, 76, 0.45);
@@ -1827,7 +1857,7 @@
 
     .photo-strip-photo {
       width: 100%;
-      height: 100px;
+      aspect-ratio: 94 / 116;
       overflow: hidden;
       position: relative;
     }
@@ -1879,12 +1909,19 @@
         width: 260px;
       }
 
-      .photo-strip {
-        width: 100px;
+      .faq-item summary {
+        padding: 16px 18px;
+        font-size: 13px;
+        letter-spacing: 1.5px;
       }
 
-      .photo-strip-photo {
-        height: 80px;
+      .faq-answer {
+        padding: 0 18px 18px;
+        font-size: 17px;
+      }
+
+      .photo-strip {
+        width: 76px;
       }
 
       .countdown {
@@ -1924,27 +1961,27 @@
   <!-- Photobooth Section -->
   <section class="photobooth-section" id="save-the-date">
     <p class="photobooth-subheading fade-in">We are getting married!</p>
-    <h2 class="photobooth-heading fade-in">Parin & Rishabh</h2>
+    <h2 class="photobooth-heading fade-in">Parin <span class="amp">&amp;</span> Rishabh</h2>
 
     <div class="metallic-frame fade-in" id="metallicFrame">
       <div class="frame-bevel">
         <div class="frame-interior">
-          <div class="photo-strip-container">
-            <div class="photo-strip" id="photoStrip">
-              <div class="photo-strip-photo">
-                <img src="images/photo1.jpg" alt="Parin & Rishabh">
-              </div>
-              <div class="photo-strip-photo">
-                <img src="images/photo2.jpg" alt="Parin & Rishabh">
-              </div>
-              <div class="photo-strip-photo">
-                <img src="images/photo3.jpg" alt="Parin & Rishabh">
-              </div>
-              <div class="photo-strip-photo">
-                <img src="images/photo4.jpg" alt="Parin & Rishabh">
-              </div>
-            </div>
-          </div>
+           <div class="photo-strip-container">
+             <div class="photo-strip" id="photoStrip">
+               <div class="photo-strip-photo">
+                 <img src="images/postcards/postcard-4.jpg" alt="Parin & Rishabh">
+               </div>
+               <div class="photo-strip-photo">
+                 <img src="images/postcards/postcard-1.jpg" alt="Parin & Rishabh">
+               </div>
+               <div class="photo-strip-photo">
+                 <img src="images/postcards/postcard-2.jpg" alt="Parin & Rishabh">
+               </div>
+               <div class="photo-strip-photo">
+                 <img src="images/postcards/postcard-3.jpg" alt="Parin & Rishabh">
+               </div>
+             </div>
+           </div>
         </div>
       </div>
     </div>
@@ -2322,17 +2359,6 @@
             <input type="radio" name="attending" value="no"> Respectfully Decline
           </label>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="guests">Number of Guests</label>
-        <select id="guests" name="guests" class="form-select">
-          <option value="1">1</option>
-          <option value="2" selected>2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
       </div>
 
       <div class="form-group">
