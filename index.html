@@ -6,6 +6,15 @@
   <meta name="theme-color" content="#751212">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <title>Parin &amp; Rishabh · Shubh Vivah · 13&ndash;15 Feb 2027, Pushkar</title>
+  <meta name="description" content="Parin &amp; Rishabh invite you to their wedding, 13-15 February 2027 at Gulaab Niwaas, Pushkar. Kindly RSVP by 15 November 2026.">
+  <meta property="og:title" content="Parin &amp; Rishabh · Shubh Vivah">
+  <meta property="og:description" content="13-15 February 2027 · Gulaab Niwaas, Pushkar. We invite you to join us for the most memorable day of our lives.">
+  <meta property="og:image" content="https://parinandrishabh.github.io/images/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parin &amp; Rishabh · Shubh Vivah">
+  <meta name="twitter:description" content="13-15 February 2027 · Gulaab Niwaas, Pushkar.">
+  <meta name="twitter:image" content="https://parinandrishabh.github.io/images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Josefin+Sans:wght@300;400;500;600&family=Rozha+One&family=Shrikhand&display=swap" rel="stylesheet">
@@ -180,6 +189,33 @@
       text-transform: uppercase;
       color: var(--burgundy);
       margin-bottom: 40px;
+    }
+
+    .countdown-rsvp {
+      margin-top: 44px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+
+    .countdown-rsvp strong {
+      font-weight: 600;
+      color: var(--burgundy);
+    }
+
+    .countdown-rsvp a {
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(117, 18, 18, 0.55);
+      padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .countdown-rsvp a:hover {
+      color: var(--marigold-deep);
+      border-bottom-color: var(--marigold-deep);
     }
 
     .countdown {
@@ -1377,6 +1413,23 @@
       font-weight: 600;
     }
 
+    .faq-answer a {
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(117, 18, 18, 0.55);
+      padding-bottom: 1px;
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .faq-answer a:hover {
+      color: var(--marigold-deep);
+      border-bottom-color: var(--marigold-deep);
+    }
+
     /* Footer */
     .footer {
       position: relative;
@@ -1754,8 +1807,8 @@
     .metallic-frame {
       position: relative;
       width: 320px;
-      background: url('images/photobooth-frame.png') center/contain no-repeat;
-      aspect-ratio: 442 / 864;
+      background: url('images/photobooth-frame-golden.jpg') center/contain no-repeat;
+      aspect-ratio: 23 / 45;
       box-shadow: 0 30px 100px rgba(0,0,0,0.8);
     }
 
@@ -1928,6 +1981,14 @@
       font-size: clamp(15px, 2.2vw, 19px);
       letter-spacing: 8px;
       color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .photobooth-bottom .location-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(16px, 2.4vw, 20px);
+      color: var(--cream-dark);
       margin-bottom: 30px;
     }
 
@@ -2016,6 +2077,7 @@
     <div class="photobooth-bottom fade-in">
       <p class="save-date-text">Save the Date</p>
       <p class="date-text">13 - 15 Feb 2027</p>
+      <p class="location-text">Gulaab Niwaas &bull; Pushkar, Rajasthan</p>
     </div>
   </section>
 
@@ -2163,6 +2225,11 @@
         <span class="countdown-unit">Seconds</span>
       </div>
     </div>
+    <p class="countdown-rsvp fade-in">
+      Kindly respond by <strong>15 November 2026</strong>
+      <span class="calendar-sep">&bull;</span>
+      <a href="#rsvp">RSVP</a>
+    </p>
   </section>
 
   <!-- Functions Section -->
@@ -2511,6 +2578,11 @@
         <summary>What about gifts?</summary>
         <p class="faq-answer">Your presence at our celebrations is the greatest gift of all.</p>
       </details>
+
+      <details class="faq-item">
+        <summary>Have a question?</summary>
+        <p class="faq-answer">Write to us at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Parin%20%26%20Rishabh%20Wedding" target="_blank" rel="noopener">parinandrishabh@gmail.com</a> and we'll be happy to help.</p>
+      </details>
     </div>
   </section>
 
@@ -2574,6 +2646,9 @@
         document.getElementById('hours').textContent = String(hours).padStart(2, '0');
         document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      } else {
+        const label = document.querySelector('.countdown-label');
+        if (label) label.textContent = "It's time to celebrate!";
       }
     }
 
