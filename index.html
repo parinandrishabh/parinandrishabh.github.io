@@ -550,6 +550,12 @@
       line-height: 1.75;
     }
 
+    .function-description .desc-lead {
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
     /* Venue Section */
 
     /* Venue Section */
@@ -1288,6 +1294,34 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+    }
+
+    .rsvp-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 26px;
+      line-height: 1.6;
+    }
+
+    .rsvp-note a {
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(117, 18, 18, 0.55);
+      padding-bottom: 1px;
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.82em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .rsvp-note a:hover {
+      color: var(--marigold-deep);
+      border-bottom-color: var(--marigold-deep);
     }
 
     .calendar-links a {
@@ -2181,23 +2215,34 @@
     <h2 class="section-heading fade-in" style="color: var(--cream);">Moments We Cherish</h2>
     <div class="gallery-strip-wrap fade-in">
       <div class="gallery-strip" id="galleryStrip">
+        <button class="gallery-card" data-full="images/gallery/moment-01.jpg"><img src="images/gallery/moment-01.jpg" alt="Parin and Rishabh" loading="lazy"></button>
         <button class="gallery-card" data-full="images/gallery/proposal-7.jpg"><img src="images/gallery/proposal-7.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-13.jpg"><img src="images/gallery/proposal-13.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card landscape" data-full="images/gallery/proposal-37.jpg"><img src="images/gallery/proposal-37.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-46.jpg"><img src="images/gallery/proposal-46.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-115.jpg"><img src="images/gallery/proposal-115.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-116.jpg"><img src="images/gallery/proposal-116.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-117.jpg"><img src="images/gallery/proposal-117.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-118.jpg"><img src="images/gallery/proposal-118.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/proposal-121.jpg"><img src="images/gallery/proposal-121.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/couple-5.jpg"><img src="images/gallery/couple-5.jpg" alt="Parin and Rishabh" loading="lazy"></button>
         <button class="gallery-card" data-full="images/gallery/couple-19.jpg"><img src="images/gallery/couple-19.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/couple-26.jpg"><img src="images/gallery/couple-26.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-02.jpg"><img src="images/gallery/moment-02.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-13.jpg"><img src="images/gallery/proposal-13.jpg" alt="Parin and Rishabh" loading="lazy"></button>
         <button class="gallery-card" data-full="images/gallery/couple-53.jpg"><img src="images/gallery/couple-53.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card" data-full="images/gallery/couple-69.jpg"><img src="images/gallery/couple-69.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-03.jpg"><img src="images/gallery/moment-03.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-46.jpg"><img src="images/gallery/proposal-46.jpg" alt="Parin and Rishabh" loading="lazy"></button>
         <button class="gallery-card" data-full="images/gallery/couple-110.jpg"><img src="images/gallery/couple-110.jpg" alt="Parin and Rishabh" loading="lazy"></button>
-        <button class="gallery-card landscape" data-full="images/gallery/couple-391.jpg"><img src="images/gallery/couple-391.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-04.jpg"><img src="images/gallery/moment-04.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-115.jpg"><img src="images/gallery/proposal-115.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-26.jpg"><img src="images/gallery/couple-26.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-05.jpg"><img src="images/gallery/moment-05.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-116.jpg"><img src="images/gallery/proposal-116.jpg" alt="Parin and Rishabh" loading="lazy"></button>
         <button class="gallery-card" data-full="images/gallery/couple-438.jpg"><img src="images/gallery/couple-438.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-06.jpg"><img src="images/gallery/moment-06.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-117.jpg"><img src="images/gallery/proposal-117.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-69.jpg"><img src="images/gallery/couple-69.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-07.jpg"><img src="images/gallery/moment-07.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-118.jpg"><img src="images/gallery/proposal-118.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/couple-5.jpg"><img src="images/gallery/couple-5.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-08.jpg"><img src="images/gallery/moment-08.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card landscape" data-full="images/gallery/proposal-37.jpg"><img src="images/gallery/proposal-37.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-09.jpg"><img src="images/gallery/moment-09.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/proposal-121.jpg"><img src="images/gallery/proposal-121.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card landscape" data-full="images/gallery/couple-391.jpg"><img src="images/gallery/couple-391.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-10.jpg"><img src="images/gallery/moment-10.jpg" alt="Parin and Rishabh" loading="lazy"></button>
+        <button class="gallery-card" data-full="images/gallery/moment-11.jpg"><img src="images/gallery/moment-11.jpg" alt="Parin and Rishabh" loading="lazy"></button>
       </div>
       <button class="gallery-arrow prev" id="galleryArrowPrev" aria-label="Scroll photos left">&#8249;</button>
       <button class="gallery-arrow next" id="galleryArrowNext" aria-label="Scroll photos right">&#8250;</button>
@@ -2269,7 +2314,7 @@
               <span class="meta-sep">&#8226;</span>
               <span>Reception Area</span>
             </div>
-            <p class="function-description">Pushkar at its gentlest. Settle in and let the weekend unfold.</p>
+            <p class="function-description"><span class="desc-lead">Pushkar at its gentlest.</span><br>Settle in and let the weekend unfold.</p>
           </div>
 
            <!-- Chand Sifarish -->
@@ -2287,7 +2332,7 @@
                <span class="meta-sep">&#8226;</span>
                <span>Poolside</span>
              </div>
-             <p class="function-description">An intimate poolside evening of folk art, lamplight, and our first celebration together.</p>
+             <p class="function-description"><span class="desc-lead">Our official wedding kick-off.</span><br>Join us for a relaxed outdoor evening under the stars with food, drinks, and good music.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2324,7 +2369,7 @@
                <span class="meta-sep">&#8226;</span>
                <span>Courtyard Lawn</span>
              </div>
-             <p class="function-description">Graha Shanti, Mandap Mahurat, and Tilak, seeking blessings for the days ahead.</p>
+             <p class="function-description"><span class="desc-lead">Our sacred beginning.</span><br>A morning of auspicious prayers, Mandap Mahurat and Grah Shanti, followed by a celebratory afternoon of Tilak and Mameru rituals.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2344,7 +2389,7 @@
                <span class="meta-sep">&#8226;</span>
                <span>Main Lawn</span>
              </div>
-             <p class="function-description">Dhol beats, family performances, and dancing under the stars.</p>
+             <p class="function-description"><span class="desc-lead">Our massive folk fiesta.</span><br>Join us for a high-energy night of non-stop garba, dandiya, desi music and endless beats.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2384,7 +2429,7 @@
                <span class="meta-sep">&#8226;</span>
                <span>Sun Terrace</span>
              </div>
-             <p class="function-description">A golden morning of turmeric, sunshine, and laughter on the terrace.</p>
+             <p class="function-description"><span class="desc-lead">Our morning color party.</span><br>Kick it off with traditional Haldi blessings, a lot of love, and an absolute party of dance and games.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2406,7 +2451,7 @@
                <span class="meta-sep">&#8226;</span>
                <span>Main Lawn &amp; Poolside</span>
              </div>
-             <p class="function-description">Baraat at dusk, varmala under the mandap, and phere around the holy fire.</p>
+             <p class="function-description"><span class="desc-lead">Our forever beginning.</span><br>Join us for the emotional culmination of our journey as we walk around the holy fire, take our seven vows, and tie our lives together.</p>
             <p class="function-attire-hint">View Attire</p>
           </div>
 
@@ -2487,6 +2532,10 @@
     <p class="invitation-message fade-in" style="color: var(--text-muted); margin-bottom: 10px;">
       Please respond by November 15, 2026
     </p>
+    <p class="rsvp-note fade-in">
+      Plus ones are limited by invitation. To add a guest, kindly
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Adding%20a%20guest%20%26%20Parin%20Rishabh%20Wedding" target="_blank" rel="noopener">write to us</a>.
+    </p>
 
     <form class="rsvp-form fade-in" id="rsvpForm" onsubmit="handleSubmit(event)">
       <input type="hidden" name="access_key" value="1ee6869f-1eb0-4529-bdb5-41ba5468e630">
@@ -2552,6 +2601,11 @@
       <details class="faq-item">
         <summary>When do I need to respond by?</summary>
         <p class="faq-answer">Kindly RSVP by <strong>15 November 2026</strong> so we can plan every detail of your stay.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I bring a plus one?</summary>
+        <p class="faq-answer">To keep our celebrations intimate, plus ones are limited by invitation. If you would like to bring someone, please <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Adding%20a%20guest%20%26%20Parin%20Rishabh%20Wedding" target="_blank" rel="noopener">write to us</a> and we will do our best to include them.</p>
       </details>
 
       <details class="faq-item">
@@ -3059,8 +3113,53 @@
     });
 
     // Gallery filmstrip + lightbox
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
     const galleryStrip = document.getElementById('galleryStrip');
+
+    // A fresh shuffle on every visit, so the story never reads the same twice
+    const galleryCards = Array.from(galleryStrip.children);
+    for (let i = galleryCards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [galleryCards[i], galleryCards[j]] = [galleryCards[j], galleryCards[i]];
+    }
+    galleryCards.forEach(card => galleryStrip.appendChild(card));
+
+    // Infinite scroll: the shuffled set is tripled, and whenever the user
+    // nears either outer edge the strip quietly wraps back into the middle
+    // copy, so the photos flow without end in both directions
+    const setCount = galleryCards.length;
+    for (let copy = 0; copy < 2; copy++) {
+      galleryCards.forEach(card => galleryStrip.appendChild(card.cloneNode(true)));
+    }
+
+    let stripStride = 0;
+    let stripLeftBound = 0;
+    let stripRightBound = 0;
+    const measureStrip = () => {
+      const base = galleryStrip.offsetLeft;
+      const first = galleryStrip.children[0];
+      const middle = galleryStrip.children[setCount];
+      const last = galleryStrip.children[setCount * 3 - 1];
+      stripLeftBound = first.offsetLeft - base;
+      stripStride = middle.offsetLeft - first.offsetLeft;
+      stripRightBound = last.offsetLeft + last.offsetWidth - base;
+    };
+    measureStrip();
+
+    // Begin at the head of the middle copy
+    galleryStrip.scrollLeft = stripLeftBound + stripStride;
+
+    galleryStrip.addEventListener('scroll', () => {
+      const s = galleryStrip.scrollLeft;
+      if (s <= stripLeftBound + 24) {
+        galleryStrip.scrollLeft = s + stripStride;
+      } else if (s + galleryStrip.clientWidth >= stripRightBound - 24) {
+        galleryStrip.scrollLeft = s - stripStride;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', measureStrip);
+
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     let currentGalleryIdx = 0;
