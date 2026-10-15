@@ -2740,6 +2740,44 @@
   </div>
 
   <script>
+    // The /rishabh variant (entered via /rishabh or /?rishabh): Rishabh is
+    // named first and the groom's family leads - everything else stays
+    // exactly as the main invitation
+    if (location.search.indexOf('rishabh') !== -1) {
+      document.title = document.title.replace('Parin & Rishabh', 'Rishabh & Parin');
+
+      const navLogo = document.querySelector('.nav-logo');
+      if (navLogo) navLogo.innerHTML = 'R <span class="amp">&amp;</span> P';
+
+      ['.photobooth-heading', '.invitation-names', '.footer-names'].forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.innerHTML = 'Rishabh <span class="amp">&amp;</span> Parin';
+      });
+
+      const familyNames = document.querySelectorAll('.family-names');
+      if (familyNames.length === 2) {
+        familyNames[0].parentNode.insertBefore(familyNames[1], familyNames[0]);
+      }
+
+      document.querySelectorAll('img[alt="Parin and Rishabh"], img[alt="Parin & Rishabh"]').forEach(img => {
+        img.alt = img.alt === 'Parin and Rishabh' ? 'Rishabh and Parin' : 'Rishabh & Parin';
+      });
+
+      document.querySelectorAll('input[type="hidden"]').forEach(input => {
+        input.value = input.value.replace('Parin & Rishabh', 'Rishabh & Parin');
+      });
+
+      document.querySelectorAll('a[href*="su="]').forEach(link => {
+        link.href = link.href
+          .replace('Parin%20%26%20Rishabh', 'Rishabh%20%26%20Parin')
+          .replace('Parin%20Rishabh', 'Rishabh%20Parin');
+      });
+
+      if (window.history && history.replaceState) {
+        history.replaceState(null, '', '/rishabh');
+      }
+    }
+
     // Countdown Timer
     function updateCountdown() {
       const weddingDate = new Date('2027-02-13T19:00:00').getTime();
