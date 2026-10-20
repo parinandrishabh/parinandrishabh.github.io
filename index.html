@@ -2880,13 +2880,17 @@
       }
     }
 
-    // The /parin variant: the first two photobooth photos are different memories
+    // The /parin variant: the first three photobooth photos are different memories
     if (document.documentElement.classList.contains('no-story')) {
       const stripPhotos = document.querySelectorAll('#photoStrip .photo-strip-photo img');
       if (stripPhotos[0]) stripPhotos[0].src = 'images/gallery/proposal-115.jpg';
       if (stripPhotos[1]) {
         stripPhotos[1].src = 'images/postcards/parin-83.jpg';
         stripPhotos[1].alt = 'Parin & Rishabh';
+      }
+      if (stripPhotos[2]) {
+        stripPhotos[2].src = 'images/postcards/parin-78.jpg';
+        stripPhotos[2].alt = 'Parin & Rishabh';
       }
     }
 
