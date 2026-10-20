@@ -776,6 +776,10 @@
       .constellation-reveal {
         display: none;
       }
+
+      .faq-answer-wrap {
+        transition: none;
+      }
     }
 
     .constellation {
@@ -1401,9 +1405,11 @@
     /* FAQ Section */
     .faq-section {
       scroll-margin-top: 70px;
+      justify-content: flex-start;
     }
 
     .faq-list {
+      width: 100%;
       max-width: 640px;
       margin: 0 auto;
       display: flex;
@@ -1418,6 +1424,7 @@
       border-radius: 12px;
       overflow: hidden;
       transition: border-color 0.3s ease;
+      contain: layout paint;
     }
 
     .faq-item[open] {
@@ -1458,8 +1465,31 @@
       transform: rotate(45deg);
     }
 
+    .faq-item.folding summary::after {
+      transform: rotate(0deg);
+    }
+
+    .faq-answer-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item[open] .faq-answer-wrap {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-item[open].folding .faq-answer-wrap {
+      grid-template-rows: 0fr;
+    }
+
+    .faq-answer-wrap > .faq-answer {
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .faq-answer {
-      padding: 0 22px 20px;
+      padding: 0 22px;
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px;
       font-style: italic;
@@ -1467,7 +1497,15 @@
       color: var(--text-muted);
     }
 
-    .faq-answer p {
+    /* Bottom spacing lives inside the clipped box, so the fold can
+       collapse all the way to zero instead of stopping at the padding */
+    .faq-answer::after {
+      content: '';
+      display: block;
+      height: 20px;
+    }
+
+    .faq-answer :where(p) {
       margin: 0 0 10px;
     }
 
@@ -2123,8 +2161,12 @@
       }
 
       .faq-answer {
-        padding: 0 18px 18px;
+        padding: 0 18px;
         font-size: 17px;
+      }
+
+      .faq-answer::after {
+        height: 18px;
       }
 
       .photo-strip {
@@ -2709,37 +2751,49 @@
     <div class="faq-list fade-in">
       <details class="faq-item">
         <summary>When do I need to respond by?</summary>
-        <p class="faq-answer">Kindly RSVP by <strong>15 November 2026</strong> so we can plan every detail of your stay.</p>
+        <div class="faq-answer-wrap">
+          <p class="faq-answer">Kindly RSVP by <strong>15 November 2026</strong> so we can plan every detail of your stay.</p>
+        </div>
       </details>
 
       <details class="faq-item">
         <summary>Can I bring a plus one?</summary>
-        <p class="faq-answer">To keep our celebrations intimate, plus ones are limited by invitation. If you would like to bring someone, please <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Adding%20a%20guest%20%26%20Parin%20Rishabh%20Wedding" target="_blank" rel="noopener">write to us</a> and we will do our best to include them.</p>
+        <div class="faq-answer-wrap">
+          <p class="faq-answer">To keep our celebrations intimate, plus ones are limited by invitation. If you would like to bring someone, please <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Adding%20a%20guest%20%26%20Parin%20Rishabh%20Wedding" target="_blank" rel="noopener">write to us</a> and we will do our best to include them.</p>
+        </div>
       </details>
 
       <details class="faq-item">
         <summary>What should I wear?</summary>
-        <p class="faq-answer">Each celebration has its own mood. Tap <em>View Attire</em> on the festivity cards above for inspiration for every event.</p>
+        <div class="faq-answer-wrap">
+          <p class="faq-answer">Each celebration has its own mood. Tap <em>View Attire</em> on the festivity cards above for inspiration for every event.</p>
+        </div>
       </details>
 
       <details class="faq-item">
         <summary>How do I get to Pushkar?</summary>
-        <div class="faq-answer">
-          <p class="faq-sub">By Air</p>
-          <p>Kishangarh Airport (KQH) is the closest, about an hour away by road. Jaipur International Airport (JAI) has wider connections and is a three-hour drive.</p>
-          <p class="faq-sub">By Train</p>
-          <p>Ajmer Junction is the nearest major station, with connections from Delhi, Lucknow and Rajkot, and just half an hour from Pushkar by taxi.</p>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p class="faq-sub">By Air</p>
+            <p>Kishangarh Airport (KQH) is the closest, about an hour away by road. Jaipur International Airport (JAI) has wider connections and is a three-hour drive.</p>
+            <p class="faq-sub">By Train</p>
+            <p>Ajmer Junction is the nearest major station, with connections from Delhi, Lucknow and Rajkot, and just half an hour from Pushkar by taxi.</p>
+          </div>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Where do the celebrations take place?</summary>
-        <p class="faq-answer">Every event is hosted at Gulaab Niwaas, Pushkar. See the Venue section above for the map and directions.</p>
+        <div class="faq-answer-wrap">
+          <p class="faq-answer">Every event is hosted at Gulaab Niwaas, Pushkar. See the Venue section above for the map and directions.</p>
+        </div>
       </details>
 
       <details class="faq-item">
         <summary>Have a question?</summary>
-        <p class="faq-answer">Write to us at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Parin%20%26%20Rishabh%20Wedding" target="_blank" rel="noopener">parinandrishabh@gmail.com</a> and we'll be happy to help.</p>
+        <div class="faq-answer-wrap">
+          <p class="faq-answer">Write to us at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parinandrishabh@gmail.com&su=Parin%20%26%20Rishabh%20Wedding" target="_blank" rel="noopener">parinandrishabh@gmail.com</a> and we'll be happy to help.</p>
+        </div>
       </details>
     </div>
   </section>
@@ -3165,6 +3219,37 @@
         renderConstellations();
       });
       renderConstellations();
+    }
+
+    // FAQ accordions: opening unfolds via the CSS grid row. Closing holds
+    // the box open until the fold finishes, so it never snaps abruptly
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const summary = item.querySelector('summary');
+        const wrap = item.querySelector('.faq-answer-wrap');
+        if (!summary || !wrap) return;
+
+        let folding = false;
+
+        summary.addEventListener('click', (e) => {
+          if (folding) {
+            e.preventDefault();
+            return;
+          }
+          if (item.open) {
+            e.preventDefault();
+            folding = true;
+            item.classList.add('folding');
+            wrap.addEventListener('transitionend', function onEnd(ev) {
+              if (ev.propertyName !== 'grid-template-rows') return;
+              wrap.removeEventListener('transitionend', onEnd);
+              item.classList.remove('folding');
+              folding = false;
+              item.open = false;
+            });
+          }
+        });
+      });
     }
 
     // Form submission via Web3Forms
