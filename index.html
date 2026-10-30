@@ -6,14 +6,19 @@
   <meta name="theme-color" content="#751212">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <script>
-    // The /parin variant (entered via /parin or /?parin): the story film
-    // and photo gallery are omitted - everything else stays the same
-    if (location.search.indexOf('parin') !== -1) {
-      document.documentElement.classList.add('no-story');
-      if (window.history && history.replaceState) {
-        history.replaceState(null, '', '/parin');
+    // Variants, entered via /parin, /rishabh or their ?flags: both omit
+    // the story film and photo gallery; /rishabh additionally names
+    // Rishabh first with his family leading
+    (function () {
+      var q = location.search;
+      if (q.indexOf('rishabh') !== -1) {
+        document.documentElement.classList.add('no-story', 'rishabh-first');
+        if (window.history && history.replaceState) history.replaceState(null, '', '/rishabh');
+      } else if (q.indexOf('parin') !== -1) {
+        document.documentElement.classList.add('no-story');
+        if (window.history && history.replaceState) history.replaceState(null, '', '/parin');
       }
-    }
+    })();
   </script>
   <title>Parin &amp; Rishabh · Shubh Vivah · 13&ndash;15 Feb 2027, Pushkar</title>
   <meta name="description" content="Parin &amp; Rishabh invite you to their wedding, 13-15 February 2027 at Gulaab Niwaas, Pushkar. Kindly RSVP by 15 November 2026.">
@@ -2842,10 +2847,9 @@
   </div>
 
   <script>
-    // The /rishabh variant (entered via /rishabh or /?rishabh): Rishabh is
-    // named first and the groom's family leads - everything else stays
-    // exactly as the main invitation
-    if (location.search.indexOf('rishabh') !== -1) {
+    // The /rishabh variant: Rishabh is named first and the groom's family
+    // leads - everything else stays exactly as the main invitation
+    if (document.documentElement.classList.contains('rishabh-first')) {
       document.title = document.title.replace('Parin & Rishabh', 'Rishabh & Parin');
 
       const navLogo = document.querySelector('.nav-logo');
@@ -2874,13 +2878,10 @@
           .replace('Parin%20%26%20Rishabh', 'Rishabh%20%26%20Parin')
           .replace('Parin%20Rishabh', 'Rishabh%20Parin');
       });
-
-      if (window.history && history.replaceState) {
-        history.replaceState(null, '', '/rishabh');
-      }
     }
 
-    // The /parin variant: the first three photobooth photos are different memories
+    // The /parin and /rishabh variants: the first three photobooth
+    // photos are different memories; /rishabh also swaps the fourth
     if (document.documentElement.classList.contains('no-story')) {
       const stripPhotos = document.querySelectorAll('#photoStrip .photo-strip-photo img');
       if (stripPhotos[0]) stripPhotos[0].src = 'images/gallery/proposal-115.jpg';
@@ -2891,6 +2892,10 @@
       if (stripPhotos[2]) {
         stripPhotos[2].src = 'images/postcards/parin-35.jpg';
         stripPhotos[2].alt = 'Parin & Rishabh';
+      }
+      if (stripPhotos[3] && document.documentElement.classList.contains('rishabh-first')) {
+        stripPhotos[3].src = 'images/postcards/parin-161.jpg';
+        stripPhotos[3].alt = 'Parin & Rishabh';
       }
     }
 
